@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./PrivateRoute";
 import UserContext from "../context/user-context";
 import agent from "../api/agent";
+import Register from "../features/authentication/Register";
 
 function App() {
   const userCtx = useContext(UserContext);
@@ -27,7 +28,7 @@ function App() {
         history.push("/login");
       });
     }
-  }, [userCtx, history]);
+  }, [userCtx.user.name, history]);
 
   return (
     <>
@@ -36,9 +37,10 @@ function App() {
           <PrivateRoute exact path="/">
             <HomePage />
           </PrivateRoute>
-          <Route exact path="/login">
-            <Login />
-          </Route>
+          <PrivateRoute exact path="/register">
+            <Register />
+          </PrivateRoute>
+          <Route exact path="/login" component={Login} />
         </Switch>
     </>
   );
