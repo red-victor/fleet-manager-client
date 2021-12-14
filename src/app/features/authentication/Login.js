@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Logo from "../../../assets/media/logos/logo-1.svg";
 import GoogleLogo from "../../../assets/media/svg/brand-logos/google-icon.svg";
 import agent from "../../api/agent";
@@ -16,7 +16,7 @@ const Login = () => {
 	useEffect(() => {
 		if (userCtx.user) 
 			history.push("/");
-	}, []);
+	}, [userCtx.user, history]);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -53,7 +53,7 @@ const Login = () => {
 								{/* <!--end::Title--> */}
 								{/* <!--begin::Link--> */}
 								<div className="text-gray-400 fw-bold fs-4">New Here? &nbsp;
-								<a href="#" className="link-primary fw-bolder">Create an Account</a></div>
+								<Link to="/" className="link-primary fw-bolder">Create an Account</Link></div>
 								{/* <!--end::Link--> */}
 							</div>
 							{/* <!--begin::Heading--> */}
@@ -81,7 +81,7 @@ const Login = () => {
 									<label className="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
 									{/* <!--end::Label--> */}
 									{/* <!--begin::Link--> */}
-									<a href="#" className="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+									<Link to="/" className="link-primary fs-6 fw-bolder">Forgot Password ?</Link>
 									{/* <!--end::Link--> */}
 								</div>
 								{/* <!--end::Wrapper--> */}
@@ -109,8 +109,8 @@ const Login = () => {
 								<div className="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
 								{/* <!--end::Separator--> */}
 								{/* <!--begin::Google link--> */}
-								<a href="#" className="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-								<img alt="Logo" src={GoogleLogo} className="h-20px me-3" />Continue with Google</a>
+								<Link to="/" className="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+								<img alt="Logo" src={GoogleLogo} className="h-20px me-3" />Continue with Google</Link>
 								{/* <!--begin::Google link--> */}
 							</div>
 							{/* <!--end::Actions--> */}
