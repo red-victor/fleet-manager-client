@@ -25,11 +25,10 @@ const Register = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		agent.Account.register(formValues)
-			.then(user => {
-				userCtx.saveUser(user);
-				history.push("/");
+			.then(() => {
+				history.push("/login");
 			})
-			.catch(error => console.log(error))
+			.catch(error => console.log(error));
 	}
 
 
@@ -58,13 +57,13 @@ const Register = () => {
 								{/* begin::Col */}
 								<div className="col-xl-6">
 									<label className="form-label fw-bolder text-dark fs-6">First Name</label>
-									<input className="form-control form-control-lg form-control-solid" type="text" placeholder="" name="first-name" autocomplete="off" />
+									<input className="form-control form-control-lg form-control-solid" type="text" placeholder="" name="first-name" autoComplete="off" />
 								</div>
 								{/* end::Col */}
 								{/* begin::Col */}
 								<div className="col-xl-6">
 									<label className="form-label fw-bolder text-dark fs-6">Last Name</label>
-									<input className="form-control form-control-lg form-control-solid" type="text" placeholder="" name="last-name" autocomplete="off" />
+									<input className="form-control form-control-lg form-control-solid" type="text" placeholder="" name="last-name" autoComplete="off" />
 								</div>
 								{/* end::Col */}
 							</div>
@@ -72,7 +71,7 @@ const Register = () => {
 							{/* begin::Input group */}
 							<div className="fv-row mb-7">
 								<label className="form-label fw-bolder text-dark fs-6">Email</label>
-								<input className="form-control form-control-lg form-control-solid" type="email" placeholder="" name="email" autocomplete="off" onChange={handleInputChange}/>
+								<input className="form-control form-control-lg form-control-solid" type="email" placeholder="" name="email" autoComplete="off" onChange={handleInputChange}/>
 							</div>
 							{/* end::Input group */}
 							{/* begin::Input group */}
@@ -84,7 +83,7 @@ const Register = () => {
 									{/* end::Label */}
 									{/* begin::Input wrapper */}
 									<div className="position-relative mb-3">
-										<input className="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password" autocomplete="off" onChange={handleInputChange} />
+										<input className="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password" autoComplete="off" onChange={handleInputChange} />
 										<span className="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
 											<i className="bi bi-eye-slash fs-2"></i>
 											<i className="bi bi-eye fs-2 d-none"></i>
@@ -98,12 +97,12 @@ const Register = () => {
 							{/* begin::Input group */}
 							<div className="fv-row mb-5">
 								<label className="form-label fw-bolder text-dark fs-6">Confirm Password</label>
-								<input className="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off" />
+								<input className="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autoComplete="off" />
 							</div>
 							{/* end::Input group */}
 							{/* begin::Actions */}
 							<div className="text-center">
-								<button type="button" id="kt_sign_up_submit" className="btn btn-lg btn-primary">
+								<button type="submit" id="kt_sign_up_submit" className="btn btn-lg btn-primary">
 									<span className="indicator-label">Submit</span>
 									<span className="indicator-progress">Please wait...
 									<span className="spinner-border spinner-border-sm align-middle ms-2"></span></span>

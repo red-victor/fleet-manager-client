@@ -14,9 +14,10 @@ const Login = () => {
 	});
 
 	useEffect(() => {
-		if (userCtx.user) 
+		if (userCtx.user)
 			history.push("/");
-	}, [userCtx.user, history]);
+		
+	}, []);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
