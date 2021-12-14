@@ -27,7 +27,7 @@ function App() {
         history.push("/login");
       });
     }
-  }, []);
+  }, [userCtx, history]);
 
   return (
     <>
