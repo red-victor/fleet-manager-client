@@ -21,7 +21,7 @@ function PrivateRoute({ children, ...rest }) {
                 history.push("/login");
             });
         }
-    }, []);
+    }, [userCtx, history]);
     
     return (
         <Route
