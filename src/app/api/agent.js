@@ -71,10 +71,29 @@ const Cars = {
     DissociateUser: payload => requests.put(`cars/${payload.carId}/dissociateUser`, payload.userId),
 }
 
+const History = {
+    GetAll: () => requests.get("cars/history"),
+    GetAllForCar: carId => requests.get(`cars/${carId}/history`),
+    Get: id => requests.get(`cars/history/${id}`),
+    Add: payload => requests.post(`cars/${payload.id}/history`, payload.history),
+    Update: payload => requests.put(`cars/${payload.id}/history`, payload.history),
+    Delete: id => requests.delete(`cars/${id}/history`),
+}
+
+const Tickets = {
+    GetAll: () => requests.get("ticket"),
+    Get: id => requests.get(`ticket/${id}`),
+    Add: payload => requests.post(`ticket`, payload.ticket),
+    Update: payload => requests.put(`ticket/${payload.id}`, payload.ticket),
+    Delete: id => requests.delete(`ticket`, id)
+}
+
 const agent = {
     Account,
     Users,
-    Cars
+    Cars,
+    History,
+    Tickets
 };
 
 export default agent;
