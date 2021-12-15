@@ -4,9 +4,7 @@ import HomePage from "../features/home/HomePage";
 
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import PrivateRoute from "./PrivateRoute";
 import Register from "../features/authentication/Register";
-import CarListPage from "../features/cars/CarListPage";
 import CarList from "../features/cars/CarList";
 import CarDetailsPage from "../features/cars/CarDetailsPage";
 
