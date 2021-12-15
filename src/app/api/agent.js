@@ -60,9 +60,40 @@ const Users = {
     Delete: id => requests.delete("users", id)
 }
 
+const Cars = {
+    GetAll: () => requests.get("cars"),
+    GetAllAssigned: () => requests.get("cars/assigned"),
+    GetAllUnasigned: () => requests.get("cars/unassigned"),
+    Get: id => requests.get(`cars/${id}`),
+    Update: payload => requests.put(`cars/${payload.id}`, payload.user),
+    Delete: id => requests.delete("cars", id),
+    AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser`, payload.userId),
+    DissociateUser: payload => requests.put(`cars/${payload.carId}/dissociateUser`, payload.userId),
+}
+
+const History = {
+    GetAll: () => requests.get("cars/history"),
+    GetAllForCar: carId => requests.get(`cars/${carId}/history`),
+    Get: id => requests.get(`cars/history/${id}`),
+    Add: payload => requests.post(`cars/${payload.id}/history`, payload.history),
+    Update: payload => requests.put(`cars/${payload.id}/history`, payload.history),
+    Delete: id => requests.delete(`cars/${id}/history`),
+}
+
+const Tickets = {
+    GetAll: () => requests.get("ticket"),
+    Get: id => requests.get(`ticket/${id}`),
+    Add: payload => requests.post(`ticket`, payload.ticket),
+    Update: payload => requests.put(`ticket/${payload.id}`, payload.ticket),
+    Delete: id => requests.delete(`ticket`, id)
+}
+
 const agent = {
     Account,
-    Users
+    Users,
+    Cars,
+    History,
+    Tickets
 };
 
 export default agent;
