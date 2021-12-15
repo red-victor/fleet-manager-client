@@ -11,14 +11,10 @@ const Breadcrumbs = ({options}) => {
                             <Link to="/" className="text-white text-hover-primary">Home</Link>
                         </li>
                         {options.links.map((link, index) => (
-                        <span key={index}>
-                            <li className="breadcrumb-item">
-                                <span className="bullet bg-white opacity-75 w-5px h-2px"></span>
-                            </li>
-                            <li className="breadcrumb-item text-white opacity-75">
+                            <li key={index} className="breadcrumb-item text-white opacity-75">
+                                <span className="bullet bg-white opacity-75 w-5px h-2px" style={{marginRight: 7}}></span>
                                 <Link to={link.to} className="text-white text-hover-primary">{link.title}</Link>
                             </li>
-                        </span>
                         ))}                        
                     </ul>
                 </div>
