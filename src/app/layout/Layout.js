@@ -4,6 +4,7 @@ import MainLogo from "../../assets/media/logos/logo-demo2.png"
 import MainStickyLogo from "../../assets/media/logos/logo-demo2-sticky.png";
 import Breadcrumbs from "./Breadcrumbs";
 import { Link } from "react-router-dom";
+import RightLinks from "./RightLinks";
 
 const Layout = ({ children }) => {
     useEffect(()  => {
@@ -94,6 +95,7 @@ const Layout = ({ children }) => {
                                     Navar Links
                                 </div>
                                 {/* end::Navbar */}
+                                <RightLinks />
                             </div>
 							{/* end::Wrapper */}
 						</div>

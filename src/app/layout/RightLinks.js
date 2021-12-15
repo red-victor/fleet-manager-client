@@ -1,9 +1,6 @@
 import ProfileImg from "../../assets/media/avatars/150-25.jpg"
-import useScript from "../hooks/useScript";
 
 const RightLinks = () => {
-    useScript("../../assets/js/custom/widgets.js")
-
     return (
         <div class="d-flex align-items-stretch flex-shrink-0">
             {/* begin::Toolbar wrapper */}
