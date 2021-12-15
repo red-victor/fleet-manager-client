@@ -17,15 +17,19 @@ const CarDetailsPage = () => {
     }, [setCar, setHistoryList, setTicketList])
 
     async function getData(){
-        const carData = await agent.Cars.Get(id);
-        const historyData = await agent.History.GetAllForCar(id);
-        const ticketData = await agent.Tickets.GetAllForCar(id);
-        console.log(carData);
-        console.log(historyData);
-        console.log(ticketData);
-        setCar(carData);
-        setHistoryList(historyData);
-        setTicketList(ticketData)
+        try {
+            const carData = await agent.Cars.Get(id);
+            const historyData = await agent.History.GetAllForCar(id);
+            const ticketData = await agent.Tickets.GetAllForCar(id);
+            console.log(carData);
+            console.log(historyData);
+            console.log(ticketData);
+            setCar(carData);
+            setHistoryList(historyData);
+            setTicketList(ticketData)
+        } catch (e) {
+            console.log(e);
+        }
     }
 
 
