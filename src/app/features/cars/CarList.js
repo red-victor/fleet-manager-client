@@ -13,6 +13,7 @@ const CarList = () => {
 
     async function getData(){
         const data = await agent.Cars.GetAll();
+        console.log(data);
         setCars(data);
     }
 

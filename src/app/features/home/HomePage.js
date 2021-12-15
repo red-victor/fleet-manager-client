@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../../context/user-context";
+import Layout from "../../layout/Layout"
 
 const HomePage = () => {
 
@@ -14,10 +15,10 @@ const HomePage = () => {
  
 
     return (
-        <>
+        <Layout>
             <h1>Home page</h1>
             <button onClick={handleLogout}>Logout</button>
-        </>
+        </Layout>
     )
 }
 

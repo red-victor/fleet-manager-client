@@ -18,6 +18,8 @@ const Layout = ({ children }) => {
         };
     });
 
+	console.log(children)
+
     return (
         // begin::Main
 		// begin::Root
