@@ -14,7 +14,6 @@ const CarList = () => {
 
     async function getData(){
         const data = await agent.Cars.GetAll();
-        console.log(data);
         setCars(data);
     }
 
@@ -156,22 +155,22 @@ const CarList = () => {
                     <thead>
                         {/*begin::Table row*/}
                         <tr className="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-                            <th classNameName="min-w-125px">Count</th>
-                            <th classNameName="min-w-125px">Car (brand, model)</th>
-                            <th classNameName="min-w-125px">User</th>
-                            <th classNameName="min-w-125px">Licence Plate Number</th>
-                            <th classNameName="min-w-125px">Mileage</th>
-                            <th classNameName="min-w-125px">First Registration</th>
-                            <th classNameName="text-end min-w-70px">Actions</th>
+                            <th className="min-w-125px">Count</th>
+                            <th className="min-w-125px">Car (brand, model)</th>
+                            <th className="min-w-125px">User</th>
+                            <th className="min-w-125px">Licence Plate Number</th>
+                            <th className="min-w-125px">Mileage</th>
+                            <th className="min-w-125px">First Registration</th>
+                            <th className="text-end min-w-70px">Actions</th>
                         </tr>
                         {/*end::Table row*/}
                     </thead>
                     {/*end::Table head*/}
                     {/*begin::Table body*/}
                     
-                    <tbody classNameName="text-gray-600 fw-bold">
+                    <tbody className="text-gray-600 fw-bold">
                         {cars && cars.map( (car, i) => 
-                        <CarListItem car={car} index={i + 1} />
+                        <CarListItem key={i} car={car} index={i + 1} />
                         )}
                     </tbody>
 
