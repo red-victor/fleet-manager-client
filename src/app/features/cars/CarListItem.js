@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CarListItem = (props) => {
     const {car, index} = props;
 
@@ -20,9 +22,9 @@ const CarListItem = (props) => {
         <tr key={index}>
             <td>{index}</td>
             <td>
-                <a href="#" className="text-gray-800 text-hover-primary mb-1">
+                <Link to={ `/cars/${car.id}` } className="text-gray-800 text-hover-primary mb-1">
                     {car.brand + " " +car.model}
-                </a>
+                </Link>
             </td>
             <td>
                 <div 
