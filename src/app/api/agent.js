@@ -18,7 +18,7 @@ axios.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(async response => {
-    await sleep();
+    // await sleep();
     return response;
 }, error => {
     const { data, status } = error.response;
@@ -82,6 +82,7 @@ const History = {
 
 const Tickets = {
     GetAll: () => requests.get("ticket"),
+    GetAllForCar: id => requests.get(`cars/${id}/tickets`),
     Get: id => requests.get(`ticket/${id}`),
     Add: payload => requests.post(`ticket`, payload.ticket),
     Update: payload => requests.put(`ticket/${payload.id}`, payload.ticket),
