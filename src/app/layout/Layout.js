@@ -3,6 +3,7 @@ import BackgroundPattern from "../../assets/media/patterns/header-bg.jpg"
 import MainLogo from "../../assets/media/logos/logo-demo2.png"
 import MainStickyLogo from "../../assets/media/logos/logo-demo2-sticky.png";
 import Breadcrumbs from "./Breadcrumbs";
+import { Link } from "react-router-dom";
 
 const Layout = ({ children }) => {
     useEffect(()  => {
@@ -60,10 +61,10 @@ const Layout = ({ children }) => {
 							{/* end::Heaeder menu toggle */}
 							{/* begin::Header Logo */}
 							<div className="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
-								<a href="#">
+								<Link to="/">
 									<img alt="Logo" src={MainLogo} className="logo-default h-25px" />
 									<img alt="Logo" src={MainStickyLogo} className="logo-sticky h-25px" />
-								</a>
+								</Link>
 							</div>
 							{/* end::Header Logo */}
 							{/* begin::Wrapper */}
