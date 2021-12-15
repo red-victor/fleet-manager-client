@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import BackgroundPattern from "../../assets/media/patterns/header-bg.jpg"
 import MainLogo from "../../assets/media/logos/logo-demo2.png"
 import MainStickyLogo from "../../assets/media/logos/logo-demo2-sticky.png";
+import Breadcrumbs from "./Breadcrumbs";
 
 const Layout = ({ children }) => {
     useEffect(()  => {
@@ -18,17 +19,28 @@ const Layout = ({ children }) => {
         };
     });
 
-	console.log(children)
+    const breadcrumbsOptions = {
+        title: "Breadcrumbs(pending...)",
+        links: [
+            {
+                to: "/cars",
+                title: "Car List"
+            },
+            {
+                to: "/cars/1",
+                title: "Toyota Camry/Vista x30"
+            },
+            {
+                to: "/cars/1/history",
+                title: "History"
+            }
+        ]
+    }
 
     return (
-        // begin::Main
-		// begin::Root
 		<div className="d-flex flex-column flex-root">
-			{/* begin::Page */}
 			<div className="page d-flex flex-row flex-column-fluid">
-				{/* begin::Wrapper */}
 				<div className="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-					{/* begin::Header */}
 					<div id="kt_header" className="header align-items-stretch" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
 						{/* begin::Container */}
 						<div className="container-xxl d-flex align-items-center">
@@ -66,8 +78,10 @@ const Layout = ({ children }) => {
 						</div>
 						{/* end::Container */}
 					</div>
-					{/* end::Header */}
-                        {children}
+					
+            		<Breadcrumbs options={breadcrumbsOptions}/>
+                    {children}
+
                 </div>
             </div>
         </div>

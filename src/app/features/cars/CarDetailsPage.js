@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CarHistoryItem from "./CarHistoryItem";
 import CarDetailsUser from "./CarDetailsUser";
+import Layout from "../../layout/Layout";
 
 const CarDetailsPage = () => {
     const {id} = useParams();
@@ -22,8 +23,9 @@ const CarDetailsPage = () => {
         setHistoryList(historyData);
     }
 
+
     return (
-        
+        <Layout>
         <div id="kt_content_container" className="d-flex flex-column-fluid align-items-start container-xxl">
             {car &&
             <div className="content flex-row-fluid" id="kt_content">
@@ -315,6 +317,7 @@ const CarDetailsPage = () => {
             </div>
             }
         </div>
+        </Layout>
     );
 }
  

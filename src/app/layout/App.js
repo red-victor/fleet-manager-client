@@ -15,9 +15,9 @@ function App() {
     <>
         <ToastContainer theme="colored" position="bottom-right" hideProgressBar />
         <Switch>
-          <PrivateRoute exact path="/">
+          <Route exact path="/">
             <HomePage />
-          </PrivateRoute>
+          </Route>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/cars" component={CarList}/>
