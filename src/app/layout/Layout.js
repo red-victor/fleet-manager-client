@@ -1,14 +1,37 @@
+import { useContext } from "react";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import BackgroundPattern from "../../assets/media/patterns/header-bg.jpg"
+import agent from "../api/agent";
+import UserContext from "../context/user-context";
 import Breadcrumbs from "./Breadcrumbs";
 import TopBar from "./TopBar/TopBar";
 
 const Layout = ({ children }) => {
+    const userCtx = useContext(UserContext);
+    const history = useHistory();
+
     useEffect(()  => {
         addBodyClasses();
         
         return () => removeBodyClasses();
     });
+
+    useEffect(() => {
+        if (userCtx.user === null) {
+            history.push("/login");
+        }
+        else {
+            agent.Account.currentUser()
+            .then(user => {
+                userCtx.saveUser(user);
+            })
+            .catch(() => {
+                userCtx.signOutUser();
+                history.push("/login");
+            });
+        }
+    }, []);
 
     const addBodyClasses = () => {
         document.body.classList.add('header-fixed');

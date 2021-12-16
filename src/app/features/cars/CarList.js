@@ -1,7 +1,6 @@
 import agent from "../../api/agent";
 import { useState, useEffect } from "react";
 import CarListItem from "./CarListItem";
-import Layout from "../../layout/Layout";
 
 const CarList = () => {
     const [cars, setCars] = useState(null);
@@ -18,7 +17,6 @@ const CarList = () => {
     }
 
     return ( 
-        <Layout>
             <div
             id="kt_content_container"
             className="d-flex flex-column-fluid align-items-start container-xxl"
@@ -384,8 +382,6 @@ const CarList = () => {
             </div>
             {/*end::Post*/}
             </div>
-
-        </Layout>
      );
 }
  

@@ -15,10 +15,7 @@ const HomePage = () => {
  
 
     return (
-        <Layout>
-            <h1>Home page</h1>
-            <button onClick={handleLogout}>Logout</button>
-        </Layout>
+        <h1>Home page</h1>
     )
 }
 
