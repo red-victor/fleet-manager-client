@@ -1,3 +1,5 @@
+import ProfileImage from "../../../assets/img/adi-ferentari.jpg";
+
 const CarDetailsUser = (props) => {
     const {user} = props
 
@@ -14,7 +16,7 @@ const CarDetailsUser = (props) => {
                         <div className="mb-7">
                             <div className="d-flex align-items-center">
                                 <div className="symbol symbol-60px symbol-circle me-3">
-                                    <img alt="Pic" src="https://avatars.githubusercontent.com/u/16980592?v=4" />
+                                    <img alt="Pic" src={ProfileImage} />
                                 </div>
                                 <div className="d-flex flex-column">
                                     <a href="#" className="fs-4 fw-bolder text-gray-900 text-hover-primary me-2">
