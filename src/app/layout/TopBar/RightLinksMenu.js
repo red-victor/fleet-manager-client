@@ -25,8 +25,8 @@ const RightLinksMenu = ({ closeMenu }) => {
                     {/* end::Avatar */}
                     {/* begin::Username */}
                     <div className="d-flex flex-column align-items-center" style={{cursor: "default"}}>
-                        <div className="fw-bolder d-flex align-items-center fs-5">Adrian Deaconu </div>
-                        <span className="fw-bold text-muted fs-7">adi.deaconu21@gmail.com</span>
+                        <div className="fw-bolder d-flex align-items-center fs-5">{userCtx.user.name}</div>
+                        <span className="fw-bold text-muted fs-7">{userCtx.user.email}</span>
                     </div>
                     {/* end::Username */}
                 </div>
