@@ -21,6 +21,7 @@ axios.interceptors.response.use(async response => {
     // await sleep();
     return response;
 }, error => {
+    console.log(error);
     const { data, status } = error.response;
 
     switch (status) {
@@ -86,7 +87,9 @@ const Tickets = {
     Get: id => requests.get(`ticket/${id}`),
     Add: payload => requests.post(`ticket`, payload.ticket),
     Update: payload => requests.put(`ticket/${payload.id}`, payload.ticket),
-    Delete: id => requests.delete(`ticket`, id)
+    Delete: id => requests.delete(`ticket`, id),
+    GetTicketTypes: () => requests.get("ticket/type"),
+    GetStatusTypes: () => requests.get("ticket/status")
 }
 
 const agent = {

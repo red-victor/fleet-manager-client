@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         addBodyClasses();
         
         return () => removeBodyClasses();
-    });
+    }, []);
 
     useEffect(() => {
         if (userCtx.user === null) {
@@ -32,6 +32,26 @@ const Layout = ({ children }) => {
             });
         }
     }, []);
+
+    useEffect(() => {
+        agent.Tickets.GetTicketTypes()
+            .then((res) => addDataIntoCache("ticketType", "http://localhost:3000/", res))
+            .catch((e) => console.log(e))
+    })
+
+
+    const addDataIntoCache = (cacheName, url, response) => {
+    // Converting our respons into Actual Response form
+    const data = new Response(JSON.stringify(response));
+  
+    if ('caches' in window) {
+      // Opening given cache and putting our data into it
+      caches.open(cacheName).then((cache) => {
+        cache.put(url, data);
+        // alert('Data Added into cache!')
+      });
+    }
+  };
 
     const addBodyClasses = () => {
         document.body.classList.add('header-fixed');
