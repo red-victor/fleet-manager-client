@@ -1,7 +1,9 @@
 import ProfileImage from "../../../assets/img/adi-ferentari.jpg";
+import { useEffect, useState } from "react";
+import agent from "../../api/agent";
 
 const CarDetailsUser = (props) => {
-    const {user} = props
+    const {car, user, handleDissociateUser} = props;
 
     if (user)
         return (
@@ -47,28 +49,30 @@ const CarDetailsUser = (props) => {
                         <div className="mb-10">
                             <h5 className="mb-4">User Details</h5>
                             <table className="table fs-6 fw-bold gs-0 gy-2 gx-2">
-                                <tr className="">
-                                    <td className="text-gray-400">Username:</td>
-                                    <td className="text-gray-800">{user.userName}</td>
-                                </tr>
-                                <tr className="">
-                                    <td className="text-gray-400">Email:</td>
-                                    <td className="text-gray-800">{user.email}</td>
-                                </tr>
-                                <tr className="">
-                                    <td className="text-gray-400">Role:</td>
-                                    <td>
-                                        <span className="badge badge-light-danger">Admin</span>
-                                    </td>
-                                </tr>
-                                <tr className="">
-                                    <td className="text-gray-400">Phone Number:</td>
-                                    <td className="text-gray-800">{user.phoneNumber}</td>
-                                </tr>
+                                <tbody>
+                                    <tr className="">
+                                        <td className="text-gray-400">Username:</td>
+                                        <td className="text-gray-800">{user.userName}</td>
+                                    </tr>
+                                    <tr className="">
+                                        <td className="text-gray-400">Email:</td>
+                                        <td className="text-gray-800">{user.email}</td>
+                                    </tr>
+                                    <tr className="">
+                                        <td className="text-gray-400">Role:</td>
+                                        <td>
+                                            <span className="badge badge-light-danger">Admin</span>
+                                        </td>
+                                    </tr>
+                                    <tr className="">
+                                        <td className="text-gray-400">Phone Number:</td>
+                                        <td className="text-gray-800">{user.phoneNumber}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div className="mb-0">
-                            <a href="#" className="btn btn-primary">Dissociate User (Functionality Pending...)</a>
+                            <button className="btn btn-primary" onClick={handleDissociateUser}>Dissociate User (Functionality Pending...)</button>
                         </div>
                     </div>
                 </div>

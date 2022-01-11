@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
 
-axios.defaults.baseURL= "https://localhost:5001/api/";
-// axios.defaults.baseURL= "https://localhost:44339/api/";
+// axios.defaults.baseURL= "https://localhost:5001/api/";
+axios.defaults.baseURL= "https://localhost:44339/api/";
 
 const responseBody = response =>  response.data;
 
@@ -46,6 +46,7 @@ const requests = {
     get: url => axios.get(url).then(responseBody),
     post: (url, body) => axios.post(url, body).then(responseBody),
     put: (url, body) => axios.put(url, body).then(responseBody),
+    putWithoutPayload: (url) => axios.put(url).then(responseBody),
     delete: (url, body) => axios.delete(url, body).then(responseBody)
 };
 
@@ -70,7 +71,7 @@ const Cars = {
     Update: payload => requests.put(`cars/${payload.id}`, payload.user),
     Delete: id => requests.delete("cars", id),
     AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser`, payload.userId),
-    DissociateUser: payload => requests.put(`cars/${payload.carId}/dissociateUser`, payload.userId),
+    DissociateUser: id => requests.putWithoutPayload(`cars/${id}/dissociateUser`),
 }
 
 const History = {

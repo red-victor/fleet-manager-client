@@ -8,12 +8,13 @@ import CarTicketItem from "./CarTicketItem";
 const CarDetailsPage = () => {
     const {id} = useParams();
     const [car, setCar] = useState(null);
+    const [carUser, setCarUser] = useState(null);
     const [historyList, setHistoryList] = useState(null);
     const [ticketList, setTicketList] = useState(null);
 
     useEffect(() => {
         getData();
-    }, [setCar, setHistoryList, setTicketList])
+    }, [])
 
     async function getData(){
         try {
@@ -31,6 +32,14 @@ const CarDetailsPage = () => {
         }
     }
 
+    const handleDissociateUser = () => {
+        agent.Cars.DissociateUser(car.id)
+            .then(() => setCar(prevState => {
+                console.log(prevState);
+                prevState.user = null
+                console.log(prevState);
+            }))
+    }
 
     return (
         <div id="kt_content_container" className="d-flex flex-column-fluid align-items-start container-xxl">
@@ -53,46 +62,50 @@ const CarDetailsPage = () => {
                                     <div className="d-flex flex-wrap py-5">
                                         <div className="flex-equal me-5">
                                             <table className="table fs-6 fw-bold gs-0 gy-2 gx-2 m-0">
-                                                <tr>
-                                                    <td className="text-gray-400 min-w-175px w-175px">User:</td>
-                                                    <td className="text-gray-800 min-w-200px">
-                                                        {car.user ? car.user.firstName + " " + car.user.lastName : "None"}    
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="text-gray-400">Brand:</td>
-                                                    <td className="text-gray-800">{car.brand}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="text-gray-400">Model:</td>
-                                                    <td className="text-gray-800">{car.model}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="text-gray-400">Year:</td>
-                                                    <td className="text-gray-800">{new Date(car.firstRegistrationDate).getFullYear()}</td>
-                                                </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td className="text-gray-400 min-w-175px w-175px">User:</td>
+                                                        <td className="text-gray-800 min-w-200px">
+                                                            {car.user ? car.user.firstName + " " + car.user.lastName : "None"}    
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-gray-400">Brand:</td>
+                                                        <td className="text-gray-800">{car.brand}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-gray-400">Model:</td>
+                                                        <td className="text-gray-800">{car.model}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-gray-400">Year:</td>
+                                                        <td className="text-gray-800">{new Date(car.firstRegistrationDate).getFullYear()}</td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
                                         </div>
                                         <div className="flex-equal">
                                             <table className="table fs-6 fw-bold gs-0 gy-2 gx-2 m-0">
-                                                <tr>
-                                                    <td className="text-gray-400 min-w-175px w-175px">Chassis Series:</td>
-                                                    <td className="text-gray-800 min-w-200px">
-                                                        {car.chassisSeries}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="text-gray-400">Licence Plate:</td>
-                                                    <td className="text-gray-800">{car.licencePlate}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="text-gray-400">Mileage:</td>
-                                                    <td className="text-gray-800">{car.mileage}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="text-gray-400">Color:</td>
-                                                    <td className="text-gray-800">{car.color}</td>
-                                                </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td className="text-gray-400 min-w-175px w-175px">Chassis Series:</td>
+                                                        <td className="text-gray-800 min-w-200px">
+                                                            {car.chassisSeries}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-gray-400">Licence Plate:</td>
+                                                        <td className="text-gray-800">{car.licencePlate}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-gray-400">Mileage:</td>
+                                                        <td className="text-gray-800">{car.mileage}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="text-gray-400">Color:</td>
+                                                        <td className="text-gray-800">{car.color}</td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -112,7 +125,7 @@ const CarDetailsPage = () => {
                                             </thead>
                                             <tbody className="fw-bold text-gray-800">
                                             {ticketList && ticketList.map( (ticket, i) => 
-                                                <CarTicketItem ticket={ticket} index={i + 1} />
+                                                <CarTicketItem ticket={ticket} key={i + 1} />
                                             )}
                                             </tbody>
                                         </table>
@@ -236,7 +249,7 @@ const CarDetailsPage = () => {
                                                 </thead>
                                                 <tbody className="fs-6 fw-bold text-gray-600">
                                                     {historyList && historyList.map( (history, i) => 
-                                                        <CarHistoryItem history={history} index={i + 1} />
+                                                        <CarHistoryItem history={history} key={i + 1} />
                                                     )}
                                                 </tbody>
                                             </table>
@@ -246,7 +259,7 @@ const CarDetailsPage = () => {
                             </div>
                         </div>
                     </div>
-                    <CarDetailsUser user={car.user ? car.user : null}/>
+                    <CarDetailsUser car={car} user={car.user ? car.user : null} handleDissociateUser={handleDissociateUser} />
                 </div>
             </div>
             }

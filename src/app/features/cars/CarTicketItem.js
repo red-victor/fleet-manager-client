@@ -32,7 +32,7 @@ const CarTicketItem = (props) => {
 
     return ( 
         <>
-            <tr key={index}>
+            <tr>
                 <td>
                     <label className="w-150px">{ticket.title}</label>
                     <div className="fw-normal text-gray-600">{ticket.details}</div>

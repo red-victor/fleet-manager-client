@@ -13,7 +13,7 @@ const CarHistoryItem = (props) => {
     }
 
     return ( 
-    <tr key={index}>
+    <tr>
         <td>
             <a href="#" className="text-gray-600 text-hover-primary">{history.id}</a>
         </td>
