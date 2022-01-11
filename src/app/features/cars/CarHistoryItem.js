@@ -1,5 +1,5 @@
 const CarHistoryItem = (props) => {
-    const {history, index} = props
+    const {history} = props
 
     const serviceType = (serviceType) => {
         switch(serviceType) {

@@ -72,7 +72,7 @@ const CarDetailsUser = (props) => {
                             </table>
                         </div>
                         <div className="mb-0">
-                            <button className="btn btn-primary" onClick={handleDissociateUser}>Dissociate User (Functionality Pending...)</button>
+                            <button className="btn btn-danger" onClick={handleDissociateUser}>Dissociate User</button>
                         </div>
                     </div>
                 </div>
