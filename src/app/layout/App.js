@@ -8,6 +8,8 @@ import Register from "../features/authentication/Register";
 import CarList from "../features/cars/CarList";
 import CarDetailsPage from "../features/cars/CarDetailsPage";
 import Layout from "./Layout";
+import UserListPage from "../features/users/UserListPage";
+import UserDetailsPage from "../features/users/UserDetailsPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route exact path="/"> <HomePage /> </Route>
           <Route exact path="/cars"> <CarList /> </Route>
           <Route exact path="/cars/:id"><CarDetailsPage /></Route>
+          <Route exact path="/users"> <UserListPage /> </Route>
+          <Route exact path="/users/:id"><UserDetailsPage /></Route>
         </Layout>
       </Switch>
     </>

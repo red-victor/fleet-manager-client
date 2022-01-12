@@ -11,9 +11,9 @@ const CarListItem = (props) => {
             return "chartreuse"
         else if (mileage < 50000)
             return "yellow"
-        else if (mileage < 100000)
+        else if (mileage < 80000)
             return "orange"
-        else if (mileage >= 100000)
+        else if (mileage >= 80000)
             return "red"
     }
 

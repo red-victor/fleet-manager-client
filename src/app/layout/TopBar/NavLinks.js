@@ -48,7 +48,7 @@ const NavLinks = () => {
                     data-kt-menu-placement="bottom-start"
                     className="menu-item menu-lg-down-accordion me-lg-1"
                 >
-                    <Link className="menu-link py-3" to="/">
+                    <Link className="menu-link py-3" to="/users">
                         <span className="menu-title">Users</span>
                     </Link>
                 </div>

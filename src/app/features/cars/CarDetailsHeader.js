@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import CarTicketItem from "./CarTicketItem";
 
 const CarDetailsHeader = ({car, ticketList}) => {
@@ -21,7 +23,11 @@ const CarDetailsHeader = ({car, ticketList}) => {
                                     <tr>
                                         <td className="text-gray-400 min-w-175px w-175px">User:</td>
                                         <td className="text-gray-800 min-w-200px">
-                                            {car.user ? car.user.firstName + " " + car.user.lastName : "None"}    
+                                            {car.user 
+                                                ? <Link to={ `/users/${car.user.id}` } className="text-gray-800 text-hover-primary mb-1">
+                                                    {car.user.firstName + " " + car.user.lastName}
+                                                </Link>
+                                                : "None"}    
                                         </td>
                                     </tr>
                                     <tr>

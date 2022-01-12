@@ -1,5 +1,5 @@
 import ProfileImage from "../../../assets/img/adi-ferentari.jpg";
-import { useEffect, useState } from "react";
+import { Link, useEffect, useState } from "react-router-dom";
 import agent from "../../api/agent";
 
 const CarDetailsUser = (props) => {
@@ -21,9 +21,13 @@ const CarDetailsUser = (props) => {
                                     <img alt="Pic" src={ProfileImage} />
                                 </div>
                                 <div className="d-flex flex-column">
-                                    <a href="#" className="fs-4 fw-bolder text-gray-900 text-hover-primary me-2">
-                                        {user.firstName + " " + user.lastName}
-                                    </a>
+                                    <div className="fs-4 fw-bolder text-gray-900 text-hover-primary me-2">
+                                        {user 
+                                            ? <Link to={ `/users/${user.id}` } className="text-gray-800 text-hover-primary mb-1">
+                                                {user.firstName + " " + user.lastName}
+                                            </Link>
+                                            : "None"}
+                                    </div>
                                     <a href="#" className="fw-bold text-gray-600 text-hover-primary">{user.email}</a>
                                 </div>
                             </div>
@@ -66,7 +70,7 @@ const CarDetailsUser = (props) => {
                                     </tr>
                                     <tr className="">
                                         <td className="text-gray-400">Phone Number:</td>
-                                        <td className="text-gray-800">{user.phoneNumber}</td>
+                                        <td className="text-gray-800">{user.phoneNumber ? user.phoneNumber : "-"}</td>
                                     </tr>
                                 </tbody>
                             </table>
