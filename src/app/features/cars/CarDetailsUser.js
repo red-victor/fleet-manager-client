@@ -1,9 +1,8 @@
 import ProfileImage from "../../../assets/img/adi-ferentari.jpg";
-import { Link, useEffect, useState } from "react-router-dom";
-import agent from "../../api/agent";
+import { Link } from "react-router-dom";
 
 const CarDetailsUser = (props) => {
-    const {car, user, handleDissociateUser} = props;
+    const {user, handleDissociateUser} = props;
 
     if (user)
         return (
@@ -28,7 +27,7 @@ const CarDetailsUser = (props) => {
                                             </Link>
                                             : "None"}
                                     </div>
-                                    <a href="#" className="fw-bold text-gray-600 text-hover-primary">{user.email}</a>
+                                    <div className="fw-bold text-gray-600 text-hover-primary">{user.email}</div>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +92,7 @@ const CarDetailsUser = (props) => {
                     </div>
                     <div className="card-body pt-0 fs-6">
                         <div className="mb-0">
-                            <a href="#" className="btn btn-primary">Assign User (Functionality Pending...)</a>
+                            <div className="btn btn-primary">Assign User (Functionality Pending...)</div>
                         </div>
                     </div>
                 </div>

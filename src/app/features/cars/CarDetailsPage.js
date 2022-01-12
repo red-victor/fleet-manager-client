@@ -51,10 +51,10 @@ const CarDetailsPage = () => {
                         <div className="card card-flush pt-3 mb-5 mb-xl-10">
                             <div className="card-header">
                                 <div className="card-title">
-                                    <h2>Current Tickets</h2>
+                                    <h2>Ticket History</h2>
                                 </div>
                                 <div className="card-toolbar">
-                                    <a href="#" className="btn btn-light-primary">View All Tickets</a>
+                                    <div className="btn btn-light-primary">View All Tickets</div>
                                 </div>
                             </div>
                             <div className="card-body pt-0">
@@ -63,66 +63,41 @@ const CarDetailsPage = () => {
                                         <tbody>
                                             <tr>
                                                 <td className="min-w-400px">Invoice
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary me-1">5196-2425</a>status has changed from
-                                                <span className="badge badge-light-warning me-1">Pending</span>to
-                                                <span className="badge badge-light-info">In Progress</span></td>
+                                                    <span className="fw-bolder text-gray-800 text-hover-primary me-1">5196-2425</span>status has changed from
+                                                    <span className="badge badge-light-warning me-1">Pending</span>to
+                                                    <span className="badge badge-light-info">In Progress</span>
+                                                </td>
                                                 <td className="pe-0 text-gray-600 text-end min-w-200px">19 Aug 2021, 11:30 am</td>
                                             </tr>
                                             <tr>
                                                 <td className="min-w-400px">
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary me-1">Emma Smith</a>has made payment to
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary">5944-7495</a></td>
-                                                {/*end::Event=*/}
-                                                {/*begin::Timestamp=*/}
+                                                <span className="fw-bolder text-gray-800 text-hover-primary me-1">Emma Smith</span>has made payment to
+                                                <span className="fw-bolder text-gray-800 text-hover-primary">5944-7495</span></td>
                                                 <td className="pe-0 text-gray-600 text-end min-w-200px">22 Sep 2021, 11:05 am</td>
-                                                {/*end::Timestamp=*/}
                                             </tr>
-                                            {/*end::Table row*/}
-                                            {/*begin::Table row*/}
                                             <tr>
-                                                {/*begin::Event=*/}
                                                 <td className="min-w-400px">Invoice
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary me-1">5196-2425</a>status has changed from
+                                                <span className="fw-bolder text-gray-800 text-hover-primary me-1">5196-2425</span>status has changed from
                                                 <span className="badge badge-light-warning me-1">Pending</span>to
                                                 <span className="badge badge-light-info">In Progress</span></td>
-                                                {/*end::Event=*/}
-                                                {/*begin::Timestamp=*/}
                                                 <td className="pe-0 text-gray-600 text-end min-w-200px">20 Dec 2021, 11:30 am</td>
-                                                {/*end::Timestamp=*/}
                                             </tr>
-                                            {/*end::Table row*/}
-                                            {/*begin::Table row*/}
                                             <tr>
-                                                {/*begin::Event=*/}
                                                 <td className="min-w-400px">
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary me-1">Max Smith</a>has made payment to
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary">7849-4019</a></td>
-                                                {/*end::Event=*/}
-                                                {/*begin::Timestamp=*/}
+                                                <span className="fw-bolder text-gray-800 text-hover-primary me-1">Max Smith</span>has made payment to
+                                                <span className="fw-bolder text-gray-800 text-hover-primary">7849-4019</span></td>
                                                 <td className="pe-0 text-gray-600 text-end min-w-200px">20 Dec 2021, 9:23 pm</td>
-                                                {/*end::Timestamp=*/}
                                             </tr>
-                                            {/*end::Table row*/}
-                                            {/*begin::Table row*/}
                                             <tr>
-                                                {/*begin::Event=*/}
                                                 <td className="min-w-400px">
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary me-1">Emma Smith</a>has made payment to
-                                                <a href="#" className="fw-bolder text-gray-800 text-hover-primary">5944-7495</a></td>
-                                                {/*end::Event=*/}
-                                                {/*begin::Timestamp=*/}
+                                                <span className="fw-bolder text-gray-800 text-hover-primary me-1">Emma Smith</span>has made payment to
+                                                <span className="fw-bolder text-gray-800 text-hover-primary">5944-7495</span></td>
                                                 <td className="pe-0 text-gray-600 text-end min-w-200px">20 Dec 2021, 5:30 pm</td>
-                                                {/*end::Timestamp=*/}
                                             </tr>
-                                            {/*end::Table row*/}
                                         </tbody>
-                                        {/*end::Table body*/}
                                     </table>
-                                    {/*end::Table*/}
                                 </div>
-                                {/*end::Table wrapper*/}
                             </div>
-                            {/*end::Card body*/}
                         </div>
                         <div className="card card-flush pt-3 mb-5 mb-xl-10">
                             <div className="card-header">
@@ -132,16 +107,16 @@ const CarDetailsPage = () => {
                                 <div className="card-toolbar">
                                     <ul className="nav nav-stretch fs-5 fw-bold nav-line-tabs nav-line-tabs-2x border-transparent" role="tablist">
                                         <li className="nav-item" role="presentation">
-                                            <a id="kt_referrals_year_tab" className="nav-link text-active-primary active" data-bs-toggle="tab" role="tab" href="#kt_customer_details_invoices_1">(Year Select - Pending...)</a>
+                                            <div id="kt_referrals_year_tab" className="nav-link text-active-primary active" data-bs-toggle="tab" role="tab">(Year Select - Pending...)</div>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <a id="kt_referrals_2019_tab" className="nav-link text-active-primary ms-3" data-bs-toggle="tab" role="tab" href="#kt_customer_details_invoices_2">2020</a>
+                                            <div id="kt_referrals_2019_tab" className="nav-link text-active-primary ms-3" data-bs-toggle="tab" role="tab">2020</div>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <a id="kt_referrals_2018_tab" className="nav-link text-active-primary ms-3" data-bs-toggle="tab" role="tab" href="#kt_customer_details_invoices_3">2019</a>
+                                            <div id="kt_referrals_2018_tab" className="nav-link text-active-primary ms-3" data-bs-toggle="tab" role="tab">2019</div>
                                         </li>
                                         <li className="nav-item" role="presentation">
-                                            <a id="kt_referrals_2017_tab" className="nav-link text-active-primary ms-3" data-bs-toggle="tab" role="tab" href="#kt_customer_details_invoices_4">2018</a>
+                                            <div id="kt_referrals_2017_tab" className="nav-link text-active-primary ms-3" data-bs-toggle="tab" role="tab">2018</div>
                                         </li>
                                     </ul>
                                 </div>

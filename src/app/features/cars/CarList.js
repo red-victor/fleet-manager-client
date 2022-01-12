@@ -144,7 +144,7 @@ const CarList = () => {
                             </button>
                             {/*end::Add car*/}
 
-                            <form method="post" action="/upload/carList" enctype="multipart/form-data">
+                            <form method="post" action="/upload/carList" encType="multipart/form-data">
                                 <input type="file" name="file"/>
                                 {/*begin::Add cars*/}
                                 <button

@@ -10,7 +10,7 @@ const CarDetailsHeader = ({car, ticketList}) => {
                     <h2 className="fw-bolder">{car.brand} {car.model} - {car.licencePlate}</h2>
                 </div>
                 <div className="card-toolbar">
-                    <a href="../../demo2/dist/apps/subscriptions/add.html" className="btn btn-light-primary">Update Car</a>
+                    <div className="btn btn-light-primary">Update Car</div>
                 </div>
             </div>
             <div className="card-body pt-3">

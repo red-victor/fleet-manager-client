@@ -15,7 +15,7 @@ const Register = () => {
     useEffect(() => {
 		if (!userCtx.user) 
 			history.push("/");
-	}, []);
+	}, [userCtx, history]);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
