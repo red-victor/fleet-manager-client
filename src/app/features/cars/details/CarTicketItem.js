@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const CarTicketItem = (props) => {
-    const {ticket, index} = props;
+    const {ticket} = props;
 
     const statusType = (statusType) => {
         switch(statusType) {

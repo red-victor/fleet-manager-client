@@ -5,11 +5,12 @@ import HomePage from "../features/home/HomePage";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import Register from "../features/authentication/Register";
-import CarList from "../features/cars/CarList";
+import CarList from "../features/cars/list/CarList";
 import CarDetailsPage from "../features/cars/CarDetailsPage";
 import Layout from "./Layout";
 import UserListPage from "../features/users/UserListPage";
 import UserDetailsPage from "../features/users/UserDetailsPage";
+import CarListPage from "../features/cars/CarListPage";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         </Route>
         <Layout>
           <Route exact path="/"> <HomePage /> </Route>
-          <Route exact path="/cars"> <CarList /> </Route>
+          <Route exact path="/cars"> <CarListPage /> </Route>
           <Route exact path="/cars/:id"><CarDetailsPage /></Route>
           <Route exact path="/users"> <UserListPage /> </Route>
           <Route exact path="/users/:id"><UserDetailsPage /></Route>

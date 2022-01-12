@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
-import CarTicketItem from "./CarTicketItem";
-
-const CarDetailsHeader = ({car, ticketList}) => {
+const CarHeader = ({car}) => {
     return (
         <div className="card card-flush pt-3 mb-5 mb-xl-10">
             <div className="card-header">
@@ -71,30 +69,9 @@ const CarDetailsHeader = ({car, ticketList}) => {
                         </div>
                     </div>
                 </div>
-                <div className="mb-0">
-                    <h5 className="mb-4">Tickets:</h5>
-                    <div className="table-responsive">
-                        <table className="table align-middle table-row-dashed fs-6 gy-4 mb-0">
-                            <thead>
-                                <tr className="border-bottom border-gray-200 text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    <th className="min-w-150px">Title</th>
-                                    <th className="min-w-125px">Status</th>
-                                    <th className="min-w-125px">Type</th>
-                                    <th className="min-w-125px">DateTime</th>
-                                    <th className="text-end min-w-70px">(Action Columnn)</th>
-                                </tr>
-                            </thead>
-                            <tbody className="fw-bold text-gray-800">
-                            {ticketList && ticketList.map( (ticket, i) => 
-                                <CarTicketItem ticket={ticket} key={i + 1} />
-                            )}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
         </div>
     )
 }
 
-export default CarDetailsHeader;
+export default CarHeader;

@@ -1,7 +1,7 @@
-import ProfileImage from "../../../assets/img/adi-ferentari.jpg";
+import ProfileImage from "../../../../assets/img/adi-ferentari.jpg";
 import { Link } from "react-router-dom";
 
-const CarDetailsUser = (props) => {
+const CarUser = (props) => {
     const {user, handleDissociateUser} = props;
 
     if (user)
@@ -39,15 +39,6 @@ const CarDetailsUser = (props) => {
                                 <span className="fw-bold text-gray-600">€149.99</span>
                             </div>
                         </div>
-                        <div className="separator separator-dashed mb-7"></div>
-                        {/* <div className="mb-10">
-                            <h5 className="mb-4">User Tickets</h5>
-                            <div className="mb-0">
-                                <div className="fw-bold text-gray-600 d-flex align-items-center">Mastercard
-                                <img src="assets/media/svg/card-logos/mastercard.svg" className="w-35px ms-2" alt="" /></div>
-                                <div className="fw-bold text-gray-600">Expires Dec 2024</div>
-                            </div>
-                        </div> */}
                         <div className="separator separator-dashed mb-7"></div>
                         <div className="mb-10">
                             <h5 className="mb-4">User Details</h5>
@@ -100,4 +91,4 @@ const CarDetailsUser = (props) => {
         );
 }
  
-export default CarDetailsUser;
+export default CarUser;

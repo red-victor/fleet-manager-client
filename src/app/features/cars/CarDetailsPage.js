@@ -1,9 +1,10 @@
 import agent from "../../api/agent";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import CarHistoryItem from "./CarHistoryItem";
-import CarDetailsUser from "./CarDetailsUser";
-import CarDetailsHeader from "./CarDetailsHeader";
+import CarHistoryItem from "./details/CarHistoryItem";
+import CarUser from "./details/CarUser";
+import CarHeader from "./details/CarHeader";
+import CarTickets from "./details/CarTickets";
 
 const CarDetailsPage = () => {
     const {id} = useParams();
@@ -47,7 +48,10 @@ const CarDetailsPage = () => {
             <div className="content flex-row-fluid" id="kt_content">
                 <div className="d-flex flex-column flex-lg-row">
                     <div className="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
-                        <CarDetailsHeader car={car} ticketList={ticketList} />
+                        <CarHeader car={car} />
+
+                        <CarTickets ticketList={ticketList}/>
+
                         <div className="card card-flush pt-3 mb-5 mb-xl-10">
                             <div className="card-header">
                                 <div className="card-title">
@@ -149,7 +153,7 @@ const CarDetailsPage = () => {
                             </div>
                         </div>
                     </div>
-                    <CarDetailsUser car={car} user={car.user ? car.user : null} handleDissociateUser={handleDissociateUser} />
+                    <CarUser car={car} user={car.user ? car.user : null} handleDissociateUser={handleDissociateUser} />
                 </div>
             </div>
             }
