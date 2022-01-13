@@ -1,6 +1,6 @@
 import UserListItem from "./UserListItem";
 import {useState, useEffect} from "react";
-import agent from "../../api/agent";
+import agent from "../../../api/agent";
 
 const UserList = () => {
     const [users, setUsers] = useState(null);

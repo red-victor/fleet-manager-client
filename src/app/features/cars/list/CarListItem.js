@@ -27,10 +27,11 @@ const CarListItem = (props) => {
                 </Link>
             </td>
             <td>
-                <div 
-                    className={"badge badge-light-"+ (car.user ? "success" : "warning")}>
-                    {car.user ? car.user.firstName + " " + car.user.lastName : "None"}
-                </div>
+                {car.user 
+                    ? <Link to={ `/users/${car.user.id}` } className="badge badge-light-success">
+                        {car.user.firstName + " " + car.user.lastName}
+                    </Link>
+                    : <div className="badge badge-light-warning">None</div>}
             </td>
             <td>
                 <div className="badge badge-light">{car.licencePlate}</div>

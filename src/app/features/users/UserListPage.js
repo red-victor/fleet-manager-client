@@ -1,4 +1,4 @@
-import UserList from "./UserList";
+import UserList from "./list/UserList";
 
 const UserListPage = () => {
     return ( 

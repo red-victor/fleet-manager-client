@@ -11,6 +11,8 @@ const CarTickets = (props) => {
                         <h2>Tickets</h2>
                     </div>
                 </div>
+
+                {ticketList && ticketList.length > 0 ? 
                 <div className="card-body pt-3">
                     <div className="mb-0">
                         <div className="table-responsive">
@@ -33,6 +35,9 @@ const CarTickets = (props) => {
                         </div>
                     </div>
                 </div>
+
+                : <h3 style={{marginLeft: "50px"}}>No Tickets yet!</h3>
+                }
             </div>
         </>
      );

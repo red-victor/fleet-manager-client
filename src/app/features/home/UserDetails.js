@@ -16,62 +16,42 @@ const UserDetailsPage = () => {
                                     <UserCard />
                                 </div>
                             <div className="card mb-5 mb-xl-8">
-                                {/*begin::Card header*/}
                                 <div className="card-header border-0">
-                                <div className="card-title">
-                                    <h3 className="fw-bolder m-0">Connected Accounts</h3>
+                                    <div className="card-title">
+                                        <h3 className="fw-bolder m-0">Connected Accounts</h3>
+                                    </div>
                                 </div>
-                                </div>
-                                {/*end::Card header*/}
-                                {/*begin::Card body*/}
                                 <div className="card-body pt-2">
-                                {/*begin::Notice*/}
-                                <div className="notice d-flex bg-light-primary rounded border-primary border border-dashed mb-9 p-6">
-                                    {/*begin::Icon*/}
-                                    {/*begin::Svg Icon | path: icons/duotune/art/art006.svg*/}
-                                    <span className="svg-icon svg-icon-2tx svg-icon-primary me-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path opacity="0.3" d="M22 19V17C22 16.4 21.6 16 21 16H8V3C8 2.4 7.6 2 7 2H5C4.4 2 4 2.4 4 3V19C4 19.6 4.4 20 5 20H21C21.6 20 22 19.6 22 19Z" fill="black" />
-                                        <path d="M20 5V21C20 21.6 19.6 22 19 22H17C16.4 22 16 21.6 16 21V8H8V4H19C19.6 4 20 4.4 20 5ZM3 8H4V4H3C2.4 4 2 4.4 2 5V7C2 7.6 2.4 8 3 8Z" fill="black" />
-                                    </svg>
-                                    </span>
-                                    {/*end::Svg Icon*/}
-                                    {/*end::Icon*/}
-                                    {/*begin::Wrapper*/}
-                                    <div className="d-flex flex-stack flex-grow-1">
-                                    {/*begin::Content*/}
-                                    <div className="fw-bold">
-                                        <div className="fs-6 text-gray-700">By connecting an account, you hereby agree to our
-                                        <a href="#" className="me-1">privacy policy</a>and
-                                        <a href="#">terms of use</a>.</div>
-                                    </div>
-                                    {/*end::Content*/}
-                                    </div>
-                                    {/*end::Wrapper*/}
-                                </div>
-                                {/*end::Notice*/}
-                                {/*begin::Items*/}
-                                <div className="py-2">
-                                    {/*begin::Item*/}
-                                    <div className="d-flex flex-stack">
-                                    <div className="d-flex">
-                                        <img src="assets/media/svg/brand-logos/google-icon.svg" className="w-30px me-6" alt="" />
-                                        <div className="d-flex flex-column">
-                                        <a href="#" className="fs-5 text-dark text-hover-primary fw-bolder">Google</a>
-                                        <div className="fs-6 fw-bold text-muted">Plan properly your workflow</div>
+                                    <div className="notice d-flex bg-light-primary rounded border-primary border border-dashed mb-9 p-6">
+                                        <span className="svg-icon svg-icon-2tx svg-icon-primary me-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.3" d="M22 19V17C22 16.4 21.6 16 21 16H8V3C8 2.4 7.6 2 7 2H5C4.4 2 4 2.4 4 3V19C4 19.6 4.4 20 5 20H21C21.6 20 22 19.6 22 19Z" fill="black" />
+                                                <path d="M20 5V21C20 21.6 19.6 22 19 22H17C16.4 22 16 21.6 16 21V8H8V4H19C19.6 4 20 4.4 20 5ZM3 8H4V4H3C2.4 4 2 4.4 2 5V7C2 7.6 2.4 8 3 8Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                        <div className="d-flex flex-stack flex-grow-1">
+                                            <div className="fw-bold">
+                                                <div className="fs-6 text-gray-700">By connecting an account, you hereby agree to our
+                                                <a href="#" className="me-1">privacy policy</a>and
+                                                <a href="#">terms of use</a>.
+                                            </div>
+                                        </div>
                                         </div>
                                     </div>
+                                <div className="py-2">
+                                    <div className="d-flex flex-stack">
+                                        <div className="d-flex">
+                                            <img src="assets/media/svg/brand-logos/google-icon.svg" className="w-30px me-6" alt="" />
+                                            <div className="d-flex flex-column">
+                                                <a href="#" className="fs-5 text-dark text-hover-primary fw-bolder">Google</a>
+                                                <div className="fs-6 fw-bold text-muted">Plan properly your workflow</div>
+                                            </div>
+                                        </div>
                                     <div className="d-flex justify-content-end">
-                                        {/*begin::Switch*/}
                                         <label className="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                        {/*begin::Input*/}
-                                        <input className="form-check-input" name="google" type="checkbox" defaultValue={1} id="kt_modal_connected_accounts_google" defaultChecked="checked" />
-                                        {/*end::Input*/}
-                                        {/*begin::Label*/}
-                                        <span className="form-check-label fw-bold text-muted" htmlFor="kt_modal_connected_accounts_google" />
-                                        {/*end::Label*/}
+                                            <input className="form-check-input" name="google" type="checkbox" defaultValue={1} id="kt_modal_connected_accounts_google" defaultChecked="checked" />
+                                            <span className="form-check-label fw-bold text-muted" htmlFor="kt_modal_connected_accounts_google" />
                                         </label>
-                                        {/*end::Switch*/}
                                     </div>
                                     </div>
                                     {/*end::Item*/}

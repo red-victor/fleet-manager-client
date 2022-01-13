@@ -1,4 +1,4 @@
-import ProfileImage from "../../../assets/img/adi-ferentari.jpg";
+import ProfilePlaceholder from "../../../../assets/img/Profile-Placeholder.png";
 import {Link} from "react-router-dom";
 
 const UserListItem = (props) => {
@@ -13,7 +13,7 @@ const UserListItem = (props) => {
                     <div className="symbol symbol-circle symbol-50px overflow-hidden me-3">
                         <a href="../../demo2/dist/apps/user-management/users/view.html">
                             <div className="symbol-label">
-                                <img src={user.photoUrl} alt="photo" className="w-100" />
+                                <img src={user.photoUrl ? user.photoUrl : ProfilePlaceholder} className="w-100" />
                             </div>
                         </a>
                     </div>
@@ -29,14 +29,11 @@ const UserListItem = (props) => {
                     <div className="badge badge-light fw-bolder">Yesterday</div>
                 </td>
                 <td>
-                    <div className={"badge badge-light-"+ (user.car ? "success" : "warning")}>
-                        {user.car ? 
-                            <Link to={ `/cars/${user.car.id}` } className="text-gray-800 text-hover-primary mb-1">
-                                {user.car.brand + " " +user.car.model}
-                            </Link>
-                            : "None"
-                        }
-                    </div>
+                    {user.car 
+                            ? <Link to={ `/cars/${user.car.id}` } className="badge badge-light-success">
+                            {user.car.brand + " " + user.car.model}
+                        </Link>
+                        : <div className="badge badge-light-warning">None</div>}
                 </td>
                 <td>24 Jun 2021, 2:40 pm</td>
                 <td className="text-end">

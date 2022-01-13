@@ -1,4 +1,4 @@
-import ProfileImage from "../../../../assets/img/adi-ferentari.jpg";
+import ProfilePlaceholder from "../../../../assets/img/Profile-Placeholder.png";
 import UserContext from "../../../context/user-context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -12,9 +12,11 @@ const UserCard = () => {
             <div className="card-body">
                 <div className="d-flex flex-center flex-column py-5">
                     <div className="symbol symbol-100px symbol-circle mb-7">
-                        <img src={ProfileImage} alt="image" />
+                        <img src={userCtx.user.photoUrl ? userCtx.user.photoUrl : ProfilePlaceholder} alt="image" />
                     </div>
-                    <div className="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3" style={{cursor: "default"}}>{ userCtx.user.firstName + " " + userCtx.user.lastName }</div>
+                    <div className="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3" style={{cursor: "default"}}>
+                        { userCtx.user.firstName + " " + userCtx.user.lastName }
+                    </div>
                     <div className="mb-9">
                         <div className="badge badge-lg badge-light-primary d-inline">Administrator</div>
                     </div>
