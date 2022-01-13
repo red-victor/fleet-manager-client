@@ -2,7 +2,19 @@ import React from "react";
 import { useState } from 'react';
 
 const UserContext = React.createContext({
-    user: {name: "", email: "", photoUrl: "", token: ""},
+    user: {
+        id: "",
+        userName: "", 
+        email: "", 
+        firstName: "",
+        lastName: "",
+        cNP: "",
+        adress: "",
+        phoneNumber: "",
+        photoUrl: "", 
+        car: "",
+        token: ""
+    },
     saveUser: user => {},
     signOutUser: () => {}
 });
