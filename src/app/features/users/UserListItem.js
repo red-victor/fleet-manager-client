@@ -13,7 +13,7 @@ const UserListItem = (props) => {
                     <div className="symbol symbol-circle symbol-50px overflow-hidden me-3">
                         <a href="../../demo2/dist/apps/user-management/users/view.html">
                             <div className="symbol-label">
-                                <img src={ProfileImage} alt="photo" className="w-100" />
+                                <img src={user.photoUrl} alt="photo" className="w-100" />
                             </div>
                         </a>
                     </div>

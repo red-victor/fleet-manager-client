@@ -31,7 +31,7 @@ const UserDetailsPage = () => {
                         <div className="d-flex flex-column flex-lg-row">
                             <div className="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
                                 <div className="card mb-5 mb-xl-8">
-                                    <UserCard user={user} profileImage={ProfileImage}/>
+                                    <UserCard user={user} profileImage={user.photoUrl}/>
                                 </div>
                             <div className="card mb-5 mb-xl-8">
                                 {/*begin::Card header*/}
