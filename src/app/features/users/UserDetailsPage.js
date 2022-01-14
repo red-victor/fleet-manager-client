@@ -1,9 +1,8 @@
-import ProfileImage from "../../../assets/img/adi-ferentari.jpg";
 import agent from "../../api/agent";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import UserHeader from "./details/UserHeader";
+import BlankUserImg from "../../../assets/media/avatars/blank.png"
 
 const UserDetailsPage = () => {
     const {id} = useParams();
@@ -72,151 +71,6 @@ const UserDetailsPage = () => {
                     <div className="row g-5 g-xxl-8">
                         {/*begin::Col*/}
                         <div className="col-xl-6">
-                        {/*begin::Feeds Widget 1*/}
-                        <div className="card mb-5 mb-xxl-8">
-                            {/*begin::Body*/}
-                            <div className="card-body pb-0">
-                            {/*begin::Header*/}
-                            <div className="d-flex align-items-center">
-                                {/*begin::User*/}
-                                <div className="d-flex align-items-center flex-grow-1">
-                                {/*begin::Avatar*/}
-                                <div className="symbol symbol-45px me-5">
-                                    <img src="assets/media/avatars/150-1.jpg" alt="" />
-                                </div>
-                                {/*end::Avatar*/}
-                                {/*begin::Info*/}
-                                <div className="d-flex flex-column">
-                                    <a href="#" className="text-gray-900 text-hover-primary fs-6 fw-bolder">Grace Green</a>
-                                    <span className="text-gray-400 fw-bold">PHP, SQLite, Artisan CLI</span>
-                                </div>
-                                {/*end::Info*/}
-                                </div>
-                                {/*end::User*/}
-                                {/*begin::Menu*/}
-                                <div className="my-0">
-                                <button type="button" className="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    {/*begin::Svg Icon | path: icons/duotune/general/gen024.svg*/}
-                                    <span className="svg-icon svg-icon-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                        <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-                                        <rect x={5} y={5} width={5} height={5} rx={1} fill="#000000" />
-                                        <rect x={14} y={5} width={5} height={5} rx={1} fill="#000000" opacity="0.3" />
-                                        <rect x={5} y={14} width={5} height={5} rx={1} fill="#000000" opacity="0.3" />
-                                        <rect x={14} y={14} width={5} height={5} rx={1} fill="#000000" opacity="0.3" />
-                                        </g>
-                                    </svg>
-                                    </span>
-                                    {/*end::Svg Icon*/}
-                                </button>
-                                {/*begin::Menu 2*/}
-                                <div className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px" data-kt-menu="true">
-                                    {/*begin::Menu item*/}
-                                    <div className="menu-item px-3">
-                                    <div className="menu-content fs-6 text-dark fw-bolder px-3 py-4">Quick Actions</div>
-                                    </div>
-                                    {/*end::Menu item*/}
-                                    {/*begin::Menu separator*/}
-                                    <div className="separator mb-3 opacity-75" />
-                                    {/*end::Menu separator*/}
-                                    {/*begin::Menu item*/}
-                                    <div className="menu-item px-3">
-                                    <a href="#" className="menu-link px-3">New Ticket</a>
-                                    </div>
-                                    {/*end::Menu item*/}
-                                    {/*begin::Menu item*/}
-                                    <div className="menu-item px-3">
-                                    <a href="#" className="menu-link px-3">New Customer</a>
-                                    </div>
-                                    {/*end::Menu item*/}
-                                    {/*begin::Menu item*/}
-                                    <div className="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
-                                    {/*begin::Menu item*/}
-                                    <a href="#" className="menu-link px-3">
-                                        <span className="menu-title">New Group</span>
-                                        <span className="menu-arrow" />
-                                    </a>
-                                    {/*end::Menu item*/}
-                                    {/*begin::Menu sub*/}
-                                    <div className="menu-sub menu-sub-dropdown w-175px py-4">
-                                        {/*begin::Menu item*/}
-                                        <div className="menu-item px-3">
-                                        <a href="#" className="menu-link px-3">Admin Group</a>
-                                        </div>
-                                        {/*end::Menu item*/}
-                                        {/*begin::Menu item*/}
-                                        <div className="menu-item px-3">
-                                        <a href="#" className="menu-link px-3">Staff Group</a>
-                                        </div>
-                                        {/*end::Menu item*/}
-                                        {/*begin::Menu item*/}
-                                        <div className="menu-item px-3">
-                                        <a href="#" className="menu-link px-3">Member Group</a>
-                                        </div>
-                                        {/*end::Menu item*/}
-                                    </div>
-                                    {/*end::Menu sub*/}
-                                    </div>
-                                    {/*end::Menu item*/}
-                                    {/*begin::Menu item*/}
-                                    <div className="menu-item px-3">
-                                    <a href="#" className="menu-link px-3">New Contact</a>
-                                    </div>
-                                    {/*end::Menu item*/}
-                                    {/*begin::Menu separator*/}
-                                    <div className="separator mt-3 opacity-75" />
-                                    {/*end::Menu separator*/}
-                                    {/*begin::Menu item*/}
-                                    <div className="menu-item px-3">
-                                    <div className="menu-content px-3 py-3">
-                                        <a className="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
-                                    </div>
-                                    </div>
-                                    {/*end::Menu item*/}
-                                </div>
-                                {/*end::Menu 2*/}
-                                </div>
-                                {/*end::Menu*/}
-                            </div>
-                            {/*end::Header*/}
-                            {/*begin::Form*/}
-                            <form id="kt_forms_widget_1_form" className="ql-quil ql-quil-plain pb-3">
-                                {/*begin::Editor*/}
-                                <div id="kt_forms_widget_1_editor" className="py-6" />
-                                {/*end::Editor*/}
-                                <div className="separator" />
-                                {/*begin::Toolbar*/}
-                                <div id="kt_forms_widget_1_editor_toolbar" className="ql-toolbar d-flex flex-stack py-2">
-                                <div className="me-2">
-                                    <span className="ql-formats ql-size ms-0">
-                                    <select className="ql-size w-75px" />
-                                    </span>
-                                    <span className="ql-formats">
-                                    <button className="ql-bold" />
-                                    <button className="ql-italic" />
-                                    <button className="ql-underline" />
-                                    <button className="ql-strike" />
-                                    <button className="ql-image" />
-                                    <button className="ql-link" />
-                                    <button className="ql-clean" />
-                                    </span>
-                                </div>
-                                <div className="me-n3">
-                                    <span className="btn btn-icon btn-sm btn-active-color-primary">
-                                    <i className="flaticon2-clip-symbol icon-ms" />
-                                    </span>
-                                    <span className="btn btn-icon btn-sm btn-active-color-primary">
-                                    <i className="flaticon2-pin icon-ms" />
-                                    </span>
-                                </div>
-                                </div>
-                                {/*end::Toolbar*/}
-                            </form>
-                            {/*end::Form*/}
-                            </div>
-                            {/*end::Body*/}
-                        </div>
-                        {/*end::Feeds Widget 1*/}
                         {/*begin::Feeds Widget 2*/}
                         <div className="card mb-5 mb-xxl-8">
                             {/*begin::Body*/}
@@ -227,7 +81,7 @@ const UserDetailsPage = () => {
                                 <div className="d-flex align-items-center flex-grow-1">
                                 {/*begin::Avatar*/}
                                 <div className="symbol symbol-45px me-5">
-                                    <img src="assets/media/avatars/150-6.jpg" alt="" />
+                                    <img src={BlankUserImg} alt="" />
                                 </div>
                                 {/*end::Avatar*/}
                                 {/*begin::Info*/}
@@ -397,7 +251,7 @@ const UserDetailsPage = () => {
                                 <div className="d-flex align-items-center flex-grow-1">
                                 {/*begin::Avatar*/}
                                 <div className="symbol symbol-45px me-5">
-                                    <img src="assets/media/avatars/150-10.jpg" alt="" />
+                                    <img src={BlankUserImg} alt="" />
                                 </div>
                                 {/*end::Avatar*/}
                                 {/*begin::Info*/}
@@ -529,7 +383,7 @@ const UserDetailsPage = () => {
                                 <div className="d-flex mb-5">
                                 {/*begin::Avatar*/}
                                 <div className="symbol symbol-45px me-5">
-                                    <img src="assets/media/avatars/150-11.jpg" alt="" />
+                                    <img src={BlankUserImg} alt="" />
                                 </div>
                                 {/*end::Avatar*/}
                                 {/*begin::Info*/}
@@ -552,7 +406,7 @@ const UserDetailsPage = () => {
                                 <div className="d-flex">
                                 {/*begin::Avatar*/}
                                 <div className="symbol symbol-45px me-5">
-                                    <img src="assets/media/avatars/150-8.jpg" alt="" />
+                                    <img src={BlankUserImg} alt="" />
                                 </div>
                                 {/*end::Avatar*/}
                                 {/*begin::Info*/}
@@ -617,7 +471,7 @@ const UserDetailsPage = () => {
                                 <div className="d-flex align-items-center flex-grow-1">
                                 {/*begin::Avatar*/}
                                 <div className="symbol symbol-45px me-5">
-                                    <img src="assets/media/avatars/150-13.jpg" alt="" />
+                                    <img src={BlankUserImg} alt="" />
                                 </div>
                                 {/*end::Avatar*/}
                                 {/*begin::Info*/}
@@ -797,7 +651,7 @@ const UserDetailsPage = () => {
                                 <div className="d-flex align-items-center flex-grow-1">
                                 {/*begin::Avatar*/}
                                 <div className="symbol symbol-45px me-5">
-                                    <img src="assets/media/avatars/150-13.jpg" alt="" />
+                                    <img src={BlankUserImg} alt="" />
                                 </div>
                                 {/*end::Avatar*/}
                                 {/*begin::Info*/}
@@ -897,7 +751,7 @@ const UserDetailsPage = () => {
                             {/*begin::Post*/}
                             <div className="mb-7">
                                 {/*begin::Image*/}
-                                <div className="bgi-no-repeat bgi-size-cover rounded min-h-250px mb-5" style={{backgroundImage: 'url("assets/media/stock/900x600/19.jpg")'}} />
+                                <div className="bgi-no-repeat bgi-size-cover rounded min-h-250px mb-5" style={{backgroundImage: 'url("../../../assets/media/stock/900x600/19.jpg")'}} />
                                 {/*end::Image*/}
                                 {/*begin::Text*/}
                                 <div className="text-gray-800 mb-5">Outlines keep you honest. They stop you from indulging in poorly thought-out metaphors about driving and keep you focused on the overall structure of your post</div>
@@ -1760,7 +1614,7 @@ const UserDetailsPage = () => {
                                     {/*end::Actions*/}
                                     {/*begin::Illustration*/}
                                     <div className="text-center px-4">
-                                        <img src="assets/media/illustrations/sigma-1/20.png" alt="" className="mw-100 mh-300px" />
+                                        <img src="../../../assets/media/illustrations/sigma-1/20.png" alt="" className="mw-100 mh-300px" />
                                     </div>
                                     {/*end::Illustration*/}
                                     </div>
