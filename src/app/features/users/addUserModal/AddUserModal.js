@@ -61,7 +61,7 @@ const AddUserModal = ({closeModal, registerUser, isSubmitting}) => {
           {/*begin::Modal header*/}
           <div className="modal-header">
             {/*begin::Modal title*/}
-            <h2 className="fw-bolder">Add User</h2>
+            <h2 className="fw-bolder text-center">Add User</h2>
             {/*end::Modal title*/}
             {/*begin::Close*/}
             <div

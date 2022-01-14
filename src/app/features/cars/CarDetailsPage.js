@@ -6,12 +6,15 @@ import CarHeader from "./details/CarHeader";
 import CarTickets from "./details/CarTickets";
 import CarHistory from "./details/CarHistory";
 import CarTicketHistory from "./details/CarTicketHistory";
+import AssignCarModal from "./modal/AssignCarModal";
 
 const CarDetailsPage = () => {
     const {id} = useParams();
     const [car, setCar] = useState(null);
     const [historyList, setHistoryList] = useState(null);
     const [ticketList, setTicketList] = useState(null);
+
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         getData();
@@ -44,6 +47,7 @@ const CarDetailsPage = () => {
 
     return (
         <div id="kt_content_container" className="d-flex flex-column-fluid align-items-start container-xxl">
+            {showModal && <AssignCarModal />}
             {car &&
             <div className="content flex-row-fluid" id="kt_content">
                 <div className="d-flex flex-column flex-lg-row">
