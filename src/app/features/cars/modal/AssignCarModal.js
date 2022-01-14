@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import agent from "../../../api/agent";
 import ModalUser from "./ModalUser";
+import EmptyIlustration from "../../../../assets/media/illustrations/sigma-1/1.png"
 
 const AssignCarModal = ({carId, closeModal, setUserToCar}) => {
     const [users, setUsers] = useState(null);
@@ -214,7 +215,7 @@ const AssignCarModal = ({carId, closeModal, setUserToCar}) => {
                     </div>
                     {/*end::Suggestions*/}
                     {/*begin::Empty*/}
-                    <div data-kt-search-element="empty" className="text-center d-none">
+                    {users && (users.length === 0) && <div data-kt-search-element="empty" className="text-center d-block">
                     {/*begin::Message*/}
                     <div className="fw-bold py-10">
                         <div className="text-gray-600 fs-3 mb-2">No users found</div>
@@ -226,13 +227,13 @@ const AssignCarModal = ({carId, closeModal, setUserToCar}) => {
                     {/*begin::Illustration*/}
                     <div className="text-center px-5">
                         <img
-                        src="assets/media/illustrations/sigma-1/1.png"
+                        src={EmptyIlustration}
                         alt="not found ilustration"
                         className="w-100 h-200px h-sm-325px"
                         />
                     </div>
                     {/*end::Illustration*/}
-                    </div>
+                    </div>}
                     {/*end::Empty*/}
                 </div>
                 {/*end::Wrapper*/}
