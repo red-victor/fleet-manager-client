@@ -104,7 +104,8 @@ const Layout = ({ children }) => {
 			<div className="page d-flex flex-row flex-column-fluid">
 				<div className="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					<TopBar />					
-            		{links.length > 0 && <Breadcrumbs options={breadcrumbsOptions}/>}
+            		{/* {links.length > 0 && <Breadcrumbs options={breadcrumbsOptions}/>} */}
+                    <Breadcrumbs options={breadcrumbsOptions}/>
                     {children}
 
                 </div>
