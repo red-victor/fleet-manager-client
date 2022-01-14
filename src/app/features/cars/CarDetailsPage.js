@@ -11,9 +11,9 @@ import AssignCarModal from "./modal/AssignCarModal";
 const CarDetailsPage = () => {
     const {id} = useParams();
     const [car, setCar] = useState(null);
+    const [carUser, setCarUser] = useState(null);
     const [historyList, setHistoryList] = useState(null);
     const [ticketList, setTicketList] = useState(null);
-
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -25,8 +25,8 @@ const CarDetailsPage = () => {
             const carData = await agent.Cars.Get(id);
             const historyData = await agent.History.GetAllForCar(id);
             const ticketData = await agent.Tickets.GetAllForCar(id);
-            console.log(carData);
             setCar(carData);
+            setCarUser(carData.user);
             setHistoryList(historyData);
             setTicketList(ticketData)
         } catch (e) {
@@ -36,19 +36,31 @@ const CarDetailsPage = () => {
 
     const handleDissociateUser = () => {
         agent.Cars.DissociateUser(car.id)
-            .then(() => setCar(prevState => {
-                return {
-                    ...prevState,
-                    user: null
-                }
-            }))
+            .then(() => {
+                setCar(prevState => {
+                    return {
+                        ...prevState,
+                        user: null
+                    }
+                })
+                setCarUser(null);
+            })
             .catch(e => console.log(e));
     }
 
+    if (car === null) return <></>;
+
     return (
         <div id="kt_content_container" className="d-flex flex-column-fluid align-items-start container-xxl">
-            {showModal && <AssignCarModal />}
-            {car &&
+            {showModal && <AssignCarModal closeModal={() => setShowModal(false)} carId={car.id} setUserToCar={user => {
+                setCarUser(user);
+                setCar(prevState => {
+                    return {
+                        ...prevState,
+                        user
+                    }
+                })
+            }} />}
             <div className="content flex-row-fluid" id="kt_content">
                 <div className="d-flex flex-column flex-lg-row">
                     <div className="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
@@ -57,10 +69,9 @@ const CarDetailsPage = () => {
                         <CarTicketHistory/>
                         <CarHistory historyList={historyList}/>
                     </div>
-                    <CarUser car={car} user={car.user ? car.user : null} handleDissociateUser={handleDissociateUser} />
+                    <CarUser car={car} user={carUser} showModal={() => setShowModal(true)} handleDissociateUser={handleDissociateUser} />
                 </div>
             </div>
-            }
         </div>
     );
 }

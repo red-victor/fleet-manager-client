@@ -1,6 +1,40 @@
+import { useEffect, useState } from "react";
+import agent from "../../../api/agent";
 import ModalUser from "./ModalUser";
 
-const AssignCarModal = () => {
+const AssignCarModal = ({carId, closeModal, setUserToCar}) => {
+    const [users, setUsers] = useState(null);
+
+    function escFunction(event){
+        if(event.keyCode === 27) {
+          closeModal();
+        }
+    }
+    
+    useEffect(() => {
+        document.addEventListener("keydown", escFunction, false);
+
+        return () => document.removeEventListener("keydown", escFunction, false);
+    }, []);
+
+    useEffect(() => {
+        agent.Users.GetAllWithNoCar()
+            .then(users => {
+                console.log(users);
+                setUsers(users)
+            })
+            .catch(e => console.log(e));
+    }, []);
+
+    const handleUserClick = user => {
+        agent.Cars.AssignUser({carId, userId: user.id})
+            .then(() => {
+                setUserToCar(user);
+                closeModal();
+            })
+            .catch(e => console.log(e))
+    };
+
     return (
         <div
         className="modal fade show"
@@ -19,6 +53,7 @@ const AssignCarModal = () => {
                 <div
                 className="btn btn-sm btn-icon btn-active-color-primary"
                 data-bs-dismiss="modal"
+                onClick={closeModal}
                 >
                 {/*begin::Svg Icon | path: icons/duotune/arrows/arr061.svg*/}
                 <span className="svg-icon svg-icon-1">
@@ -173,30 +208,7 @@ const AssignCarModal = () => {
                     <div data-kt-search-element="suggestions mb-5">
                     {/*begin::Users*/}
                     <div className="mh-375px scroll-y me-n7 pe-7">
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
-                        <ModalUser name="Emma Smith" />
-                        <ModalUser name="Melody Marcy" />
+                        {users && users.map(user => <ModalUser key={user.id} name={`${user.firstName} ${user.lastName}`} onUserClick={() => handleUserClick(user)} />)}
                     </div>
                     {/*end::Users*/}
                     </div>
@@ -215,7 +227,7 @@ const AssignCarModal = () => {
                     <div className="text-center px-5">
                         <img
                         src="assets/media/illustrations/sigma-1/1.png"
-                        alt
+                        alt="not found ilustration"
                         className="w-100 h-200px h-sm-325px"
                         />
                     </div>

@@ -58,6 +58,7 @@ const Account = {
 
 const Users = {
     GetAll: () => requests.get("users"),
+    GetAllWithNoCar: () => requests.get("users/with-no-car"),
     Get: id => requests.get(`users/${id}`),
     Update: payload => requests.put(`users/${payload.id}`, payload.user),
     Delete: id => requests.delete("users", id)
@@ -70,7 +71,7 @@ const Cars = {
     Get: id => requests.get(`cars/${id}`),
     Update: payload => requests.put(`cars/${payload.id}`, payload.user),
     Delete: id => requests.delete("cars", id),
-    AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser`, payload.userId),
+    AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser`, {userId: payload.userId}),
     DissociateUser: id => requests.putWithoutPayload(`cars/${id}/dissociateUser`),
 }
 

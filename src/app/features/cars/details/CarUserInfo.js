@@ -1,4 +1,4 @@
-import ProfileImage from "../../../../assets/img/adi-ferentari.jpg";
+import ProfileImage from "../../../../assets/media/avatars/blank.png";
 import { Link } from "react-router-dom";
 
 const CarUserInfo = ({user, handleDissociateUser}) => {
