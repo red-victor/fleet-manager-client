@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 const CarListItem = (props) => {
-    const {car, index} = props;
+    const { car } = props;
 
-    
+
     const mileageColor = (mileage) => {
         if (mileage < 10000)
             return "green"
@@ -18,17 +18,17 @@ const CarListItem = (props) => {
     }
 
 
-    return ( 
-        <tr key={index}>
-            <td>{index}</td>
+    return (
+        <tr>
+            <td>{car.id}</td>
             <td>
-                <Link to={ `/cars/${car.id}` } className="text-gray-800 text-hover-primary mb-1">
-                    {car.brand + " " +car.model}
+                <Link to={`/cars/${car.id}`} className="text-gray-800 text-hover-primary mb-1">
+                    {car.brand + " " + car.model}
                 </Link>
             </td>
             <td>
-                {car.user 
-                    ? <Link to={ `/users/${car.user.id}` } className="badge badge-light-success">
+                {car.user
+                    ? <Link to={`/users/${car.user.id}`} className="badge badge-light-success">
                         {car.user.firstName + " " + car.user.lastName}
                     </Link>
                     : <div className="badge badge-light-warning">None</div>}
@@ -36,7 +36,7 @@ const CarListItem = (props) => {
             <td>
                 <div className="badge badge-light">{car.licencePlate}</div>
             </td>
-            <td style={{color: mileageColor(car.mileage)}}>{car.mileage}</td>
+            <td style={{ color: mileageColor(car.mileage) }}>{car.mileage}</td>
             <td>
                 {new Date(car.firstRegistrationDate).toLocaleString()}
             </td>
@@ -61,7 +61,7 @@ const CarListItem = (props) => {
                 </div>
             </td>
         </tr>
-     );
+    );
 }
- 
+
 export default CarListItem;

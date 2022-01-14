@@ -21,8 +21,8 @@ const CarList = (props) => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 fw-bold">
-                        {cars && cars.map( (car, i) => 
-                        <CarListItem key={i} car={car} index={i + 1} />
+                        {cars && cars.map( (car) => 
+                        <CarListItem key={car.id} car={car} />
                         )}
                     </tbody>
                 </table>

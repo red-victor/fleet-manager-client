@@ -1,10 +1,7 @@
 const AppInput = ({name, label, type, classes, placeholder, value, onChange}) => {
     return (
-        <div className="fv-row mb-7">
-        {/*begin::Label*/}
+      <div className="fv-row mb-7">
         <label className="required fw-bold fs-6 mb-2">{label}</label>
-        {/*end::Label*/}
-        {/*begin::Input*/}
         <input
           type={type ? type : "text"}
           name={name}
@@ -13,7 +10,6 @@ const AppInput = ({name, label, type, classes, placeholder, value, onChange}) =>
           value={value}
           onChange={onChange}
         />
-        {/*end::Input*/}
       </div>
     )
 }

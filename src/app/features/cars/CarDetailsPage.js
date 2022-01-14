@@ -9,7 +9,8 @@ import CarTicketHistory from "./details/CarTicketHistory";
 import AssignCarModal from "./modal/AssignCarModal";
 
 const CarDetailsPage = () => {
-    const {id} = useParams();
+    const { id } = useParams();
+    console.log(id);
     const [car, setCar] = useState(null);
     const [carUser, setCarUser] = useState(null);
     const [historyList, setHistoryList] = useState(null);
@@ -20,7 +21,7 @@ const CarDetailsPage = () => {
         getData();
     }, [])
 
-    async function getData(){
+    async function getData() {
         try {
             const carData = await agent.Cars.Get(id);
             const historyData = await agent.History.GetAllForCar(id);
@@ -65,9 +66,9 @@ const CarDetailsPage = () => {
                 <div className="d-flex flex-column flex-lg-row">
                     <div className="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
                         <CarHeader car={car} />
-                        <CarTickets ticketList={ticketList}/>
-                        <CarTicketHistory/>
-                        <CarHistory historyList={historyList}/>
+                        <CarTickets ticketList={ticketList} />
+                        <CarTicketHistory />
+                        <CarHistory historyList={historyList} />
                     </div>
                     <CarUser car={car} user={carUser} showModal={() => setShowModal(true)} handleDissociateUser={handleDissociateUser} />
                 </div>
@@ -75,5 +76,5 @@ const CarDetailsPage = () => {
         </div>
     );
 }
- 
+
 export default CarDetailsPage;

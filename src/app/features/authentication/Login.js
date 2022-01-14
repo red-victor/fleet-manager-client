@@ -42,7 +42,7 @@ const Login = () => {
 					<div className="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
 						<form className="form w-100" id="kt_sign_in_form" onSubmit={handleSubmit}>
 							<div className="text-center mb-10">
-								<h1 className="text-dark mb-3">Sign In to Employee Manager</h1>
+								<h1 className="text-dark mb-3">Sign In to Fleet Manager</h1>
 							</div>
 							<div className="fv-row mb-10">
 								<label className="form-label fs-6 fw-bolder text-dark">Email</label>

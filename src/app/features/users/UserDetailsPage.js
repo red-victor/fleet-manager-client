@@ -33,41 +33,27 @@ const UserDetailsPage = () => {
                                 <UserHeader user={user}/>
 
                                 <ul className="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
-                                    {/*begin::Nav item*/}
                                     <li className="nav-item mt-2">
                                     <a className="nav-link text-active-primary ms-0 me-10 py-5 active" href="../../demo2/dist/pages/profile/overview.html">Overview</a>
                                     </li>
-                                    {/*end::Nav item*/}
-                                    {/*begin::Nav item*/}
                                     <li className="nav-item mt-2">
                                     <a className="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo2/dist/pages/profile/projects.html">Projects</a>
                                     </li>
-                                    {/*end::Nav item*/}
-                                    {/*begin::Nav item*/}
                                     <li className="nav-item mt-2">
                                     <a className="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo2/dist/pages/profile/campaigns.html">Campaigns</a>
                                     </li>
-                                    {/*end::Nav item*/}
-                                    {/*begin::Nav item*/}
                                     <li className="nav-item mt-2">
                                     <a className="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo2/dist/pages/profile/documents.html">Documents</a>
                                     </li>
-                                    {/*end::Nav item*/}
-                                    {/*begin::Nav item*/}
                                     <li className="nav-item mt-2">
                                     <a className="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo2/dist/pages/profile/followers.html">Followers</a>
                                     </li>
-                                    {/*end::Nav item*/}
-                                    {/*begin::Nav item*/}
                                     <li className="nav-item mt-2">
                                     <a className="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo2/dist/pages/profile/activity.html">Activity</a>
                                     </li>
-                                    {/*end::Nav item*/}
                                 </ul>
                             </div>
                         </div>
-                    {/*end::Navbar*/}
-                    {/*begin::Row*/}
                     <div className="row g-5 g-xxl-8">
                         {/*begin::Col*/}
                         <div className="col-xl-6">

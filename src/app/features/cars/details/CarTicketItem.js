@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 const CarTicketItem = (props) => {
-    const {ticket} = props;
+    const { ticket } = props;
 
     const statusType = (statusType) => {
-        switch(statusType) {
+        switch (statusType) {
             case 0: return 'Pending';
             case 1: return 'In Progress';
             default: return 'Solved';
@@ -12,7 +12,7 @@ const CarTicketItem = (props) => {
     }
 
     const statusColor = (statusColor) => {
-        switch(statusColor) {
+        switch (statusColor) {
             case 0: return 'warning';
             case 1: return 'danger';
             default: return 'success';
@@ -20,17 +20,17 @@ const CarTicketItem = (props) => {
     }
 
     const serviceType = (serviceType) => {
-        switch(serviceType) {
+        switch (serviceType) {
             case 0: return 'RCA';
             case 1: return 'CASCO';
             case 2: return 'ITP';
             case 3: return 'Revision';
             case 4: return 'Consumable';
             default: return 'Other';
-            }
+        }
     }
 
-    return ( 
+    return (
         <>
             <tr>
                 <td>
@@ -42,7 +42,7 @@ const CarTicketItem = (props) => {
                 </td>
                 <td>{serviceType(ticket.type)}</td>
                 <td>{new Date(ticket.date).toISOString().split('T')[0]}</td>
-                <td className="text-end">
+                {/* <td className="text-end">
                     <Link to="#" className="btn btn-icon btn-active-light-primary w-30px h-30px" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                         <span className="svg-icon svg-icon-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -62,10 +62,10 @@ const CarTicketItem = (props) => {
                             <Link href="#" className="menu-link text-danger px-3" data-kt-subscriptions-view-action="edit">Cancel Subscription</Link>
                         </div>
                     </div>
-                </td>
+                </td> */}
             </tr>
         </>
-     );
+    );
 }
- 
+
 export default CarTicketItem;
