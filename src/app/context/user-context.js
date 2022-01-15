@@ -4,19 +4,20 @@ import { useState } from 'react';
 const UserContext = React.createContext({
     user: {
         id: "",
-        userName: "", 
-        email: "", 
+        userName: "",
+        email: "",
         firstName: "",
         lastName: "",
         cNP: "",
         adress: "",
         phoneNumber: "",
-        photoUrl: "", 
+        phoneNumberConfirmed: false,
+        photoUrl: "",
         car: "",
         token: ""
     },
-    saveUser: user => {},
-    signOutUser: () => {}
+    saveUser: user => { },
+    signOutUser: () => { }
 });
 
 export const UserContextProvider = props => {
@@ -25,9 +26,9 @@ export const UserContextProvider = props => {
         if (userString) return JSON.parse(userString);
         return null
     }
-    
+
     const [user, setUser] = useState(getUser());
-    
+
     const saveUser = userObj => {
         localStorage.setItem('user', JSON.stringify(userObj));
         setUser(userObj);

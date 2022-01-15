@@ -8,11 +8,11 @@ const UserListPage = () => {
         return !prevState
     })
 
-    return ( 
+    return (
         <>
             <UserList handleShowAddUserModal={handleShowAddUserModal} />
         </>
-     );
+    );
 }
- 
+
 export default UserListPage;
