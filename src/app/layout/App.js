@@ -18,7 +18,7 @@ function App() {
       <ToastContainer theme="colored" position="bottom-right" hideProgressBar />
       <Switch>
         <Route path={["/login", "/register"]}>
-          <Route exact path="/register" component={Register} />
+          {/* <Route exact path="/register" component={Register} /> */}
           <Route exact path="/login" component={Login} />
         </Route>
         <Layout>

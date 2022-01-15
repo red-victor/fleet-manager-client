@@ -10,7 +10,6 @@ import AssignCarModal from "./modal/AssignCarModal";
 
 const CarDetailsPage = () => {
     const { id } = useParams();
-    console.log(id);
     const [car, setCar] = useState(null);
     const [carUser, setCarUser] = useState(null);
     const [historyList, setHistoryList] = useState(null);

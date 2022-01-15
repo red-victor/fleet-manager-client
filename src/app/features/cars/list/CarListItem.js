@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 const CarListItem = (props) => {
     const { car } = props;
 
-
     const mileageColor = (mileage) => {
         if (mileage < 10000)
             return "green"
@@ -16,7 +15,6 @@ const CarListItem = (props) => {
         else if (mileage >= 80000)
             return "red"
     }
-
 
     return (
         <tr>

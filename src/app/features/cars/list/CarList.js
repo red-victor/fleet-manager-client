@@ -1,12 +1,10 @@
-import agent from "../../../api/agent";
-import { useState, useEffect } from "react";
 import CarListItem from "./CarListItem";
 
 const CarList = (props) => {
-    const {cars} = props;
+    const { cars } = props;
 
-    return ( 
-         <>
+    return (
+        <>
             <div className="card-body pt-0">
                 <table className="table align-middle table-row-dashed fs-6 gy-5" id="kt_subscriptions_table" >
                     <thead>
@@ -21,14 +19,14 @@ const CarList = (props) => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 fw-bold">
-                        {cars && cars.map( (car) => 
-                        <CarListItem key={car.id} car={car} />
+                        {cars && cars.map((car) =>
+                            <CarListItem key={car.id} car={car} />
                         )}
                     </tbody>
                 </table>
             </div>
-         </>   
-     );
+        </>
+    );
 }
- 
+
 export default CarList;
