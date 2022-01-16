@@ -30,24 +30,26 @@ const UserDashboard = () => {
 
     return (
         <>
-            <div id="kt_content_container" className="d-flex flex-column-fluid align-items-start container-xxl">
-                <div className="content flex-row-fluid" id="kt_content">
-                    <div className="card mb-5 mb-xl-10">
-                        <div className="card-body pt-9 pb-0">
+            {userCtx.user &&
+                <div id="kt_content_container" className="d-flex flex-column-fluid align-items-start container-xxl">
+                    <div className="content flex-row-fluid" id="kt_content">
+                        <div className="card mb-5 mb-xl-10">
+                            <div className="card-body pt-9 pb-0">
 
-                            <UserHeader user={userCtx.user} />
+                                <UserHeader user={userCtx.user} />
 
-                            <ProfileNav />
+                                <ProfileNav />
 
+                            </div>
                         </div>
-                    </div>
-                    {tickets && histories && <OverviewTab tickets={tickets} histories={histories} />}
-                    {/* <MyProfileTab /> */}
-                    {/* <SettingsTab /> */}
-                    {/* <LogsTab /> */}
+                        {tickets && histories && <OverviewTab tickets={tickets} histories={histories} />}
+                        {/* <MyProfileTab /> */}
+                        {/* <SettingsTab /> */}
+                        {/* <LogsTab /> */}
 
+                    </div>
                 </div>
-            </div>
+            }
         </>
     );
 }

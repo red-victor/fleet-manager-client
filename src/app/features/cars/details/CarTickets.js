@@ -2,7 +2,7 @@ import CarTicketItem from "./CarTicketItem";
 
 const CarTickets = (props) => {
     const { ticketList } = props;
-    console.log(ticketList);
+
     return (
         <>
             <div className="card card-flush mb-0" data-kt-sticky="true" data-kt-sticky-name="subscription-summary" data-kt-sticky-offset="{default: false, lg: '200px'}" data-kt-sticky-width="{lg: '250px', xl: '300px'}" data-kt-sticky-left="auto" data-kt-sticky-top="150px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95">

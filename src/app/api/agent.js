@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 // const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
 
 // axios.defaults.baseURL= "https://localhost:5001/api/";
-axios.defaults.baseURL= "https://localhost:44339/api/";
+axios.defaults.baseURL = "https://localhost:44339/api/";
 
-const responseBody = response =>  response.data;
+const responseBody = response => response.data;
 
 axios.interceptors.request.use(config => {
     const userString = localStorage.getItem('user');
@@ -71,7 +71,7 @@ const Cars = {
     Get: id => requests.get(`cars/${id}`),
     Update: payload => requests.put(`cars/${payload.id}`, payload.user),
     Delete: id => requests.delete("cars", id),
-    AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser`, {userId: payload.userId}),
+    AssignUser: payload => requests.putWithoutPayload(`cars/${payload.carId}/assignUser/${payload.userId}`),
     DissociateUser: id => requests.putWithoutPayload(`cars/${id}/dissociateUser`),
 }
 

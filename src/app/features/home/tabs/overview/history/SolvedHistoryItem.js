@@ -3,7 +3,6 @@ import PlacholderImage from "../../../../../../assets/img/solved-history-placeho
 
 const SolvedHistoryItem = (props) => {
     const { historyItem } = props;
-    console.log(historyItem);
 
     const serviceType = (serviceType) => {
         switch (serviceType) {
