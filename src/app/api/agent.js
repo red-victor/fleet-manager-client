@@ -78,6 +78,7 @@ const Cars = {
 const History = {
     GetAll: () => requests.get("cars/history"),
     GetAllForCar: carId => requests.get(`cars/${carId}/history`),
+    GetAllForUser: userId => requests.get(`users/${userId}/history`),
     Get: id => requests.get(`cars/history/${id}`),
     Add: payload => requests.post(`cars/${payload.id}/history`, payload.history),
     Update: payload => requests.put(`cars/${payload.id}/history`, payload.history),
@@ -86,7 +87,8 @@ const History = {
 
 const Tickets = {
     GetAll: () => requests.get("ticket"),
-    GetAllForCar: id => requests.get(`cars/${id}/tickets`),
+    GetAllForCar: carId => requests.get(`cars/${carId}/tickets`),
+    GetAllForUser: userId => requests.get(`users/${userId}/tickets`),
     Get: id => requests.get(`ticket/${id}`),
     Add: payload => requests.post(`ticket`, payload.ticket),
     Update: payload => requests.put(`ticket/${payload.id}`, payload.ticket),

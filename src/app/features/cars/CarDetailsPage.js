@@ -28,7 +28,8 @@ const CarDetailsPage = () => {
             setCar(carData);
             setCarUser(carData.user);
             setHistoryList(historyData);
-            setTicketList(ticketData)
+            setTicketList(ticketData);
+            console.log(ticketList);
         } catch (e) {
             console.log(e);
         }
