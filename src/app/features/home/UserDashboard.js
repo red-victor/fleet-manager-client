@@ -6,7 +6,7 @@ import ProfileNav from "./ProfileNav";
 import OverviewTab from "./tabs/overview/OverviewTab";
 import MyProfileTab from "./tabs/profile/MyProfileTab";
 import SettingsTab from "./tabs/settings/SettingsTab";
-import LogsTab from "./tabs/logs/LogsTab";
+import LogsTab from "./tabs/logsTab/LogsTab";
 
 const UserDashboard = () => {
     const userCtx = useContext(UserContext);
