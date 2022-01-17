@@ -28,7 +28,9 @@ const TicketItem = (props) => {
                 </div>
                 <div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
                     <div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-                        <a href="#" className="fs-5 text-gray-800 text-hover-primary fw-bolder">{ticket.title}</a>
+                        <Link to={`/`} className="fs-5 text-gray-800 text-hover-primary fw-bolder fancy-link">
+                            {ticket.title}
+                        </Link>
                         <span className="text-gray-400 fw-bold fs-7 my-1">{ticket.details}</span>
                         <span className="text-gray-400 fw-bold fs-7">By:
                             <Link to={`/users/${ticket.user.id}`} className="text-primary fw-bold">
