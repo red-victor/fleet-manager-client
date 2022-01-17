@@ -7,6 +7,7 @@ import CarTickets from "./details/CarTickets";
 import CarHistory from "./details/CarHistory";
 import CarTicketHistory from "./details/CarTicketHistory";
 import AssignCarModal from "./modal/AssignCarModal";
+import TicketFormModal from "./modal/TicketFormModal";
 
 const CarDetailsPage = () => {
     const { id } = useParams();
@@ -15,6 +16,8 @@ const CarDetailsPage = () => {
     const [historyList, setHistoryList] = useState(null);
     const [ticketList, setTicketList] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [showTicketModal, setShowTicketModal] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         getData();
@@ -29,7 +32,6 @@ const CarDetailsPage = () => {
             setCarUser(carData.user);
             setHistoryList(historyData);
             setTicketList(ticketData);
-            console.log(ticketList);
         } catch (e) {
             console.log(e);
         }
@@ -49,6 +51,17 @@ const CarDetailsPage = () => {
             .catch(e => console.log(e));
     }
 
+    const submitTicket = formValues => {
+        setIsSubmitting(true);
+        agent.Tickets.Add({ ticket: formValues })
+            .then(() => {
+                getData();
+                setShowTicketModal(false);
+            })
+            .catch(e => console.log(e))
+            .finally(() => setIsSubmitting(false));
+    }
+
     if (car === null) return <></>;
 
     return (
@@ -62,15 +75,31 @@ const CarDetailsPage = () => {
                     }
                 })
             }} />}
+
+            {showTicketModal && <TicketFormModal
+                closeModal={() => setShowTicketModal(false)}
+                carId={car.id}
+                isSubmitting={isSubmitting}
+                submitTicket={submitTicket}
+            />}
+
             <div className="content flex-row-fluid" id="kt_content">
                 <div className="d-flex flex-column flex-lg-row">
                     <div className="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
-                        <CarHeader car={car} />
-                        <CarTickets ticketList={ticketList} />
-                        <CarTicketHistory />
-                        <CarHistory historyList={historyList} />
+                        {car &&
+                            <CarHeader car={car} />
+                        }
+                        {ticketList && car &&
+                            <CarTickets ticketList={ticketList} car={car} showTicketModal={() => setShowTicketModal(true)} />
+                        }
+                        {ticketList && historyList &&
+                            <CarTicketHistory />
+                        }
+                        {historyList &&
+                            <CarHistory historyList={historyList} />
+                        }
                     </div>
-                    <CarUser car={car} user={carUser} showModal={() => setShowModal(true)} handleDissociateUser={handleDissociateUser} />
+                    {car && carUser && <CarUser car={car} user={carUser} showModal={() => setShowModal(true)} handleDissociateUser={handleDissociateUser} />}
                 </div>
             </div>
         </div>

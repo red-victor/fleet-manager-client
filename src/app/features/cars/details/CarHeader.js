@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const CarHeader = ({ car }) => {
+
     return (
         <div className="card card-flush pt-3 mb-5 mb-xl-10">
             <div className="card-header">

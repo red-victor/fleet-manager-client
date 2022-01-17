@@ -208,7 +208,7 @@ const AddUserModal = ({ closeModal, registerUser, isSubmitting }) => {
                 <button
                   type="reset"
                   className="btn btn-light me-3"
-                  data-kt-users-modal-action="cancel"
+                  onClick={closeModal}
                 >
                   Discard
                 </button>

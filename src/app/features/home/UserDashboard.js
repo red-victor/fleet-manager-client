@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import agent from "../../api/agent";
 import UserContext from "../../context/user-context";
-import UserHeader from "../users/details/UserHeader";
+import UserHeader from "./UserHeader";
 import ProfileNav from "./ProfileNav";
 import OverviewTab from "./tabs/overview/OverviewTab";
 import MyProfileTab from "./tabs/profile/MyProfileTab";

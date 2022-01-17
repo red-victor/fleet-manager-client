@@ -1,7 +1,10 @@
 import CarTicketItem from "./CarTicketItem";
+import { useContext } from "react";
+import UserContext from "../../../context/user-context";
 
 const CarTickets = (props) => {
-    const { ticketList } = props;
+    const userCtx = useContext(UserContext);
+    const { ticketList, car, showTicketModal } = props;
 
     return (
         <>
@@ -10,6 +13,11 @@ const CarTickets = (props) => {
                     <div className="card-title">
                         <h2>Tickets</h2>
                     </div>
+                    {car.user && userCtx.user.id === car.user.id &&
+                        <div className="card-toolbar">
+                            <div className="btn btn-light-primary" onClick={() => showTicketModal()}>+ Submit Ticket</div>
+                        </div>
+                    }
                 </div>
 
                 {ticketList && ticketList.length > 0 ?

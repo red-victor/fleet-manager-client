@@ -43,19 +43,14 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
             tabIndex={-1}
             aria-hidden="true"
         >
-            {/*begin::Modal dialog*/}
             <div className="modal-dialog modal-dialog-centered mw-650px">
-                {/*begin::Modal content*/}
                 <div className="modal-content">
-                    {/*begin::Modal header*/}
                     <div className="modal-header pb-0 border-0 justify-content-end">
-                        {/*begin::Close*/}
                         <div
                             className="btn btn-sm btn-icon btn-active-color-primary"
                             data-bs-dismiss="modal"
                             onClick={closeModal}
                         >
-                            {/*begin::Svg Icon | path: icons/duotune/arrows/arr061.svg*/}
                             <span className="svg-icon svg-icon-1">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -85,22 +80,15 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                                     />
                                 </svg>
                             </span>
-                            {/*end::Svg Icon*/}
                         </div>
-                        {/*end::Close*/}
                     </div>
-                    {/*begin::Modal header*/}
-                    {/*begin::Modal body*/}
                     <div className="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
-                        {/*begin::Content*/}
                         <div className="text-center mb-13">
                             <h1 className="mb-3">Search Users</h1>
                             <div className="text-muted fw-bold fs-5">
                                 Select an user to assign the car
                             </div>
                         </div>
-                        {/*end::Content*/}
-                        {/*begin::Search*/}
                         <div
                             id="kt_modal_users_search_handler"
                             data-kt-search-keypress="true"
@@ -108,17 +96,12 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                             data-kt-search-enter="enter"
                             data-kt-search-layout="inline"
                         >
-                            {/*begin::Form*/}
                             <form
                                 data-kt-search-element="form"
                                 className="w-100 position-relative mb-5"
                                 autoComplete="off"
                             >
-                                {/*begin::Hidden input(Added to disable form autocomplete)*/}
                                 <input type="hidden" />
-                                {/*end::Hidden input*/}
-                                {/*begin::Icon*/}
-                                {/*begin::Svg Icon | path: icons/duotune/general/gen021.svg*/}
                                 <span className="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -143,9 +126,6 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                                         />
                                     </svg>
                                 </span>
-                                {/*end::Svg Icon*/}
-                                {/*end::Icon*/}
-                                {/*begin::Input*/}
                                 <input
                                     type="text"
                                     className="form-control form-control-lg form-control-solid px-15"
@@ -153,21 +133,16 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                                     placeholder="Search by username, full name or email..."
                                     data-kt-search-element="input"
                                 />
-                                {/*end::Input*/}
-                                {/*begin::Spinner*/}
                                 <span
                                     className="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5"
                                     data-kt-search-element="spinner"
                                 >
                                     <span className="spinner-border h-15px w-15px align-middle text-muted" />
                                 </span>
-                                {/*end::Spinner*/}
-                                {/*begin::Reset*/}
                                 <span
                                     className="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none"
                                     data-kt-search-element="clear"
                                 >
-                                    {/*begin::Svg Icon | path: icons/duotune/arrows/arr061.svg*/}
                                     <span className="svg-icon svg-icon-2 svg-icon-lg-1 me-0">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -197,53 +172,41 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                                             />
                                         </svg>
                                     </span>
-                                    {/*end::Svg Icon*/}
                                 </span>
-                                {/*end::Reset*/}
                             </form>
-                            {/*end::Form*/}
-                            {/*begin::Wrapper*/}
                             <div className="py-5">
-                                {/*begin::Suggestions*/}
                                 <div data-kt-search-element="suggestions mb-5">
-                                    {/*begin::Users*/}
                                     <div className="mh-375px scroll-y me-n7 pe-7">
-                                        {users && users.map(user => <ModalUser key={user.id} name={`${user.firstName} ${user.lastName}`} onUserClick={() => handleUserClick(user)} />)}
+                                        {users && users.map(user =>
+                                            <ModalUser
+                                                key={user.id}
+                                                user={user}
+                                                onUserClick={() => handleUserClick(user)}
+                                            />
+                                        )}
                                     </div>
-                                    {/*end::Users*/}
                                 </div>
-                                {/*end::Suggestions*/}
-                                {/*begin::Empty*/}
-                                {users && (users.length === 0) && <div data-kt-search-element="empty" className="text-center d-block">
-                                    {/*begin::Message*/}
-                                    <div className="fw-bold py-10">
-                                        <div className="text-gray-600 fs-3 mb-2">No users found</div>
-                                        <div className="text-muted fs-6">
-                                            Try to search by username, full name or email...
+                                {users && (users.length === 0) &&
+                                    <div data-kt-search-element="empty" className="text-center d-block">
+                                        <div className="fw-bold py-10">
+                                            <div className="text-gray-600 fs-3 mb-2">No users found</div>
+                                            <div className="text-muted fs-6">
+                                                Try to search by username, full name or email...
+                                            </div>
                                         </div>
-                                    </div>
-                                    {/*end::Message*/}
-                                    {/*begin::Illustration*/}
-                                    <div className="text-center px-5">
-                                        <img
-                                            src={EmptyIlustration}
-                                            alt="not found ilustration"
-                                            className="w-100 h-200px h-sm-325px"
-                                        />
-                                    </div>
-                                    {/*end::Illustration*/}
-                                </div>}
-                                {/*end::Empty*/}
+                                        <div className="text-center px-5">
+                                            <img
+                                                src={EmptyIlustration}
+                                                alt="not found ilustration"
+                                                className="w-100 h-200px h-sm-325px"
+                                            />
+                                        </div>
+                                    </div>}
                             </div>
-                            {/*end::Wrapper*/}
                         </div>
-                        {/*end::Search*/}
                     </div>
-                    {/*end::Modal body*/}
                 </div>
-                {/*end::Modal content*/}
             </div>
-            {/*end::Modal dialog*/}
         </div>
     )
 }
