@@ -1,7 +1,7 @@
 import { useState } from "react";
 import agent from "../../../../../api/agent";
 
-const EditPasswordFrom = ({closeForm}) => {
+const EditPasswordFrom = ({ closeForm }) => {
     const [formValues, setFormValues] = useState({
         currentPassword: "",
         newPassword: "",
@@ -11,7 +11,7 @@ const EditPasswordFrom = ({closeForm}) => {
     const [formErrorMsg, setFormErrorMsg] = useState("");
 
     const handleFormChange = event => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         setFormValues(prevState => {
             return {
                 ...prevState,
@@ -55,7 +55,6 @@ const EditPasswordFrom = ({closeForm}) => {
 
     return (
         <div id="kt_signin_password_edit" className="flex-row-fluid">
-            {/*begin::Form*/}
             <form id="kt_signin_change_password" className="form" onSubmit={handleSubmit}>
                 <div className="row mb-1">
                     <div className="col-lg-4">
@@ -83,7 +82,6 @@ const EditPasswordFrom = ({closeForm}) => {
                     <button id="kt_password_cancel" type="button" className="btn btn-color-gray-400 btn-active-light-primary px-6" onClick={closeForm}>Cancel</button>
                 </div>
             </form>
-            {/*end::Form*/}
         </div>
     )
 }

@@ -10,8 +10,8 @@ const MySolvedHistories = (props) => {
                 <div className="card card-xl-stretch mb-5 mb-xl-8">
                     <div className="card-header border-0 pt-5">
                         <h3 className="card-title align-items-start flex-column">
-                            <span className="card-label fw-bolder fs-3 mb-1">My History</span>
-                            <span className="text-muted mt-1 fw-bold fs-7">Personal History: {histories.length}</span>
+                            <span className="fw-bolder text-dark fs-3">User History</span>
+                            <span className="text-gray-400 mt-2 fw-bold fs-6">Personal History: {histories.length}</span>
                         </h3>
                         <Toolbar />
                     </div>

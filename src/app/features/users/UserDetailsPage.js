@@ -2,10 +2,8 @@ import agent from "../../api/agent";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import UserHeader from "./details/UserHeader";
-import ProfileNav from "./details/ProfileNav";
 import OverviewTab from "./details/tabs/overview/OverviewTab";
 import MyProfileTab from "./details/tabs/profile/MyProfileTab";
-import SettingsTab from "./details/tabs/settings/SettingsTab";
 import LogsTab from "./details/tabs/logsTab/LogsTab";
 import TabNavItem from "../../layout/appComponents/navigation/TabNavItem";
 
@@ -47,18 +45,16 @@ const UserDetailsPage = () => {
                                 <ul className="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
                                     <TabNavItem tab={tab} setTab={setTab} tabFor="overview" >Overview</TabNavItem>
                                     <TabNavItem tab={tab} setTab={setTab} tabFor="profile" >Profile</TabNavItem>
-                                    <TabNavItem tab={tab} setTab={setTab} tabFor="settings" >Settings</TabNavItem>
                                     <TabNavItem tab={tab} setTab={setTab} tabFor="logs" >Logs</TabNavItem>
                                 </ul>
 
                             </div>
                         </div>
 
-                        {(tab === "overview") && tickets && histories && 
-                            <OverviewTab tickets={tickets} histories={histories} 
-                        />}
+                        {(tab === "overview") && tickets && histories &&
+                            <OverviewTab tickets={tickets} histories={histories}
+                            />}
                         {(tab === "profile") && <MyProfileTab user={user} />}
-                        {(tab === "settings") && <SettingsTab user={user} />}
                         {(tab === "logs") && <LogsTab />}
 
                         <div className="row g-5 g-xxl-8">
