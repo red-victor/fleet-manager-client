@@ -36,9 +36,9 @@ const CarListItem = (props) => {
             </td>
             <td style={{ color: mileageColor(car.mileage) }}>{car.mileage}</td>
             <td>
-                {new Date(car.firstRegistrationDate).toLocaleString()}
+                {new Date(car.firstRegistrationDate).toISOString().split('T')[0]}
             </td>
-            <td className="text-end">
+            {/* <td className="text-end">
                 <a href="#" className="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                     <span className="svg-icon svg-icon-5 m-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -57,7 +57,7 @@ const CarListItem = (props) => {
                         <a href="#" data-kt-subscriptions-table-filter="delete_row" className="menu-link px-3">Delete</a>
                     </div>
                 </div>
-            </td>
+            </td> */}
         </tr>
     );
 }

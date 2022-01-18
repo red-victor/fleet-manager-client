@@ -5,22 +5,6 @@ import TicketPlaceholder from "../../../../../../assets/img/ticket-placeholder.p
 const TicketItem = (props) => {
     const { ticket, showHistoryModal, setTicketFormData } = props;
 
-    const statusColor = (statusColor) => {
-        switch (statusColor) {
-            case 0: return 'warning';
-            case 1: return 'danger';
-            default: return 'success';
-        }
-    }
-
-    const statusType = (statusType) => {
-        switch (statusType) {
-            case 0: return 'Pending';
-            case 1: return 'In Progress';
-            default: return 'Solved';
-        }
-    }
-
     const handleSolveTicket = () => {
         setTicketFormData(ticket);
         showHistoryModal();
@@ -42,7 +26,9 @@ const TicketItem = (props) => {
                             <Link to={`/users/${ticket.user.id}`} className="text-primary fw-bold">
                                 {ticket.user.firstName + " " + ticket.user.lastName}
                             </Link>
-                            <span className={`badge badge-light-${statusColor(ticket.status)} fs-8 fw-bolder my-2`}>{statusType(ticket.status)}</span>
+                            <span className={`badge badge-light-${utils.Services.StatusColor(ticket.status)} fs-8 fw-bolder my-2`}>
+                                {utils.Services.Status(ticket.status)}
+                            </span>
                         </span>
                     </div>
                     <div className="text-end py-lg-0 py-2">

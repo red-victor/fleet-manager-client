@@ -9,7 +9,7 @@ const UserHeader = (props) => {
             <div className="d-flex flex-wrap flex-sm-nowrap">
                 <div className="me-7 mb-4">
                     <div className="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                        <img src={user.photoUrl ? user.photoUrl : ProfilePlaceholder} alt="image" />
+                        <img src={user.photoUrl ? user.photoUrl : ProfilePlaceholder} alt="Pic" />
                         <div className="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px" />
                     </div>
                 </div>
@@ -64,7 +64,7 @@ const UserHeader = (props) => {
                                 </Link>
                             }
                             {!user.car &&
-                                <Link to={``} className="btn btn-sm btn-light me-3">
+                                <Link to={`/`} className="btn btn-sm btn-light me-3">
                                     Get a car
                                 </Link>
                             }

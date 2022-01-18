@@ -1,8 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../../../context/user-context";
-import agent from "../../../api/agent";
-import ModalUser from "./ModalUser";
-import EmptyIlustration from "../../../../assets/media/illustrations/sigma-1/1.png";
 import TicketPlaceholder from "../../../../assets/img/ticket-placeholder.png";
 import AppInput from "../../../layout/appComponents/AppInput";
 import AppSelect from "../../../layout/appComponents/AppSelect";
