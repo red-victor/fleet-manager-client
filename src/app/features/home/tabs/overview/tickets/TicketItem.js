@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TicketPlaceholder from "../../../../../../assets/img/ticket-placeholder.png";
 
 const TicketItem = (props) => {
-    const { ticket } = props;
+    const { ticket, showHistoryModal, setTicketFormData } = props;
 
     const statusColor = (statusColor) => {
         switch (statusColor) {
@@ -21,6 +21,11 @@ const TicketItem = (props) => {
         }
     }
 
+    const handleSolveTicket = () => {
+        setTicketFormData(ticket);
+        showHistoryModal();
+    }
+
     return (
         <>
             <div className="d-flex mb-7">
@@ -29,9 +34,9 @@ const TicketItem = (props) => {
                 </div>
                 <div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
                     <div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-                        <Link to={`/`} className="fs-5 text-gray-800 text-hover-primary fw-bolder fancy-link">
+                        <div className="fs-5 text-gray-800 text-hover-primary fw-bolder fancy-link" onClick={handleSolveTicket}>
                             {ticket.title}
-                        </Link>
+                        </div>
                         <span className="text-gray-400 fw-bold fs-7 my-1">{utils.Text.Shorten(ticket.details)}</span>
                         <span className="text-gray-400 fw-bold fs-7">By:
                             <Link to={`/users/${ticket.user.id}`} className="text-primary fw-bold">
