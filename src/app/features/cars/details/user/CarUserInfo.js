@@ -1,7 +1,7 @@
-import ProfileImage from "../../../../assets/media/avatars/blank.png";
+import ProfileImage from "../../../../../assets/media/avatars/blank.png";
 import { Link } from "react-router-dom";
 
-const CarUserInfo = ({user, handleDissociateUser}) => {
+const CarUserInfo = ({ user, handleDissociateUser }) => {
     return (
         <div className="flex-column flex-lg-row-auto w-lg-250px w-xl-300px mb-10 order-1 order-lg-2">
             <div className="card card-flush mb-0" data-kt-sticky="true" data-kt-sticky-name="subscription-summary" data-kt-sticky-offset="{default: false, lg: '200px'}" data-kt-sticky-width="{lg: '250px', xl: '300px'}" data-kt-sticky-left="auto" data-kt-sticky-top="150px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95">
@@ -18,8 +18,8 @@ const CarUserInfo = ({user, handleDissociateUser}) => {
                             </div>
                             <div className="d-flex flex-column">
                                 <div className="fs-4 fw-bolder text-gray-900 text-hover-primary me-2">
-                                    {user 
-                                        ? <Link to={ `/users/${user.id}` } className="text-gray-800 text-hover-primary mb-1">
+                                    {user
+                                        ? <Link to={`/users/${user.id}`} className="text-gray-800 text-hover-primary mb-1">
                                             {user.firstName + " " + user.lastName}
                                         </Link>
                                         : "None"}

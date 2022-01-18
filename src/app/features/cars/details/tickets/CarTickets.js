@@ -1,6 +1,6 @@
 import CarTicketItem from "./CarTicketItem";
 import { useContext } from "react";
-import UserContext from "../../../context/user-context";
+import UserContext from "../../../../context/user-context";
 
 const CarTickets = (props) => {
     const userCtx = useContext(UserContext);
