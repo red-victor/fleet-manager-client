@@ -25,3 +25,7 @@
 .fancy-link:hover {
   background-size: 100% 3px;
 } */
+
+.cursor-pointer {
+  cursor: pointer;
+}
