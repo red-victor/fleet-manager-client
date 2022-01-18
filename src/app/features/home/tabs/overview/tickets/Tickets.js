@@ -2,7 +2,7 @@ import TicketItem from "./TicketItem";
 import Toolbar from "./Toolbar";
 
 const TicketsUnresolved = (props) => {
-    const { tickets } = props;
+    const { tickets, showHistoryModal, setTicketFormData } = props;
 
     return (
         <>
@@ -17,7 +17,7 @@ const TicketsUnresolved = (props) => {
                     </div>
                     <div className="card-body pt-5">
                         {tickets && tickets.map((ticket, i) =>
-                            <TicketItem ticket={ticket} key={i + 1} />
+                            <TicketItem showHistoryModal={showHistoryModal} setTicketFormData={setTicketFormData} ticket={ticket} key={i + 1} />
                         )}
                     </div>
                 </div>
