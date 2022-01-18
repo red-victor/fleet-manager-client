@@ -1,20 +1,30 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Logo from "../../../assets/media/logos/logo-1.svg";
 import agent from "../../api/agent";
 import LoadingButton from "../../layout/appComponents/LoadingButton"
 
 const ResetPassword = () => {
+    const history = useHistory();
     const [emailValue, setEmailValue] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleEmailChange = event => {
         setEmailValue(event.target.value)
-    }
+    };
 
     const handleSubmit = event => {
         event.preventDefault();
-        agent.Account.sendResetPasswordLink({email: emailValue});
+        setIsSubmitting(true);
+        agent.Account.sendResetPasswordLink({email: emailValue})
+            .then(() => {
+                history.push("/login");
+                toast.success("Reset password email has been sent")
+            })
+            .catch(e => console.log(e))
+            .finally(() => setIsSubmitting(false));
     }
 
     return (
@@ -74,7 +84,7 @@ const ResetPassword = () => {
                     {/*end::Input group*/}
                     {/*begin::Actions*/}
                     <div className="d-flex flex-wrap justify-content-center pb-lg-0">
-                        <LoadingButton />
+                        <LoadingButton isSubmitting={isSubmitting} />
                         <Link
                         to="/login"
                         style={{marginLeft: 30}}
