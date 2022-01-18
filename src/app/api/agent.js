@@ -53,7 +53,8 @@ const requests = {
 const Account = {
     login: values => requests.post("account/login", values),
     register: values => requests.post("account/register", values),
-    currentUser: () => requests.get("account/currentUser")
+    currentUser: () => requests.get("account/currentUser"),
+    changeMyPassword: payload => requests.put("account/change-my-password", payload)
 }
 
 const Users = {
