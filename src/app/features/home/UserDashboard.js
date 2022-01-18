@@ -6,7 +6,7 @@ import OverviewTab from "./tabs/overview/OverviewTab";
 import MyProfileTab from "./tabs/profile/MyProfileTab";
 import SettingsTab from "./tabs/settings/SettingsTab";
 import LogsTab from "./tabs/logsTab/LogsTab";
-import TabNavItem from "./TabNavItem";
+import TabNavItem from "../../layout/appComponents/navigation/TabNavItem";
 import HistoryFormModal from "./modal/HistoryFormModal";
 
 const UserDashboard = () => {
@@ -75,10 +75,15 @@ const UserDashboard = () => {
 
                         </div>
                     </div>
-                    {(tab === "overview") && <OverviewTab tickets={tickets} histories={histories} showHistoryModal={() => setShowHistoryModal(true)} setTicketFormData={setTicketFormData} />}
-                    {(tab == "profile") && <MyProfileTab />}
-                    {(tab == "settings") && <SettingsTab />}
-                    {(tab == "logs") && <LogsTab />}
+                    {(tab === "overview") && <OverviewTab
+                        tickets={tickets}
+                        histories={histories}
+                        showHistoryModal={() => setShowHistoryModal(true)}
+                        setTicketFormData={setTicketFormData}
+                    />}
+                    {(tab === "profile") && <MyProfileTab />}
+                    {(tab === "settings") && <SettingsTab />}
+                    {(tab === "logs") && <LogsTab />}
 
                 </div>
             </div>

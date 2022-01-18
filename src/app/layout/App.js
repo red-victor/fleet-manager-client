@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CarDetailsPage from "../features/cars/CarDetailsPage";
 import Layout from "./Layout";
 import UserListPage from "../features/users/UserListPage";
-import UserDetailsPage from "../features/users/details/UserDetailsPage";
+import UserDetailsPage from "../features/users/UserDetailsPage";
 import CarListPage from "../features/cars/CarListPage";
 import ResetPassword from "../features/authentication/ResetPassword";
 import ConfirmPassword from "../features/authentication/ConfirmPassword";

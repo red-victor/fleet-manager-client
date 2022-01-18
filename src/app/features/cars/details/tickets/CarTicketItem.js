@@ -1,34 +1,7 @@
-import { Link } from "react-router-dom";
+import utils from "../../../../utils/utils";
 
 const CarTicketItem = (props) => {
     const { ticket } = props;
-
-    const statusType = (statusType) => {
-        switch (statusType) {
-            case 0: return 'Pending';
-            case 1: return 'In Progress';
-            default: return 'Solved';
-        }
-    }
-
-    const statusColor = (statusColor) => {
-        switch (statusColor) {
-            case 0: return 'warning';
-            case 1: return 'danger';
-            default: return 'success';
-        }
-    }
-
-    const serviceType = (serviceType) => {
-        switch (serviceType) {
-            case 0: return 'RCA';
-            case 1: return 'CASCO';
-            case 2: return 'ITP';
-            case 3: return 'Revision';
-            case 4: return 'Consumable';
-            default: return 'Other';
-        }
-    }
 
     return (
         <>
@@ -38,9 +11,9 @@ const CarTicketItem = (props) => {
                     <div className="fw-normal text-gray-600">{ticket.details}</div>
                 </td>
                 <td>
-                    <span className={`badge badge-light-${statusColor(ticket.status)}`}>{statusType(ticket.status)}</span>
+                    <span className={`badge badge-light-${utils.Services.StatusColor(ticket.status)}`}>{utils.Services.Status(ticket.status)}</span>
                 </td>
-                <td>{serviceType(ticket.type)}</td>
+                <td>{utils.Services.ServiceType(ticket.type)}</td>
                 <td>{new Date(ticket.date).toISOString().split('T')[0]}</td>
                 {/* <td className="text-end">
                     <Link to="#" className="btn btn-icon btn-active-light-primary w-30px h-30px" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
