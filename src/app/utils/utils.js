@@ -1,4 +1,5 @@
 const serviceList = ['RCA', 'CASCO', 'ITP', 'Revision', 'Consumable', 'Other'];
+const serviceColor = ['primary', 'primary', 'warning', 'info', 'success', 'danger'];
 const statusList = ['Unresolved', 'In Progress', 'Solved'];
 const statusColorList = ['danger', 'warning', 'success'];
 
@@ -8,6 +9,7 @@ const Text = {
 
 const Services = {
     ServiceType: (index) => serviceList[index],
+    ServiceColor: (index) => serviceColor[index],
     Status: (index) => statusList[index],
     StatusColor: (index) => statusColorList[index],
 }

@@ -18,7 +18,7 @@ const TicketItem = (props) => {
                 </div>
                 <div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
                     <div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-                        <div className="fs-5 text-gray-800 text-hover-primary fw-bolder fancy-link" onClick={handleSolveTicket}>
+                        <div className="fs-5 text-gray-800 text-hover-primary fw-bolder fancy-link" onClick={handleSolveTicket} style={{ cursor: "pointer" }}>
                             {ticket.title}
                         </div>
                         <span className="text-gray-400 fw-bold fs-7 my-1">{utils.Text.Shorten(ticket.details)}</span>
