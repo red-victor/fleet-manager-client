@@ -57,7 +57,7 @@ const Login = () => {
 							<div className="fv-row mb-10">
 								<div className="d-flex flex-stack mb-2">
 									<label className="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
-									<Link to="/" className="link-primary fs-6 fw-bolder">Forgot Password ?</Link>
+									<Link to="/reset-password" className="link-primary fs-6 fw-bolder">Forgot Password ?</Link>
 								</div>
 								<input 
 									className="form-control form-control-lg form-control-solid" 

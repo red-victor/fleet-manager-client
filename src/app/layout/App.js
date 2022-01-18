@@ -9,6 +9,7 @@ import Layout from "./Layout";
 import UserListPage from "../features/users/UserListPage";
 import UserDetailsPage from "../features/users/details/UserDetailsPage";
 import CarListPage from "../features/cars/CarListPage";
+import ResetPassword from "../features/authentication/ResetPassword";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <ToastContainer theme="colored" position="bottom-right" hideProgressBar />
       <Switch>
         <Route exact path="/login" component={Login} />
+        <Route exact path="/reset-password" component={ResetPassword} />
         <Layout>
           <Route exact path="/"> <HomePage /> </Route>
           <Route exact path="/cars"> <CarListPage /> </Route>
