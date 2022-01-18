@@ -1,3 +1,4 @@
+import utils from "../../../../../utils/utils";
 import { Link } from "react-router-dom";
 import TicketPlaceholder from "../../../../../../assets/img/ticket-placeholder.png";
 
@@ -31,7 +32,7 @@ const TicketItem = (props) => {
                         <Link to={`/`} className="fs-5 text-gray-800 text-hover-primary fw-bolder fancy-link">
                             {ticket.title}
                         </Link>
-                        <span className="text-gray-400 fw-bold fs-7 my-1">{ticket.details}</span>
+                        <span className="text-gray-400 fw-bold fs-7 my-1">{utils.Text.Shorten(ticket.details)}</span>
                         <span className="text-gray-400 fw-bold fs-7">By:
                             <Link to={`/users/${ticket.user.id}`} className="text-primary fw-bold">
                                 {ticket.user.firstName + " " + ticket.user.lastName}
@@ -40,7 +41,7 @@ const TicketItem = (props) => {
                         </span>
                     </div>
                     <div className="text-end py-lg-0 py-2">
-                        <span className="text-gray-800 fw-boldest fs-3">223€</span>
+                        <span className="text-gray-800 fw-boldest fs-3">{ticket.cost}€</span>
                         <span className="text-gray-400 fs-7 fw-bold d-block">{new Date(ticket.date).toISOString().split('T')[0]}</span>
                     </div>
                 </div>
