@@ -29,7 +29,7 @@ const EditPasswordFrom = ({ closeForm }) => {
     }
 
     const areValidInputs = () => {
-        if (formValues.currentPassword == "" || formValues.newPassword == "" || formValues.confirmPassword == "") {
+        if (formValues.currentPassword === "" || formValues.newPassword === "" || formValues.confirmPassword === "") {
             setFormErrorMsg("Please fill in all fields");
             return false;
         }
