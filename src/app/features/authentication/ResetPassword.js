@@ -9,14 +9,29 @@ import LoadingButton from "../../layout/appComponents/LoadingButton"
 const ResetPassword = () => {
     const history = useHistory();
     const [emailValue, setEmailValue] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleEmailChange = event => {
         setEmailValue(event.target.value)
     };
 
+    const isValidEmail = email => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
     const handleSubmit = event => {
         event.preventDefault();
+
+        if (!isValidEmail(emailValue)) {
+            setErrorMsg("Please enter a valid email");
+            return;
+        }
+
         setIsSubmitting(true);
         agent.Account.sendResetPasswordLink({email: emailValue})
             .then(() => {
@@ -80,6 +95,7 @@ const ResetPassword = () => {
                         onChange={handleEmailChange}
                         autoComplete="off"
                         />
+                        <div className="form-text mb-5 text-danger">{errorMsg}</div>
                     </div>
                     {/*end::Input group*/}
                     {/*begin::Actions*/}
