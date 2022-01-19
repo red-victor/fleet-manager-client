@@ -99,7 +99,7 @@ const CarDetailsPage = () => {
                             <CarHistory historyList={historyList} />
                         }
                     </div>
-                    {car && carUser && <CarUser car={car} user={carUser} showModal={() => setShowModal(true)} handleDissociateUser={handleDissociateUser} />}
+                    {car && <CarUser car={car} user={carUser} showModal={() => setShowModal(true)} handleDissociateUser={handleDissociateUser} />}
                 </div>
             </div>
         </div>
