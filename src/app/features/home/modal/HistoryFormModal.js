@@ -1,16 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../../../context/user-context";
-import agent from "../../../api/agent";
-import EmptyIlustration from "../../../../assets/media/illustrations/sigma-1/1.png";
-import TicketPlaceholder from "../../../../assets/img/ticket-placeholder.png";
 import AppInput from "../../../layout/appComponents/AppInput";
-import AppSelect from "../../../layout/appComponents/AppSelect";
 import LoadingButton from "../../../layout/appComponents/LoadingButton";
-import AppTextArea from "../../../layout/appComponents/AppTextArea";
-import Utils from "../../../utils/utils";
-import utils from "../../../utils/utils";
-import AppDate from "../../../layout/appComponents/AppDate";
+import utils, { statusList } from "../../../utils/utils";
 import AppSwitch from "../../../layout/appComponents/AppSwitch";
+import AppSelect from "../../../layout/appComponents/AppSelect";
 
 const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData }) => {
     const userCtx = useContext(UserContext);
@@ -23,10 +17,10 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
         details: ticketFormData.details,
         cost: ticketFormData.cost,
         serviceType: ticketFormData.type,
-        ticketStatus: ticketFormData.ticketStatus,
+        status: ticketFormData.status,
         executionDate: ticketFormData.date,
         mileageAtExecution: ticketFormData.mileageAtSubmit,
-        renewDate: "",
+        renewDate: new Date(Date.now()).toISOString().split('T')[0],
         isPayed: false,
         adminId: userCtx.user.id,
         ticketId: ticketFormData.id
@@ -132,7 +126,7 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                                 <div className="fv-row mb-7">
                                     <label className="d-block fw-bold fs-6 mb-5">{initialHistoryFormValueState.imagePath ? "Image" : "No Image"}</label>
                                     {initialHistoryFormValueState.imagePath !== "" &&
-                                        <img src={initialHistoryFormValueState.imagePath} />
+                                        <img src={initialHistoryFormValueState.imagePath} alt="Pic" />
                                     }
 
                                     {/* <div
@@ -190,13 +184,16 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                                     </div>
                                 </div>
 
+                                <AppSelect label="Status" name="status" value={historyFormValues.status} onChange={handleHistoryFromValuesChange}
+                                    options={statusList}
+                                />
+
                                 <AppInput
                                     label="Renewal Date"
                                     name="renewDate"
                                     placeholder="Renewal Date"
                                     type="date"
-                                    // value={new Date(historyFormValues.executionDate).toISOString().split('T')[0]}
-                                    value={historyFormValues.executionDate}
+                                    value={historyFormValues.renewDate}
                                     onChange={handleHistoryFromValuesChange}
                                 />
 
@@ -207,9 +204,6 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                                     onChange={handleCheckboxChange}
                                 />
 
-                                {/* <AppSelect label="Type" name="ticketType" value={historyFormValues.ticketType} onChange={handleHistoryFromValuesChange}
-                                    options={serviceList}
-                                /> */}
                             </div>
                             <div className="text-center pt-15">
                                 <button

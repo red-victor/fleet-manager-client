@@ -7,7 +7,6 @@ const TicketItem = (props) => {
 
     const handleSolveTicket = () => {
         setTicketFormData(ticket);
-        console.log(ticket);
         showHistoryModal();
     }
 

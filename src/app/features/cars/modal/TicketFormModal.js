@@ -5,7 +5,7 @@ import AppInput from "../../../layout/appComponents/AppInput";
 import AppSelect from "../../../layout/appComponents/AppSelect";
 import LoadingButton from "../../../layout/appComponents/LoadingButton";
 import AppTextArea from "../../../layout/appComponents/AppTextArea";
-import utils from "../../../utils/utils";
+import { serviceList } from "../../../utils/utils";
 
 const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
     const userCtx = useContext(UserContext);
@@ -57,8 +57,6 @@ const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
 
         return () => document.removeEventListener("keydown", escFunction, false);
     }, []);
-
-    const serviceList = ['RCA', 'CASCO', 'ITP', 'Revision', 'Consumable', 'Other']
 
     return (
         <div

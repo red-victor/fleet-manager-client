@@ -1,6 +1,6 @@
-const serviceList = ['RCA', 'CASCO', 'ITP', 'Revision', 'Consumable', 'Other'];
+export const serviceList = ['RCA', 'CASCO', 'ITP', 'Revision', 'Consumable', 'Other'];
 const serviceColor = ['primary', 'primary', 'warning', 'info', 'success', 'danger'];
-const statusList = ['Unresolved', 'In Progress', 'Solved'];
+export const statusList = ['Unresolved', 'In Progress', 'Solved'];
 const statusColorList = ['danger', 'warning', 'success'];
 
 const Text = {

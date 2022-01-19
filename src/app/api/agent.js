@@ -83,7 +83,7 @@ const History = {
     GetAllForCar: carId => requests.get(`cars/${carId}/history`),
     GetAllForUser: userId => requests.get(`users/${userId}/history`),
     Get: id => requests.get(`cars/history/${id}`),
-    Add: payload => requests.post(`cars/${payload.id}/history`, payload.history),
+    Add: payload => requests.post(`cars/${payload.history.carId}/history`, payload.history),
     Update: payload => requests.put(`cars/${payload.id}/history`, payload.history),
     Delete: id => requests.delete(`cars/${id}/history`),
 }

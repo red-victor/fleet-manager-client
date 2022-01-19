@@ -18,7 +18,7 @@ const SolvedHistoryItem = (props) => {
                 <div className="text-dark fw-bolder text-hover-primary mb-1 fs-6" style={{ cursor: "pointer" }}>
                     {historyItem.title ? historyItem.title : "Title Pending..."}
                 </div>
-                <span className="text-muted fw-bold d-block">{historyItem.details}</span>
+                <span className="text-muted fw-bold d-block">{utils.Text.Shorten(historyItem.details)}</span>
             </td>
             <td>
                 <span className="text-muted fw-bold d-block fs-7">{historyItem.isPayed ? "Paid" : "Unpaid"}</span>
