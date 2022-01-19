@@ -72,6 +72,7 @@ const Cars = {
     GetAllAssigned: () => requests.get("cars/assigned"),
     GetAllUnasigned: () => requests.get("cars/unassigned"),
     Get: id => requests.get(`cars/${id}`),
+    Add: payload => requests.post(`cars`, payload.car),
     Update: payload => requests.put(`cars/${payload.id}`, payload.user),
     Delete: id => requests.delete("cars", id),
     AssignUser: payload => requests.putWithoutPayload(`cars/${payload.carId}/assignUser/${payload.userId}`),
