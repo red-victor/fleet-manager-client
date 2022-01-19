@@ -19,7 +19,7 @@ function App() {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/reset-password" component={ResetPassword} />
-        <Route exact path="/reset-password/:userId/:ticks" component={ConfirmPassword} />
+        <Route exact path="/change-password" component={ConfirmPassword} />
         <Layout>
           <Route exact path="/"> <HomePage /> </Route>
           <Route exact path="/cars"> <CarListPage /> </Route>

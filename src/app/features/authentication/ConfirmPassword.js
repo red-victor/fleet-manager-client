@@ -1,13 +1,22 @@
+import { useMemo } from "react";
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import Logo from "../../../assets/media/logos/logo-1.svg";
 import agent from "../../api/agent";
 import LoadingButton from "../../layout/appComponents/LoadingButton"
 
+function useQuery() {
+    const { search } = useLocation();
+  
+    return useMemo(() => new URLSearchParams(search), [search]);
+}
+
 const ConfirmPassword = (props) => {
+    let query = useQuery();
     const history = useHistory();
+
     const [formValues, setFormValues] = useState({
         password: "",
         confirmPassword: ""
@@ -29,8 +38,8 @@ const ConfirmPassword = (props) => {
         setIsSubmitting(true);
         agent.Account.resetPassword({
             ...formValues,
-            userId: props.match.params.userId,
-            ticks: props.match.params.ticks
+            userId: query.get("uid"),
+            token: query.get("token")
         })
             .then(() => {
                 history.push("/login");
