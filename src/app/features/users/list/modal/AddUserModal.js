@@ -1,7 +1,7 @@
 import BlankUserImg from "../../../../../assets/media/avatars/blank.png";
 import UserPhoto from "../../../../../assets/media/avatars/150-1.jpg";
 import LoadingButton from "../../../../layout/appComponents/LoadingButton";
-import AppInput from "../../../../layout/appComponents/AppInput";
+import AppInput from "../../../../layout/appComponents/input/AppInput";
 import { useEffect } from "react";
 import { useState } from "react";
 

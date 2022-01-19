@@ -1,6 +1,6 @@
 const AppSelect = ({ name, label, classes, placeholder, value, onChange, options, valueSelector }) => {
     return (
-        <div className="fv-row mb-7">
+        <>
             <label className="required fw-bold fs-6 mb-2">{label}</label>
             <select
                 name={name}
@@ -14,7 +14,7 @@ const AppSelect = ({ name, label, classes, placeholder, value, onChange, options
                 ))}
 
             </select>
-        </div>
+        </>
     )
 }
 

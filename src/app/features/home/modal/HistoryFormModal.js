@@ -1,10 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../../../context/user-context";
-import AppInput from "../../../layout/appComponents/AppInput";
+import AppInput from "../../../layout/appComponents/input/AppInput";
 import LoadingButton from "../../../layout/appComponents/LoadingButton";
 import utils, { statusList } from "../../../utils/utils";
-import AppSwitch from "../../../layout/appComponents/AppSwitch";
-import AppSelect from "../../../layout/appComponents/AppSelect";
+import AppSwitch from "../../../layout/appComponents/input/AppSwitch";
+import AppSelect from "../../../layout/appComponents/input/AppSelect";
+import HistoryPlaceholder from "../../../../assets/img/solved-history-placeholder.jpg";
 
 const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData }) => {
     const userCtx = useContext(UserContext);
@@ -123,38 +124,22 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                                 data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
                                 data-kt-scroll-offset="300px"
                             >
-                                <div className="fv-row mb-7">
-                                    <label className="d-block fw-bold fs-6 mb-5">{initialHistoryFormValueState.imagePath ? "Image" : "No Image"}</label>
-                                    {initialHistoryFormValueState.imagePath !== "" &&
-                                        <img src={initialHistoryFormValueState.imagePath} alt="Pic" />
-                                    }
-
-                                    {/* <div
-                                        className={`image-input image-input-outline ${!initialHistoryFormValueState.imagePath && 'image-input-empty'}`}
-                                        data-kt-image-input="true"
-                                        style={{
-                                            backgroundImage: `url(${TicketPlaceholder})`
-                                        }}
-                                    >
-                                        <div
-                                            className="image-input-wrapper w-125px h-125px"
-                                            style={{
-                                                backgroundImage: initialHistoryFormValueState.imagePath ? `url(${initialHistoryFormValueState.imagePath})` : 'none' // !userImage and backgroundImage none
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="form-text">
-                                        Allowed file types: png, jpg, jpeg.
-                                    </div> */}
-                                </div>
                                 <div className="row g-9 mb-8">
                                     <div className="col-md-6 fv-row">
-                                        <div className="fs-6 fw-bold mb-2">Title:</div>
-                                        <div className="d-flex align-items-center">{historyFormValues.title}</div>
+                                        <h2>{historyFormValues.title}</h2>
+                                        <div className="text-gray-400 fw-bold fs-7 my-1">
+                                            {utils.Text.Date(historyFormValues.executionDate)}
+                                        </div>
+                                        <div className="fs-6 fw-bold mb-2">Current Mileage: {historyFormValues.mileageAtExecution} Km</div>
+                                        <div className="fs-6 fw-bold mb-2">Service Type: {utils.Services.ServiceType(historyFormValues.serviceType)}</div>
+                                        <div className="fw-bold fs-6 mb-2">Cost: {historyFormValues.cost}€</div>
                                     </div>
                                     <div className="col-md-6 fv-row">
-                                        <div className="fw-bold fs-6 mb-2">Date: </div>
-                                        <div className="fw-bold fs-6 mb-2">{new Date(historyFormValues.executionDate).toISOString().split('T')[0]}</div>
+                                        <label className="d-block fw-bold fs-6 mb-5">{initialHistoryFormValueState.imagePath ? "Image" : ""}</label>
+                                        <img
+                                            src={initialHistoryFormValueState.imagePath ? initialHistoryFormValueState.imagePath : HistoryPlaceholder}
+                                            alt="Pic" style={{ width: "100%" }}
+                                        />
                                     </div>
                                 </div>
                                 <div className="row g-9 mb-8">
@@ -163,47 +148,33 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                                     <div className="d-flex align-items-center">{historyFormValues.details}</div>
                                     {/* </div> */}
                                 </div>
+
                                 <div className="row g-9 mb-8">
                                     <div className="col-md-6 fv-row">
-                                        <div className="fs-6 fw-bold mb-2">Service Type:</div>
-                                        <div className="d-flex align-items-center">{utils.Services.ServiceType(historyFormValues.serviceType)}</div>
+                                        <AppSelect label="Status" name="status" value={historyFormValues.status} onChange={handleHistoryFromValuesChange}
+                                            options={statusList}
+                                        />
                                     </div>
                                     <div className="col-md-6 fv-row">
-                                        <div className="fw-bold fs-6 mb-2">Cost: </div>
-                                        <div className="fw-bold fs-6 mb-2">{historyFormValues.cost}€</div>
+                                        <AppInput
+                                            label="Renewal Date"
+                                            name="renewDate"
+                                            placeholder="Renewal Date"
+                                            type="date"
+                                            value={historyFormValues.renewDate}
+                                            onChange={handleHistoryFromValuesChange}
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="row g-9 mb-8">
-                                    <div className="col-md-6 fv-row">
-                                        <div className="fs-6 fw-bold mb-2">Mileage at Execution:</div>
-                                        <div className="d-flex align-items-center">{historyFormValues.mileageAtExecution}</div>
-                                    </div>
-                                    <div className="col-md-6 fv-row">
-
-                                    </div>
+                                    <AppSwitch
+                                        label="Paid"
+                                        name="isPayed"
+                                        value={historyFormValues.isPayed}
+                                        onChange={handleCheckboxChange}
+                                    />
                                 </div>
-
-                                <AppSelect label="Status" name="status" value={historyFormValues.status} onChange={handleHistoryFromValuesChange}
-                                    options={statusList}
-                                />
-
-                                <AppInput
-                                    label="Renewal Date"
-                                    name="renewDate"
-                                    placeholder="Renewal Date"
-                                    type="date"
-                                    value={historyFormValues.renewDate}
-                                    onChange={handleHistoryFromValuesChange}
-                                />
-
-                                <AppSwitch
-                                    label="Paid"
-                                    name="isPayed"
-                                    value={historyFormValues.isPayed}
-                                    onChange={handleCheckboxChange}
-                                />
-
                             </div>
                             <div className="text-center pt-15">
                                 <button

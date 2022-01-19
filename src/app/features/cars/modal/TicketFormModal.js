@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../../../context/user-context";
 import TicketPlaceholder from "../../../../assets/img/ticket-placeholder.png";
-import AppInput from "../../../layout/appComponents/AppInput";
-import AppSelect from "../../../layout/appComponents/AppSelect";
+import AppInput from "../../../layout/appComponents/input/AppInput";
+import AppSelect from "../../../layout/appComponents/input/AppSelect";
 import LoadingButton from "../../../layout/appComponents/LoadingButton";
-import AppTextArea from "../../../layout/appComponents/AppTextArea";
+import AppTextArea from "../../../layout/appComponents/input/AppTextArea";
 import { serviceList } from "../../../utils/utils";
 
 const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {

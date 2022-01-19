@@ -5,6 +5,7 @@ const statusColorList = ['danger', 'warning', 'success'];
 
 const Text = {
     Shorten: (text) => text.length > 50 ? text.slice(0, 40) + "..." : text,
+    Date: (date) => new Date(date).toISOString().split('T')[0],
 }
 
 const Services = {
