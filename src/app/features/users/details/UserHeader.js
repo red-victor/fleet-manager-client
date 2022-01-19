@@ -8,7 +8,7 @@ const UserHeader = (props) => {
             <div className="d-flex flex-wrap flex-sm-nowrap">
                 <div className="me-7 mb-4">
                     <div className="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                        <img src={user.photoUrl ? user.photoUrl : ProfilePlaceholder} alt="image" />
+                        <img src={user.photoUrl ? user.photoUrl : ProfilePlaceholder} alt="pic" />
                         <div className="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px" />
                     </div>
                 </div>
@@ -16,10 +16,10 @@ const UserHeader = (props) => {
                     <div className="d-flex justify-content-between align-items-start flex-wrap mb-2">
                         <div className="d-flex flex-column">
                             <div className="d-flex align-items-center mb-2">
-                                <div href="#" className="text-gray-900 text-hover-primary fs-2 fw-bolder me-1" style={{ cursor: "default" }}>
+                                <div className="text-gray-900 text-hover-primary fs-2 fw-bolder me-1" style={{ cursor: "default" }}>
                                     {user.firstName + " " + user.lastName}
                                 </div>
-                                <div href="#">
+                                <div>
                                     <span className="svg-icon svg-icon-1 svg-icon-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
                                             <path d="M10.0813 3.7242C10.8849 2.16438 13.1151 2.16438 13.9187 3.7242V3.7242C14.4016 4.66147 15.4909 5.1127 16.4951 4.79139V4.79139C18.1663 4.25668 19.7433 5.83365 19.2086 7.50485V7.50485C18.8873 8.50905 19.3385 9.59842 20.2758 10.0813V10.0813C21.8356 10.8849 21.8356 13.1151 20.2758 13.9187V13.9187C19.3385 14.4016 18.8873 15.491 19.2086 16.4951V16.4951C19.7433 18.1663 18.1663 19.7433 16.4951 19.2086V19.2086C15.491 18.8873 14.4016 19.3385 13.9187 20.2758V20.2758C13.1151 21.8356 10.8849 21.8356 10.0813 20.2758V20.2758C9.59842 19.3385 8.50905 18.8873 7.50485 19.2086V19.2086C5.83365 19.7433 4.25668 18.1663 4.79139 16.4951V16.4951C5.1127 15.491 4.66147 14.4016 3.7242 13.9187V13.9187C2.16438 13.1151 2.16438 10.8849 3.7242 10.0813V10.0813C4.66147 9.59842 5.1127 8.50905 4.79139 7.50485V7.50485C4.25668 5.83365 5.83365 4.25668 7.50485 4.79139V4.79139C8.50905 5.1127 9.59842 4.66147 10.0813 3.7242V3.7242Z" fill="#00A3FF" />
@@ -55,71 +55,6 @@ const UserHeader = (props) => {
                                         </svg>
                                     </span>
                                     {user.email}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="d-flex my-4">
-                            <a href="#" className="btn btn-sm btn-light me-2" id="kt_user_follow_button">
-                                <span className="svg-icon svg-icon-3 d-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path opacity="0.3" d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="black" />
-                                        <path d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="black" />
-                                    </svg>
-                                </span>
-                                <span className="indicator-label">Follow</span>
-                                <span className="indicator-progress">Please wait...
-                                    <span className="spinner-border spinner-border-sm align-middle ms-2" />
-                                </span>
-                            </a>
-                            <a href="#" className="btn btn-sm btn-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_offer_a_deal">Hire Me</a>
-                            <div className="me-0">
-                                <button className="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    <i className="bi bi-three-dots fs-3" />
-                                </button>
-                                <div className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-                                    <div className="menu-item px-3">
-                                        <div className="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Payments</div>
-                                    </div>
-                                    <div className="menu-item px-3">
-                                        <a href="#" className="menu-link px-3">Create Invoice</a>
-                                    </div>
-                                    <div className="menu-item px-3">
-                                        <a href="#" className="menu-link flex-stack px-3">Create Payment
-                                            <i className="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference" />
-                                        </a>
-                                    </div>
-                                    <div className="menu-item px-3">
-                                        <a href="#" className="menu-link px-3">Generate Bill</a>
-                                    </div>
-                                    <div className="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-end">
-                                        <a href="#" className="menu-link px-3">
-                                            <span className="menu-title">Subscription</span>
-                                            <span className="menu-arrow" />
-                                        </a>
-                                        <div className="menu-sub menu-sub-dropdown w-175px py-4">
-                                            <div className="menu-item px-3">
-                                                <a href="#" className="menu-link px-3">Plans</a>
-                                            </div>
-                                            <div className="menu-item px-3">
-                                                <a href="#" className="menu-link px-3">Billing</a>
-                                            </div>
-                                            <div className="menu-item px-3">
-                                                <a href="#" className="menu-link px-3">Statements</a>
-                                            </div>
-                                            <div className="separator my-2" />
-                                            <div className="menu-item px-3">
-                                                <div className="menu-content px-3">
-                                                    <label className="form-check form-switch form-check-custom form-check-solid">
-                                                        <input className="form-check-input w-30px h-20px" type="checkbox" defaultValue={1} defaultChecked="checked" name="notifications" />
-                                                        <span className="form-check-label text-muted fs-6">Recuring</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="menu-item px-3 my-1">
-                                        <a href="#" className="menu-link px-3">Settings</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

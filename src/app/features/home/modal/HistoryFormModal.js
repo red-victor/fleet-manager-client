@@ -135,9 +135,8 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                             >
                                 <div className="fv-row mb-7">
                                     <label className="d-block fw-bold fs-6 mb-5">{initialHistoryFormValueState.imagePath ? "Image" : "No Image"}</label>
-                                    {initialHistoryFormValueState.imagePath != "" &&
+                                    {initialHistoryFormValueState.imagePath !== "" &&
                                         <img src={initialHistoryFormValueState.imagePath} />
-
                                     }
 
                                     {/* <div

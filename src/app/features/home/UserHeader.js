@@ -28,7 +28,7 @@ const UserHeader = (props) => {
                                 </span>
                             </div>
                             <div className="d-flex flex-wrap fw-bold fs-6 mb-4 pe-2">
-                                <div className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                <div className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" style={{ cursor: "default" }}>
                                     <span className="svg-icon svg-icon-4 me-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
                                             <path opacity="0.3" d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z" fill="black" />
@@ -37,7 +37,7 @@ const UserHeader = (props) => {
                                     </span>
                                     Admin
                                 </div>
-                                <div className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                <div className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" style={{ cursor: "default" }}>
                                     <span className="svg-icon svg-icon-4 me-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
                                             <path opacity="0.3" d="M18.0624 15.3453L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3453C4.56242 13.6453 3.76242 11.4453 4.06242 8.94534C4.56242 5.34534 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24534 19.9624 9.94534C20.0624 12.0453 19.2624 13.9453 18.0624 15.3453Z" fill="black" />
@@ -46,7 +46,7 @@ const UserHeader = (props) => {
                                     </span>
                                     SF, Bay Area
                                 </div>
-                                <div className="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                <div className="d-flex align-items-center text-gray-400 text-hover-primary mb-2" style={{ cursor: "default" }}>
                                     <span className="svg-icon svg-icon-4 me-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
                                             <path opacity="0.3" d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19Z" fill="black" />
