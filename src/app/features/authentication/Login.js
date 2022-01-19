@@ -4,6 +4,7 @@ import Logo from "../../../assets/media/logos/logo-1.svg";
 import GoogleLogo from "../../../assets/media/svg/brand-logos/google-icon.svg";
 import agent from "../../api/agent";
 import UserContext from "../../context/user-context";
+import LoadingButton from "../../layout/appComponents/LoadingButton";
 
 const Login = () => {
 	const userCtx = useContext(UserContext);
@@ -12,6 +13,7 @@ const Login = () => {
 		email: "",
 		password: ""
 	});
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	useEffect(() => {
 		if (userCtx.user)
@@ -26,12 +28,14 @@ const Login = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setIsSubmitting(true);
 		agent.Account.login(formValues)
 			.then(user => {
 				userCtx.saveUser(user);
 				history.push("/");
 			})
 			.catch(error => console.log(error))
+			.finally(() => setIsSubmitting(false));
 	}
 
     return (
@@ -68,11 +72,7 @@ const Login = () => {
 								/>
 							</div>
 							<div className="text-center">
-								<button type="submit" id="kt_sign_in_submit" className="btn btn-lg btn-primary w-100 mb-5">
-									<span className="indicator-label">Continue</span>
-									<span className="indicator-progress">Please wait...
-									<span className="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-								</button>
+								<LoadingButton classes="btn-lg w-100 mb-5" isSubmitting={isSubmitting}>Continue</LoadingButton>
 								<div className="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
 								<Link to="/" className="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
 								<img alt="Logo" src={GoogleLogo} className="h-20px me-3" />Continue with Google</Link>
