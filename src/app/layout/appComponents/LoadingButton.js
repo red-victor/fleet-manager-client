@@ -6,6 +6,7 @@
         data-kt-users-modal-action="submit"
         data-kt-indicator={isSubmitting ? "on" : "off"}
         onSubmit={onSubmit}
+        disabled={isSubmitting ? isSubmitting : false}
       >
         <span className="indicator-label">Submit</span>
         <span className="indicator-progress">
