@@ -25,15 +25,12 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
         serviceType: ticketFormData.type,
         ticketStatus: ticketFormData.ticketStatus,
         executionDate: ticketFormData.date,
-        mileageAtExecution: "",
+        mileageAtExecution: ticketFormData.mileageAtSubmit,
         renewDate: "",
         isPayed: false,
         adminId: userCtx.user.id,
         ticketId: ticketFormData.id
     }
-
-    // console.log(initialHistoryFormValueState);
-    // console.log(ticketFormData);
 
     const [historyFormValues, setHistoryFormValues] = useState(initialHistoryFormValueState);
 
@@ -58,7 +55,6 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                 isPayed: !prevState.isPayed
             }
         });
-        console.log(historyFormValues);
     }
 
     const handleSubmit = event => {
@@ -184,14 +180,15 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                                     </div>
                                 </div>
 
-                                <AppInput
-                                    label="Mileage at Execution"
-                                    name="mileageAtExecution"
-                                    placeholder="Mileage"
-                                    type="number"
-                                    value={historyFormValues.mileageAtExecution}
-                                    onChange={handleHistoryFromValuesChange}
-                                />
+                                <div className="row g-9 mb-8">
+                                    <div className="col-md-6 fv-row">
+                                        <div className="fs-6 fw-bold mb-2">Mileage at Execution:</div>
+                                        <div className="d-flex align-items-center">{historyFormValues.mileageAtExecution}</div>
+                                    </div>
+                                    <div className="col-md-6 fv-row">
+
+                                    </div>
+                                </div>
 
                                 <AppInput
                                     label="Renewal Date"

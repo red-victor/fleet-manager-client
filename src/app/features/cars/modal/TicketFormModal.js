@@ -41,15 +41,9 @@ const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
     }
 
     const handleSubmit = event => {
-        console.log(ticketFormValues);
         event.preventDefault();
         if (!isValidForm()) return;
-        // submitTicket(ticketFormValues);
-        submitTicket({
-            ...ticketFormValues,
-            ticketType: parseInt(ticketFormValues.ticketType),
-            mileageAtSubmit: 100
-        });
+        submitTicket(ticketFormValues);
     }
 
     function escFunction(event) {
