@@ -1,30 +1,9 @@
 import { Link } from "react-router-dom";
 import PlacholderImage from "../../../../../../../assets/img/solved-history-placeholder.jpg";
+import utils from "../../../../../../utils/utils";
 
 const SolvedHistoryItem = (props) => {
     const { historyItem } = props;
-
-    const serviceType = (serviceType) => {
-        switch (serviceType) {
-            case 0: return 'RCA';
-            case 1: return 'CASCO';
-            case 2: return 'ITP';
-            case 3: return 'Revision';
-            case 4: return 'Consumable';
-            default: return 'Other';
-        }
-    }
-
-    const serviceTypeTextColor = (serviceType) => {
-        switch (serviceType) {
-            case 0:
-            case 1: return 'primary';
-            case 2: return 'warning';
-            case 3: return 'info';
-            case 4: return 'success';
-            default: return 'danger';
-        }
-    }
 
     return (
         <>
@@ -45,7 +24,9 @@ const SolvedHistoryItem = (props) => {
                     <span className="text-dark fw-bolder d-block fs-5">{historyItem.cost}€</span>
                 </td>
                 <td className="text-end">
-                    <span className={"text-" + serviceTypeTextColor(historyItem.serviceType) + " fs-7 fw-bolder"}>{serviceType(historyItem.serviceType)}</span>
+                    <span className={"text-" + utils.Services.ServiceColor(historyItem.serviceType) + " fs-7 fw-bolder"}>
+                        {utils.Services.ServiceType(historyItem.serviceType)}
+                    </span>
                 </td>
                 <td className="text-end">
                     {/* <div className="btn btn-sm btn-icon btn-bg-light btn-active-color-primary"> */}

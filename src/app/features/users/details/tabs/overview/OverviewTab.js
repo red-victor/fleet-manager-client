@@ -1,4 +1,4 @@
-import MyTicketHistory from "./tickets/MyTicketHistory";
+import MyTicketHistory from "./MyTicketHistory";
 import MyHistories from "./history/SolvedHistories";
 import Tickets from "./tickets/Tickets";
 

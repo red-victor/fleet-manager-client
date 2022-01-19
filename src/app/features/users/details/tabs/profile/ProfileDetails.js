@@ -12,7 +12,7 @@ const ProfileDetails = (props) => {
                     <div className="card-title m-0">
                         <h3 className="fw-bolder m-0">Profile Details</h3>
                     </div>
-                    <a href="../../demo2/dist/account/settings.html" className="btn btn-primary align-self-center">Edit Profile</a>
+                    <div className="btn btn-primary align-self-center">Edit Profile</div>
                 </div>
                 <div className="card-body p-9">
                     <div className="row mb-7">

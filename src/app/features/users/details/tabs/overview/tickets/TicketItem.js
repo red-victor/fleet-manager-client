@@ -1,24 +1,9 @@
 import { Link } from "react-router-dom";
 import TicketPlaceholder from "../../../../../../../assets/img/ticket-placeholder.png";
+import utils from "../../../../../../utils/utils";
 
 const TicketItem = (props) => {
     const { ticket } = props;
-
-    const statusColor = (statusColor) => {
-        switch (statusColor) {
-            case 0: return 'warning';
-            case 1: return 'danger';
-            default: return 'success';
-        }
-    }
-
-    const statusType = (statusType) => {
-        switch (statusType) {
-            case 0: return 'Pending';
-            case 1: return 'In Progress';
-            default: return 'Solved';
-        }
-    }
 
     return (
         <>
@@ -28,13 +13,15 @@ const TicketItem = (props) => {
                 </div>
                 <div className="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
                     <div className="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-                        <a href="#" className="fs-5 text-gray-800 text-hover-primary fw-bolder">{ticket.title}</a>
+                        <div className="fs-5 text-gray-800 text-hover-primary fw-bolder" style={{ cursor: "pointer" }}>{ticket.title}</div>
                         <span className="text-gray-400 fw-bold fs-7 my-1">{ticket.details}</span>
                         <span className="text-gray-400 fw-bold fs-7">By:
                             <Link to={`/users/${ticket.user.id}`} className="text-primary fw-bold">
                                 {ticket.user.firstName + " " + ticket.user.lastName}
                             </Link>
-                            <span className={`badge badge-light-${statusColor(ticket.status)} fs-8 fw-bolder my-2`}>{statusType(ticket.status)}</span>
+                            <span className={`badge badge-light-${utils.Services.StatusColor(ticket.status)} fs-8 fw-bolder my-2`}>
+                                {utils.Services.Status(ticket.status)}
+                            </span>
                         </span>
                     </div>
                     <div className="text-end py-lg-0 py-2">
