@@ -22,6 +22,7 @@ const ConfirmPassword = (props) => {
         confirmPassword: ""
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
 
     const handleFormChange = event => {
         const {name, value} = event.target;
@@ -33,8 +34,25 @@ const ConfirmPassword = (props) => {
         })
     };
 
+    const formValuesAreValid = () => {
+        if (formValues.password !== formValues.confirmPassword) {
+            setErrorMsg("Password and Confirm Password fields do not match.");
+            return false;
+        }
+
+        if (formValues.password.length < 6) {
+            setErrorMsg("Password must have at leaset 6 characters.");
+            return false;
+        }
+
+        return true;
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
+
+        if (!formValuesAreValid()) return;
+
         setIsSubmitting(true);
         agent.Account.resetPassword({
             ...formValues,
@@ -117,6 +135,7 @@ const ConfirmPassword = (props) => {
                         onChange={handleFormChange}
                         autoComplete="off"
                         />
+                        <div className="form-text mb-5 text-danger">{errorMsg}</div>
                     </div>
                     {/*end::Input group*/}
                     {/*begin::Actions*/}
