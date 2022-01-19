@@ -1,8 +1,8 @@
- const LoadingButton = ({isSubmitting, onSubmit}) => {
+ const LoadingButton = ({isSubmitting, onSubmit, classes}) => {
      return (
         <button
         type="submit"
-        className="btn btn-primary"
+        className={`btn btn-primary ${classes ?? ""}`}
         data-kt-users-modal-action="submit"
         data-kt-indicator={isSubmitting ? "on" : "off"}
         onSubmit={onSubmit}
