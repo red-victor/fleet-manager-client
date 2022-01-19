@@ -8,7 +8,7 @@ const CarTicketItem = (props) => {
             <tr>
                 <td>
                     <label className="w-150px">{ticket.title}</label>
-                    <div className="fw-normal text-gray-600">{ticket.details}</div>
+                    <div className="fw-normal text-gray-600">{utils.Text.Shorten(ticket.details)}</div>
                 </td>
                 <td>
                     <span className={`badge badge-light-${utils.Services.StatusColor(ticket.status)}`}>{utils.Services.Status(ticket.status)}</span>

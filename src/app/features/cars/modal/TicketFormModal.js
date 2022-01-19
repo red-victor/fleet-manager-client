@@ -5,6 +5,7 @@ import AppInput from "../../../layout/appComponents/AppInput";
 import AppSelect from "../../../layout/appComponents/AppSelect";
 import LoadingButton from "../../../layout/appComponents/LoadingButton";
 import AppTextArea from "../../../layout/appComponents/AppTextArea";
+import utils from "../../../utils/utils";
 
 const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
     const userCtx = useContext(UserContext);
@@ -16,8 +17,9 @@ const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
         imagePath: "",
         details: "",
         cost: "",
-        ticketType: "",
+        ticketType: 0,
         ticketStatus: 0,
+        mileageAtSubmit: 100,
     }
 
     const [image, setImage] = useState(null);
@@ -39,9 +41,15 @@ const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
     }
 
     const handleSubmit = event => {
+        console.log(ticketFormValues);
         event.preventDefault();
         if (!isValidForm()) return;
-        submitTicket(ticketFormValues);
+        // submitTicket(ticketFormValues);
+        submitTicket({
+            ...ticketFormValues,
+            ticketType: parseInt(ticketFormValues.ticketType),
+            mileageAtSubmit: 100
+        });
     }
 
     function escFunction(event) {
@@ -163,7 +171,8 @@ const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
                                 </div>
                                 <AppInput label="Title" name="title" placeholder="Title" value={ticketFormValues.title} onChange={handleTicketFromValuesChange} />
                                 <AppTextArea label="Details" name="details" placeholder="Description..." value={ticketFormValues.details} onChange={handleTicketFromValuesChange} />
-                                <AppInput label="Cost in Euro" name="cost" placeholder="199" type="number" value={ticketFormValues.cost} onChange={handleTicketFromValuesChange} />
+                                <AppInput label="Cost in Euro" name="cost" placeholder="0" type="number" value={ticketFormValues.cost} onChange={handleTicketFromValuesChange} />
+                                <AppInput label="Mileage At Submit" name="mileageAtSubmit" placeholder="0" type="number" value={ticketFormValues.mileageAtSubmit} onChange={handleTicketFromValuesChange} />
                                 <AppSelect label="Type" name="ticketType" value={ticketFormValues.ticketType} onChange={handleTicketFromValuesChange}
                                     options={serviceList}
                                 />

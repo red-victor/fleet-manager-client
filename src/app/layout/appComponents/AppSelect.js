@@ -5,9 +5,9 @@ const AppSelect = ({ name, label, classes, placeholder, value, onChange, options
             <select
                 name={name}
                 className={`form-control form-control-solid mb-3 mb-lg-0 ${classes ? classes : ""}`}
-            // placeholder={placeholder}
-            value={value}
-            onChange={onChange}
+                // placeholder={placeholder}
+                value={value}
+                onChange={onChange}
             >
                 {options.map((option, i) => (
                     <option key={i} value={i}>{option}</option>
