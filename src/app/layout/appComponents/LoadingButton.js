@@ -1,4 +1,4 @@
- const LoadingButton = ({isSubmitting, onSubmit, classes}) => {
+ const LoadingButton = ({isSubmitting, onSubmit, classes, children}) => {
      return (
         <button
         type="submit"
@@ -8,7 +8,7 @@
         onSubmit={onSubmit}
         disabled={isSubmitting ? isSubmitting : false}
       >
-        <span className="indicator-label">Submit</span>
+        <span className="indicator-label">{children}</span>
         <span className="indicator-progress">
           Please wait...
           <span className="spinner-border spinner-border-sm align-middle ms-2" />

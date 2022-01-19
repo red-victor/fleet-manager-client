@@ -213,7 +213,7 @@ const TicketFormModal = ({ closeModal, isSubmitting, solveTicket, ticketFormData
                                 >
                                     Discard
                                 </button>
-                                <LoadingButton isSubmitting={isSubmitting} />
+                                <LoadingButton isSubmitting={isSubmitting}>Submit</LoadingButton>
                             </div>
                         </form>
                     </div>

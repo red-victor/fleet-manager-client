@@ -177,7 +177,7 @@ const TicketFormModal = ({ closeModal, carId, isSubmitting, submitTicket }) => {
                                 >
                                     Discard
                                 </button>
-                                <LoadingButton isSubmitting={isSubmitting} />
+                                <LoadingButton isSubmitting={isSubmitting}>Submit</LoadingButton>
                             </div>
                         </form>
                     </div>

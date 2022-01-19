@@ -100,7 +100,7 @@ const ResetPassword = () => {
                     {/*end::Input group*/}
                     {/*begin::Actions*/}
                     <div className="d-flex flex-wrap justify-content-center pb-lg-0">
-                        <LoadingButton isSubmitting={isSubmitting} />
+                        <LoadingButton isSubmitting={isSubmitting}>Submit</LoadingButton>
                         <Link
                         to="/login"
                         style={{marginLeft: 30}}
