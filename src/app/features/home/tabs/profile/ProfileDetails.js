@@ -47,7 +47,7 @@ const ProfileDetails = () => {
                     <div className="row mb-7">
                         <label className="col-lg-4 fw-bold text-muted">CNP</label>
                         <div className="col-lg-8">
-                            <span className="fw-bold fs-6 text-gray-800">{user.cNP}</span>
+                            <span className="fw-bold fs-6 text-gray-800">{user.cnp}</span>
                         </div>
                     </div>
 

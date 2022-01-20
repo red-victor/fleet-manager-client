@@ -9,7 +9,7 @@ const UserContext = React.createContext({
         email: "",
         firstName: "",
         lastName: "",
-        cNP: "",
+        cnp: "",
         adress: "",
         phoneNumber: "",
         phoneNumberConfirmed: false,
