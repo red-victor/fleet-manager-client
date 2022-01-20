@@ -4,7 +4,13 @@ export const statusList = ['Unresolved', 'In Progress', 'Solved'];
 const statusColorList = ['danger', 'warning', 'success'];
 
 const Text = {
-    Capitalize: (text) => (text.charAt(0).toUpperCase() + text.slice(1)),
+    Capitalize: (string) => {
+        var text = string.split(" ");
+        for (var i = 0; i < text.length; i++) {
+            text[i] = text[i].charAt(0).toUpperCase() + text[i].slice(1)
+        }
+        return text.join(" ")
+    },
     Shorten: (text) => text.length > 50 ? text.slice(0, 40) + "..." : text,
     Date: (date) => new Date(date).toISOString().split('T')[0],
 }
