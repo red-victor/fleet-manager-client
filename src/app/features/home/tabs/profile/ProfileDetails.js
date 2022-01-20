@@ -1,6 +1,8 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import UserContext from "../../../../context/user-context";
 import MailTo from "../../../../layout/appComponents/MailTo";
+import utils from "../../../../utils/utils";
 
 const ProfileDetails = () => {
     const { user } = useContext(UserContext);
@@ -8,7 +10,7 @@ const ProfileDetails = () => {
     return (
         <>
             <div className="card mb-5 mb-xl-10" id="kt_profile_details_view">
-                <div className="card-header cursor-pointer">
+                <div className="card-header">
                     <div className="card-title m-0">
                         <h3 className="fw-bolder m-0">Profile Details</h3>
                     </div>
@@ -18,23 +20,7 @@ const ProfileDetails = () => {
                     <div className="row mb-7">
                         <label className="col-lg-4 fw-bold text-muted">Full Name</label>
                         <div className="col-lg-8">
-                            <span className="fw-bolder fs-6 text-gray-800">{user.firstName + " " + user.lastName}</span>
-                        </div>
-                    </div>
-                    <div className="row mb-7">
-                        <label className="col-lg-4 fw-bold text-muted">Company</label>
-                        <div className="col-lg-8 fv-row">
-                            <span className="fw-bold text-gray-800 fs-6">Keenthemes</span>
-                        </div>
-                    </div>
-                    <div className="row mb-7">
-                        <label className="col-lg-4 fw-bold text-muted">Contact Phone
-                            <i className="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active" /></label>
-                        <div className="col-lg-8 d-flex align-items-center">
-                            <span className="fw-bolder fs-6 text-gray-800 me-2">{user.phoneNumber}</span>
-                            <span className={"badge badge-" + (user.phoneNumberConfirmed ? "success" : "warning")}>
-                                {user.phoneNumberConfirmed ? "Verified" : "Unverified"}
-                            </span>
+                            <span className="fw-bolder fs-6 text-gray-800">{`${user.firstName} ${user.lastName}`}</span>
                         </div>
                     </div>
                     <div className="row mb-7">
@@ -47,22 +33,35 @@ const ProfileDetails = () => {
                         </div>
                     </div>
                     <div className="row mb-7">
-                        <label className="col-lg-4 fw-bold text-muted">Country
-                            <i className="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination" /></label>
-                        <div className="col-lg-8">
-                            <span className="fw-bolder fs-6 text-gray-800">Germany</span>
+                        <label className="col-lg-4 fw-bold text-muted">Contact Phone
+                            {user.phoneNumberConfirmed ? "" : <i className="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active" />}</label>
+                        <div className="col-lg-8 d-flex align-items-center">
+                            <span className="fw-bold fs-6 text-gray-800 me-2">{user.phoneNumber}</span>
+                            <span className={"badge badge-" + (user.phoneNumberConfirmed ? "success" : "warning")}>
+                                {user.phoneNumberConfirmed ? "Verified" : "Unverified"}
+                            </span>
                         </div>
                     </div>
+
+                    {/* TODO: Add validation for admin */}
                     <div className="row mb-7">
-                        <label className="col-lg-4 fw-bold text-muted">Communication</label>
+                        <label className="col-lg-4 fw-bold text-muted">CNP</label>
                         <div className="col-lg-8">
-                            <span className="fw-bolder fs-6 text-gray-800">Email, Phone</span>
+                            <span className="fw-bold fs-6 text-gray-800">{user.cNP}</span>
                         </div>
                     </div>
-                    <div className="row mb-10">
-                        <label className="col-lg-4 fw-bold text-muted">Allow Changes</label>
+
+                    <div className="row mb-7">
+                        <label className="col-lg-4 fw-bold text-muted">Address</label>
                         <div className="col-lg-8">
-                            <span className="fw-bold fs-6 text-gray-800">Yes</span>
+                            <span className="fw-bold fs-6 text-gray-800">{user.adress}</span>
+                        </div>
+                    </div>
+
+                    <div className="row mb-7">
+                        <label className="col-lg-4 fw-bold text-muted">Car</label>
+                        <div className="col-lg-8">
+                            <Link to={`/cars/${user.car.id}`} className="fw-bold fs-6 text-primary">{user.car.brand} {user.car.model} ({new Date(user.car.firstRegistrationDate).getFullYear()})</Link>
                         </div>
                     </div>
                 </div>
