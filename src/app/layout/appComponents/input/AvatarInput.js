@@ -4,7 +4,7 @@ import BlankUserImg from "../../../../assets/media/avatars/blank.png";
 const AvatarInput = ({userAvatar, className}) => {
     const [avatar, setAvatar] = useState(userAvatar);
     return (
-        <div className={`${className ?? ""}`}>
+        <div className={className ? className : undefined}>
             <label className="d-block fw-bold fs-6 mb-5">Avatar</label>
             <div
                 className={`image-input image-input-outline ${!avatar && 'image-input-empty'}`}
