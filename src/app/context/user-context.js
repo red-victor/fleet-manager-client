@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from 'react';
+import utils from "../utils/utils";
 
 const UserContext = React.createContext({
     user: {
@@ -31,7 +32,12 @@ export const UserContextProvider = props => {
 
     const saveUser = userObj => {
         localStorage.setItem('user', JSON.stringify(userObj));
-        setUser(userObj);
+        setUser({
+            ...userObj,
+            firstName: utils.Text.Capitalize(userObj.firstName),
+            lastName: utils.Text.Capitalize(userObj.lastName),
+            adress: utils.Text.Capitalize(userObj.adress)
+        });
     }
 
     const signOutUser = () => {
