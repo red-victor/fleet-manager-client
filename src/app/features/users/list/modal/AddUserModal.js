@@ -101,12 +101,12 @@ const AddUserModal = ({ closeModal, registerUser, isSubmitting }) => {
                 data-kt-scroll-offset="300px"
               >
                 <AvatarInput className="fv-row mb-7" userAvatar={UserPhoto} />
-                <AppInput label="First Name" name="firstName" placeholder="John" value={userFormValues.firstName} onChange={handleUserFromValuesChange} />
-                <AppInput label="Last Name" name="lastName" placeholder="Doe" value={userFormValues.lastName} onChange={handleUserFromValuesChange} />
-                <AppInput type="email" label="Email" name="email" placeholder="example@domain.com" value={userFormValues.email} onChange={handleUserFromValuesChange} />
-                <AppInput label="CNP" name="cnp" placeholder="12345678901234" value={userFormValues.cnp} onChange={handleUserFromValuesChange} />
-                <AppInput label="Phone Number" name="phoneNumber" placeholder="12345678901234" value={userFormValues.phoneNumber} onChange={handleUserFromValuesChange} />
-                <AppInput label="Address" name="address" placeholder="Personal address" value={userFormValues.address} onChange={handleUserFromValuesChange} />
+                <AppInput label="First Name" labelClasses="required fw-bold fs-6 mb-2" inputClasses="form-control form-control-solid mb-3 mb-lg-0" name="firstName" placeholder="John" value={userFormValues.firstName} onChange={handleUserFromValuesChange} />
+                <AppInput label="Last Name" labelClasses="required fw-bold fs-6 mb-2" inputClasses="form-control form-control-solid mb-3 mb-lg-0" name="lastName" placeholder="Doe" value={userFormValues.lastName} onChange={handleUserFromValuesChange} />
+                <AppInput type="email" label="Email" labelClasses="required fw-bold fs-6 mb-2" inputClasses="form-control form-control-solid mb-3 mb-lg-0" name="email" placeholder="example@domain.com" value={userFormValues.email} onChange={handleUserFromValuesChange} />
+                <AppInput label="CNP" labelClasses="required fw-bold fs-6 mb-2" inputClasses="form-control form-control-solid mb-3 mb-lg-0" name="cnp" placeholder="12345678901234" value={userFormValues.cnp} onChange={handleUserFromValuesChange} />
+                <AppInput label="Phone Number" labelClasses="required fw-bold fs-6 mb-2" inputClasses="form-control form-control-solid mb-3 mb-lg-0" name="phoneNumber" placeholder="12345678901234" value={userFormValues.phoneNumber} onChange={handleUserFromValuesChange} />
+                <AppInput label="Address" labelClasses="required fw-bold fs-6 mb-2" inputClasses="form-control form-control-solid mb-3 mb-lg-0" name="address" placeholder="Personal address" value={userFormValues.address} onChange={handleUserFromValuesChange} />
                 <div className="mb-7">
                   <label className="required fw-bold fs-6 mb-5">Role</label>
                   <div className="d-flex fv-row">
