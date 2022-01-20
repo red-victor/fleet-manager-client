@@ -1,9 +1,9 @@
-import BlankUserImg from "../../../../../assets/media/avatars/blank.png";
 import UserPhoto from "../../../../../assets/media/avatars/150-1.jpg";
 import LoadingButton from "../../../../layout/appComponents/LoadingButton";
 import AppInput from "../../../../layout/appComponents/input/AppInput";
 import { useEffect } from "react";
 import { useState } from "react";
+import AvatarInput from "../../../../layout/appComponents/input/AvatarInput";
 
 const AddUserModal = ({ closeModal, registerUser, isSubmitting }) => {
   const initialUserFormValueState = {
@@ -15,8 +15,6 @@ const AddUserModal = ({ closeModal, registerUser, isSubmitting }) => {
     address: "",
     role: "Employee"
   }
-
-  const [userAvatar, setUserAvatar] = useState(null);
 
   const [userFormValues, setUserFormValues] = useState(initialUserFormValueState);
 
@@ -102,58 +100,12 @@ const AddUserModal = ({ closeModal, registerUser, isSubmitting }) => {
                 data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
                 data-kt-scroll-offset="300px"
               >
-                <div className="fv-row mb-7">
-                  <label className="d-block fw-bold fs-6 mb-5">Avatar</label>
-                  <div
-                    className={`image-input image-input-outline ${!userAvatar && 'image-input-empty'}`}
-                    data-kt-image-input="true"
-                    style={{
-                      backgroundImage: `url(${BlankUserImg})`
-                    }}
-                  >
-                    <div
-                      className="image-input-wrapper w-125px h-125px"
-                      style={{
-                        backgroundImage: userAvatar ? `url(${UserPhoto})` : 'none' // !userImage and backgroundImage none
-                      }}
-                    />
-                    <label
-                      className="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                      data-kt-image-input-action="change"
-                      data-bs-toggle="tooltip"
-                      title="Change avatar"
-                    >
-                      <i className="bi bi-pencil-fill fs-7" />
-                      <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-                      <input type="hidden" name="avatar_remove" />
-                    </label>
-                    <span
-                      className="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                      data-kt-image-input-action="cancel"
-                      data-bs-toggle="tooltip"
-                      title="Cancel avatar"
-                    >
-                      <i className="bi bi-x fs-2" />
-                    </span>
-                    <span
-                      className="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                      data-kt-image-input-action="remove"
-                      data-bs-toggle="tooltip"
-                      title="Remove avatar"
-                      onClick={() => setUserAvatar(null)}
-                    >
-                      <i className="bi bi-x fs-2" />
-                    </span>
-                  </div>
-                  <div className="form-text">
-                    Allowed file types: png, jpg, jpeg.
-                  </div>
-                </div>
+                <AvatarInput className="fv-row mb-7" userAvatar={UserPhoto} />
                 <AppInput label="First Name" name="firstName" placeholder="John" value={userFormValues.firstName} onChange={handleUserFromValuesChange} />
                 <AppInput label="Last Name" name="lastName" placeholder="Doe" value={userFormValues.lastName} onChange={handleUserFromValuesChange} />
                 <AppInput type="email" label="Email" name="email" placeholder="example@domain.com" value={userFormValues.email} onChange={handleUserFromValuesChange} />
                 <AppInput label="CNP" name="cnp" placeholder="12345678901234" value={userFormValues.cnp} onChange={handleUserFromValuesChange} />
-                <AppInput label="phoneNumber" name="phoneNumber" placeholder="12345678901234" value={userFormValues.phoneNumber} onChange={handleUserFromValuesChange} />
+                <AppInput label="Phone Number" name="phoneNumber" placeholder="12345678901234" value={userFormValues.phoneNumber} onChange={handleUserFromValuesChange} />
                 <AppInput label="Address" name="address" placeholder="Personal address" value={userFormValues.address} onChange={handleUserFromValuesChange} />
                 <div className="mb-7">
                   <label className="required fw-bold fs-6 mb-5">Role</label>
