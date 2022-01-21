@@ -1,12 +1,7 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import UserContext from "../../../../context/user-context";
 import MailTo from "../../../../layout/appComponents/MailTo";
-import utils from "../../../../utils/utils";
 
-const ProfileDetails = () => {
-    const { user } = useContext(UserContext);
-
+const ProfileDetails = ({user, openEditForm}) => {
     return (
         <>
             <div className="card mb-5 mb-xl-10" id="kt_profile_details_view">
@@ -14,7 +9,7 @@ const ProfileDetails = () => {
                     <div className="card-title m-0">
                         <h3 className="fw-bolder m-0">Profile Details</h3>
                     </div>
-                    <a href="../../demo2/dist/account/settings.html" className="btn btn-primary align-self-center">Edit Profile</a>
+                    <button className="btn btn-primary align-self-center" onClick={openEditForm}>Edit Profile</button>
                 </div>
                 <div className="card-body p-9">
                     <div className="row mb-7">
