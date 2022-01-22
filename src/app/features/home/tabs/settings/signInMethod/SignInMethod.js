@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EditPasswordFrom from "./EditPasswordForm";
+import PasswordField from "./PasswordField";
 
 const SignInMethod = () => {
     const [isEditingPassword, setIsEditingPassword] = useState(false);
@@ -26,17 +27,7 @@ const SignInMethod = () => {
                     <div className="separator separator-dashed my-6" />
 
                     <div className="d-flex flex-wrap align-items-center mb-10">
-                        {!isEditingPassword &&
-                            <>
-                                <div id="kt_signin_password">
-                                    <div className="fs-6 fw-bolder mb-1">Password</div>
-                                    <div className="fw-bold text-gray-600">************</div>
-                                </div>
-                                <div id="kt_signin_password_button" className="ms-auto">
-                                    <button className="btn btn-light btn-active-light-primary" onClick={() => setIsEditingPassword(true)}>Reset Password</button>
-                                </div>
-                            </>
-                        }
+                        {!isEditingPassword && <PasswordField setIsEditingPassword={setIsEditingPassword} /> }
 
                         {isEditingPassword &&
                             <EditPasswordFrom closeForm={() => setIsEditingPassword(false)} />
