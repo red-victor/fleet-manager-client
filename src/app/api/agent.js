@@ -57,6 +57,7 @@ const Account = {
     changeMyPassword: payload => requests.put("account/change-my-password", payload),
     sendResetPasswordLink: payload => requests.post("account/request-reset-password", payload),
     resetPassword: payload => requests.post("account/reset-password", payload),
+    requestEmailChange: payload => requests.post("account/request-email-change", payload),
     changeEmail: payload => requests.put("account/change-email", payload),
 }
 
