@@ -35,7 +35,7 @@ const UserHeader = (props) => {
                                             <path d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z" fill="black" />
                                         </svg>
                                     </span>
-                                    Admin
+                                    {user.role}
                                 </div>
                                 <div className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" style={{ cursor: "default" }}>
                                     <span className="svg-icon svg-icon-4 me-1">

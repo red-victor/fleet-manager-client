@@ -15,7 +15,8 @@ const UserContext = React.createContext({
         phoneNumberConfirmed: false,
         photoUrl: "",
         car: "",
-        token: ""
+        token: "",
+        role: ""
     },
     saveUser: user => { },
     signOutUser: () => { }
