@@ -25,10 +25,12 @@ const UserDashboard = () => {
 
     async function getData() {
         try {
-            const ticketData = await agent.Tickets.GetAll();
-            const historyData = await agent.History.GetAll();
-            setTickets(ticketData);
-            setHistories(historyData);
+            if (userCtx.user.role === "Admin") {
+                const ticketData = await agent.Tickets.GetAll();
+                const historyData = await agent.History.GetAll();
+                setTickets(ticketData);
+                setHistories(historyData);
+            }
         } catch (e) {
             console.log(e);
         } finally {
@@ -70,16 +72,19 @@ const UserDashboard = () => {
                                 <TabNavItem tab={tab} setTab={setTab} tabFor="overview" >Overview</TabNavItem>
                                 <TabNavItem tab={tab} setTab={setTab} tabFor="profile" >Profile</TabNavItem>
                                 <TabNavItem tab={tab} setTab={setTab} tabFor="settings" >Settings</TabNavItem>
-                                <TabNavItem tab={tab} setTab={setTab} tabFor="logs" >Logs</TabNavItem>
+                                {userCtx.user && userCtx.user.role === "Admin" &&
+                                    <TabNavItem tab={tab} setTab={setTab} tabFor="logs" >Logs</TabNavItem>
+                                }
                             </ul>
 
                         </div>
                     </div>
-                    {(tab === "overview") && <OverviewTab
+                    {(tab === "overview") && userCtx.user && <OverviewTab
                         tickets={tickets}
                         histories={histories}
                         showHistoryModal={() => setShowHistoryModal(true)}
                         setTicketFormData={setTicketFormData}
+                        isAdmin={userCtx.user.role === "Admin"}
                     />}
                     {(tab === "profile") && <MyProfileTab />}
                     {(tab === "settings") && <SettingsTab />}

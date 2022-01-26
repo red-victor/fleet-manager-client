@@ -1,3 +1,5 @@
+import jwt_decode from "jwt-decode";
+
 export const serviceList = ['RCA', 'CASCO', 'ITP', 'Revision', 'Consumable', 'Other'];
 const serviceColor = ['primary', 'primary', 'warning', 'info', 'success', 'danger'];
 export const statusList = ['Unresolved', 'In Progress', 'Solved'];
@@ -22,9 +24,18 @@ const Services = {
     StatusColor: (index) => statusColorList[index],
 }
 
+const Authorization = {
+    GetRole: (token) => jwt_decode(token)["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"],
+    SetUserRole: (user, role) => {
+        user.role = role;
+        localStorage.setItem('user', JSON.stringify(user));
+    }
+}
+
 const utils = {
     Text,
     Services,
+    Authorization,
 }
 
 export default utils;
