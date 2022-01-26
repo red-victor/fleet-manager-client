@@ -19,8 +19,10 @@ const UserListPage = () => {
     }, [setUsers])
 
     async function getAllUsers() {
+        setIsFetchingData(true);
         const data = await agent.Users.GetAll();
         setUsers(data);
+        setIsFetchingData(false);
     }
 
     const registerUser = formValues => {
@@ -60,7 +62,7 @@ const UserListPage = () => {
 
                         <UserListHeader handleShowAddUserModal={handleShowAddUserModal} searchUsers={searchUsers} isFetchingData={isFetchingData} />
 
-                        <UserListBody users={users} />
+                        <UserListBody users={users} isFetchingData={isFetchingData} />
                     </div>
                 </div>
             </div>

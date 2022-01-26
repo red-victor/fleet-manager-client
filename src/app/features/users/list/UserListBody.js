@@ -1,7 +1,11 @@
+import ClipLoaderComponent from "../../../layout/appComponents/loading/ClipLoaderComponent";
 import UserListItem from "./body/UserListItem";
 
 const UserListBody = (props) => {
-    const { users } = props;
+    const { users, isFetchingData } = props;
+    const tableIsEmpty = users && (users.length == 0);
+
+    if (isFetchingData) return <ClipLoaderComponent />
 
     return (
         <>
@@ -21,6 +25,11 @@ const UserListBody = (props) => {
                         {users && users.map((user, i) =>
                             <UserListItem key={i} user={user} />
                         )}
+
+                        {tableIsEmpty && 
+                            <tr className="odd">
+                                <td valign="top" colSpan={7} className="dataTables_empty text-center" style={{paddingTop: 50}}>No matching records found</td>
+                            </tr>}
                     </tbody>
                 </table>
             </div>
