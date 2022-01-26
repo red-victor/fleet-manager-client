@@ -14,10 +14,10 @@ const UserListPage = () => {
     })
 
     useEffect(() => {
-        getData();
+        getAllUsers();
     }, [setUsers])
 
-    async function getData() {
+    async function getAllUsers() {
         const data = await agent.Users.GetAll();
         setUsers(data);
     }
@@ -26,11 +26,22 @@ const UserListPage = () => {
         setIsSubmitting(true);
         agent.Account.register(formValues)
             .then(() => {
-                getData();
+                getAllUsers();
                 setShowAddUserModal(false);
             })
             .catch(e => console.log(e))
             .finally(() => setIsSubmitting(false));
+    }
+
+    const searchUsers = str => {
+        if (str.trim() === "") {
+            getAllUsers();
+        }
+        else {
+            agent.Users.Search(str)
+                .then(users => setUsers(users))
+                .catch(e => console.log(e))
+        }
     }
 
     return (
@@ -42,7 +53,7 @@ const UserListPage = () => {
                 <div className="content flex-row-fluid" id="kt_content">
                     <div className="card">
 
-                        <UserListHeader handleShowAddUserModal={handleShowAddUserModal} />
+                        <UserListHeader handleShowAddUserModal={handleShowAddUserModal} searchUsers={searchUsers} />
 
                         <UserListBody users={users} />
                     </div>

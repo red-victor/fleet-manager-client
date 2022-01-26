@@ -66,7 +66,8 @@ const Users = {
     GetAllWithNoCar: () => requests.get("users/with-no-car"),
     Get: id => requests.get(`users/${id}`),
     Update: payload => requests.put(`users/${payload.id}`, payload.user),
-    Delete: id => requests.delete("users", id)
+    Delete: id => requests.delete("users", id),
+    Search: str => requests.get(`users/search/${str}`)
 }
 
 const Cars = {
