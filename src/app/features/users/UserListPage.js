@@ -8,6 +8,7 @@ const UserListPage = () => {
     const [users, setUsers] = useState(null);
     const [showAddUserModal, setShowAddUserModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isFetchingData, setIsFetchingData] = useState(false);
 
     const handleShowAddUserModal = () => setShowAddUserModal(prevState => {
         return !prevState
@@ -33,15 +34,19 @@ const UserListPage = () => {
             .finally(() => setIsSubmitting(false));
     }
 
-    const searchUsers = str => {
+    const searchUsers = async str => {
+        setIsFetchingData(true);
         if (str.trim() === "") {
-            getAllUsers();
+            await getAllUsers();
+            setIsFetchingData(false);
         }
         else {
             agent.Users.Search(str)
                 .then(users => setUsers(users))
                 .catch(e => console.log(e))
+                .finally(() => setIsFetchingData(false));
         }
+        
     }
 
     return (
@@ -53,7 +58,7 @@ const UserListPage = () => {
                 <div className="content flex-row-fluid" id="kt_content">
                     <div className="card">
 
-                        <UserListHeader handleShowAddUserModal={handleShowAddUserModal} searchUsers={searchUsers} />
+                        <UserListHeader handleShowAddUserModal={handleShowAddUserModal} searchUsers={searchUsers} isFetchingData={isFetchingData} />
 
                         <UserListBody users={users} />
                     </div>
