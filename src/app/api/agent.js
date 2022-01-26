@@ -51,7 +51,9 @@ const requests = {
     post: (url, body) => axios.post(url, body).then(responseBody),
     put: (url, body) => axios.put(url, body).then(responseBody),
     putWithoutPayload: (url) => axios.put(url).then(responseBody),
-    delete: (url, body) => axios.delete(url, body).then(responseBody)
+    delete: (url, body) => axios.delete(url, body).then(responseBody),
+
+    postFile: (url, body, config) => axios.post(url, body, config).then(responseBody)
 };
 
 const Account = {
@@ -74,6 +76,12 @@ const Users = {
     Search: str => requests.get(`users/search/${str}`)
 }
 
+const CONFIG = {
+    headers: {
+        'content-type': 'multipart/form-data'
+    }
+}
+
 const Cars = {
     GetAll: () => requests.get("cars"),
     GetAllAssigned: () => requests.get("cars/assigned"),
@@ -84,6 +92,8 @@ const Cars = {
     Delete: id => requests.delete("cars", id),
     AssignUser: payload => requests.putWithoutPayload(`cars/${payload.carId}/assignUser/${payload.userId}`),
     DissociateUser: id => requests.putWithoutPayload(`cars/${id}/dissociateUser`),
+
+    UploadExcel: payload => requests.postFile("cars/upload/carList", payload.file, CONFIG),
 }
 
 const History = {
