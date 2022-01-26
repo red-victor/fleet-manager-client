@@ -1,20 +1,16 @@
 import { useState } from "react";
-import LoadingButton from "../../../layout/appComponents/LoadingButton";
-import agent from "../../../api/agent";
 
-const UploadCarExcelModal = ({ closeModal, isSubmitting, uploadExcel }) => {
+const UploadFileModal = ({ closeModal, isSubmitting, uploadFile, title }) => {
     const [selectedFile, setSelectedFile] = useState(null);
-    // const [isFilePicker, setIsFilePicked] = useState(false);
 
     const changeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
-        // setIsSelected(true);
     };
 
     const handleSubmission = () => {
         const formData = new FormData();
         formData.append('File', selectedFile);
-        uploadExcel(formData);
+        uploadFile(formData);
     };
 
     return (
@@ -23,7 +19,7 @@ const UploadCarExcelModal = ({ closeModal, isSubmitting, uploadExcel }) => {
                 <div className="modal-dialog modal-dialog-centered mw-650px">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h2 className="fw-bolder text-center">Upload Excel</h2>
+                            <h2 className="fw-bolder text-center">{title}</h2>
                             <div className="btn btn-icon btn-sm btn-active-icon-primary" onClick={closeModal}>
                                 <span className="svg-icon svg-icon-1">
                                     <svg
@@ -77,4 +73,4 @@ const UploadCarExcelModal = ({ closeModal, isSubmitting, uploadExcel }) => {
 
 };
 
-export default UploadCarExcelModal;
+export default UploadFileModal;

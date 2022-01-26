@@ -1,10 +1,11 @@
 import UserListAdd from "./toolbar/UserListAdd";
+import UserListAddExcel from "./toolbar/UserListAddExcel";
 import UserListExport from "./toolbar/UserListExport";
 import UserListFilter from "./toolbar/UserListFilter";
 import UserListSearch from "./toolbar/UserListSearch";
 
 const UserListHeader = (props) => {
-    const { handleShowAddUserModal, searchUsers, isFetchingData } = props;
+    const { handleShowAddUserModal, handleShowUploadExcelModal, searchUsers, isFetchingData } = props;
 
     return (
         <>
@@ -17,6 +18,7 @@ const UserListHeader = (props) => {
                         <UserListFilter />
                         <UserListExport />
                         <UserListAdd handleShowAddUserModal={handleShowAddUserModal} />
+                        <UserListAddExcel handleShowUploadExcelModal={handleShowUploadExcelModal} />
                     </div>
                 </div>
             </div>

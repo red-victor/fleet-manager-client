@@ -2,7 +2,7 @@ import CarList from "./list/CarList";
 import { useState, useEffect } from "react"
 import agent from "../../api/agent";
 import AddCarModal from "./modal/AddCarModal";
-import UploadCarExcelModal from "./modal/UploadCarExcelModal";
+import UploadFileModal from "../../layout/appComponents/UploadFileModal";
 
 const CarListPage = () => {
     const [cars, setCars] = useState(null);
@@ -34,10 +34,10 @@ const CarListPage = () => {
             .finally(() => setIsSubmitting(false));
     }
 
-    const uploadExcel = formData => {
+    const uploadFile = formData => {
         setIsSubmitting(true);
         console.log(formData.get('File'));
-        agent.Cars.UploadExcel({ file: formData })
+        agent.Files.UploadCarExcel({ file: formData })
             .then(() => {
                 getData();
                 setShowUploadExcelModal(false);
@@ -168,10 +168,11 @@ const CarListPage = () => {
             }
 
             {showUploadExcelModal &&
-                <UploadCarExcelModal
+                <UploadFileModal
                     closeModal={handleShowUploadExcelModal}
-                    uploadExcel={uploadExcel}
+                    uploadFile={uploadFile}
                     isSubmitting={isSubmitting}
+                    title={"Upload Car List Excel"}
                 />
             }
         </div>
