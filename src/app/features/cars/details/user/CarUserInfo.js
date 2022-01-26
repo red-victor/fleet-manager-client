@@ -1,7 +1,11 @@
 import ProfileImage from "../../../../../assets/media/avatars/blank.png";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../../../../context/user-context";
 
 const CarUserInfo = ({ user, handleDissociateUser }) => {
+    const userCtx = useContext(UserContext);
+
     return (
         <div className="flex-column flex-lg-row-auto w-lg-250px w-xl-300px mb-10 order-1 order-lg-2">
             <div className="card card-flush mb-0" data-kt-sticky="true" data-kt-sticky-name="subscription-summary" data-kt-sticky-offset="{default: false, lg: '200px'}" data-kt-sticky-width="{lg: '250px', xl: '300px'}" data-kt-sticky-left="auto" data-kt-sticky-top="150px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95">
@@ -52,7 +56,10 @@ const CarUserInfo = ({ user, handleDissociateUser }) => {
                                 <tr className="">
                                     <td className="text-gray-400">Role:</td>
                                     <td>
-                                        <span className="badge badge-light-primary">Admin</span>
+                                        {/* <span className={`badge badge-light-${user.role === "Admin" ? "danger" : "primary"}`}>
+                                            {user.role}
+                                        </span> */}
+                                        <span className="badge badge-light-primary">Admin/Employee (pending...)</span>
                                     </td>
                                 </tr>
                                 <tr className="">
@@ -62,9 +69,11 @@ const CarUserInfo = ({ user, handleDissociateUser }) => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="mb-0">
-                        <button className="btn btn-danger" onClick={handleDissociateUser}>Dissociate User</button>
-                    </div>
+                    {userCtx.user.role === "Admin" &&
+                        <div className="mb-0">
+                            <button className="btn btn-danger" onClick={handleDissociateUser}>Dissociate User</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
