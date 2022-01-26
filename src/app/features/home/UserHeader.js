@@ -57,7 +57,7 @@ const UserHeader = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex my-4">
+                        {/* <div className="d-flex my-4">
                             {user.car &&
                                 <Link to={`/cars/${user.car.id}`} className="btn btn-sm btn-light me-3">
                                     My Car
@@ -68,7 +68,7 @@ const UserHeader = (props) => {
                                     Get a car
                                 </Link>
                             }
-                        </div>
+                        </div> */}
                     </div>
                     <div className="d-flex flex-wrap flex-stack">
                         <div className="d-flex flex-column flex-grow-1 pe-8">

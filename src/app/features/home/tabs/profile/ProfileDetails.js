@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import MailTo from "../../../../layout/appComponents/MailTo";
+import { useContext } from "react";
+import UserContext from "../../../../context/user-context";
 
-const ProfileDetails = ({user, openEditForm}) => {
+const ProfileDetails = ({ user, openEditForm }) => {
+    const userCtx = useContext(UserContext);
+
     return (
         <>
             <div className="card mb-5 mb-xl-10" id="kt_profile_details_view">
@@ -56,7 +60,11 @@ const ProfileDetails = ({user, openEditForm}) => {
                     <div className="row mb-7">
                         <label className="col-lg-4 fw-bold text-muted">Car</label>
                         <div className="col-lg-8">
-                            <Link to={`/cars/${user.car.id}`} className="fw-bold fs-6 text-primary">{user.car.brand} {user.car.model} ({new Date(user.car.firstRegistrationDate).getFullYear()})</Link>
+                            {userCtx.user.car &&
+                                <Link to={`/cars/${user.car.id}`} className="fw-bold fs-6 text-primary">
+                                    {user.car.brand} {user.car.model} ({new Date(user.car.firstRegistrationDate).getFullYear()})
+                                </Link>}
+                            {!userCtx.user.car && <div className="fw-bold fs-6 text">None</div>}
                         </div>
                     </div>
                 </div>
