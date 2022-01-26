@@ -101,13 +101,35 @@ const AddCarModal = ({ closeModal, addCar, isSubmitting }) => {
                                 data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
                                 data-kt-scroll-offset="300px"
                             >
-                                <AppInput label="Car Brand" name="brand" placeholder="Ford" value={carFormValues.brand} onChange={handleCarFormValuesChange} />
-                                <AppInput label="Model" name="model" placeholder="Mustang" value={carFormValues.model} onChange={handleCarFormValuesChange} />
-                                <AppInput label="Color" name="color" placeholder="Red" value={carFormValues.color} onChange={handleCarFormValuesChange} />
-                                <AppInput label="License Plate" name="licencePlate" placeholder="B-214-DEZ" value={carFormValues.licencePlate} onChange={handleCarFormValuesChange} />
-                                <AppInput label="Chassis Series Number" name="chassisSeries" placeholder="1HG CM8263 3A004352" value={carFormValues.chassisSeries} onChange={handleCarFormValuesChange} />
-                                <AppInput label="Mileage" name="mileage" placeholder="20000 km" value={carFormValues.mileage} type="number" onChange={handleCarFormValuesChange} />
-                                <AppInput label="First Registration Date" name="firstRegistrationDate" type="date" value={carFormValues.firstRegistrationDate} onChange={handleCarFormValuesChange} />
+                                <AppInput
+                                    label="Car Brand" name="brand" placeholder="Ford"
+                                    value={carFormValues.brand} onChange={handleCarFormValuesChange}
+                                />
+                                <AppInput
+                                    label="Model" name="model" placeholder="Mustang"
+                                    value={carFormValues.model} onChange={handleCarFormValuesChange}
+                                />
+                                <AppInput
+                                    label="Color" name="color" placeholder="Red"
+                                    value={carFormValues.color} onChange={handleCarFormValuesChange}
+                                />
+                                <AppInput
+                                    label="License Plate" name="licencePlate" placeholder="B-214-DEZ"
+                                    value={carFormValues.licencePlate} onChange={handleCarFormValuesChange}
+                                />
+                                <AppInput
+                                    label="Chassis Series Number" name="chassisSeries" placeholder="1HG CM8263 3A004352"
+                                    value={carFormValues.chassisSeries} onChange={handleCarFormValuesChange}
+                                />
+                                <AppInput
+                                    label="Mileage" name="mileage" placeholder="20000 km"
+                                    value={carFormValues.mileage} type="number" onChange={handleCarFormValuesChange}
+                                />
+                                <AppInput
+                                    label="First Registration Date" name="firstRegistrationDate" type="date"
+                                    value={carFormValues.firstRegistrationDate} onChange={handleCarFormValuesChange}
+                                    inputClasses={"form-control form-control-solid"}
+                                />
                             </div>
                             <div className="text-center pt-15">
                                 <button
