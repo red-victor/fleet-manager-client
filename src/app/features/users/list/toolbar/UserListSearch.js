@@ -1,7 +1,5 @@
-import { useEffect, useState, isLoading } from "react";
+import { useEffect, useState, isLoading, useRef } from "react";
 import SearchIcon from "./SearchIcon";
-
-let pageHasJustLoaded = true;
 
 const UserListSearch = ({searchUsers, isLoading}) => {
     const [searchValue, setSearchValue] = useState("");
@@ -10,20 +8,20 @@ const UserListSearch = ({searchUsers, isLoading}) => {
         setSearchValue(event.target.value);
     }
 
+    const isInitialMount = useRef(true);
+
     useEffect(() => {
-        if (pageHasJustLoaded) {
-            pageHasJustLoaded = false;
-            return;
+        let waitBeforeSearch;
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            waitBeforeSearch = setTimeout(() => {
+                searchUsers(searchValue)
+            }, 1000)
         }
 
-        const waitBeforeSearch = setTimeout(() => {
-            searchUsers(searchValue)
-        }, 1000)
-
         return () => clearTimeout(waitBeforeSearch);
-        
-    }, [searchValue])
-
+    }, [searchValue]);
 
     return (
         <>
