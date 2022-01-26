@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import utils from "../utils/utils";
 
 // const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
 
@@ -12,7 +13,10 @@ axios.interceptors.request.use(config => {
     const userString = localStorage.getItem('user');
     let token = null;
     if (userString) {
-        token = JSON.parse(userString).token;
+        var user = JSON.parse(userString);
+        token = user.token;
+        var role = utils.Authorization.GetRole(token);
+        utils.Authorization.SetUserRole(user, role);
     }
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
