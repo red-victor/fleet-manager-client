@@ -1,15 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import agent from "../../../api/agent";
 import ModalUser from "./ModalUser";
 import EmptyIlustration from "../../../../assets/media/illustrations/sigma-1/1.png"
+import { toast } from "react-toastify";
+import ClipLoaderComponent from "../../../layout/appComponents/loading/ClipLoaderComponent";
 
 const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
     const [users, setUsers] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [inputValue, setInputValue] = useState("");
 
     function escFunction(event) {
         if (event.keyCode === 27) {
             closeModal();
         }
+    }
+
+    const isInitialMount = useRef(true);
+
+    useEffect(() => {
+        let waitBeforeSearch;
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            waitBeforeSearch = setTimeout(() => {
+                searchUsers(inputValue)
+            }, 1000)
+        }
+
+        return () => clearTimeout(waitBeforeSearch);
+    }, [inputValue]);
+
+    const searchUsers = name => {
+        setIsLoading(true);
+        if (name.trim() === "") {
+            agent.Users.GetAllWithNoCar()
+                .then(users => {
+                    setUsers(users)
+                })
+                .catch(e => console.log(e))
+                .finally(() => setIsLoading(false));
+            return;
+        }
+
+        agent.Users.SearchUsersWithNoCar(name)
+            .then(users => setUsers(users))
+            .catch(e => console.log(e))
+            .finally(() => setIsLoading(false));
     }
 
     useEffect(() => {
@@ -19,21 +56,26 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
     }, []);
 
     useEffect(() => {
+        setIsLoading(true);
         agent.Users.GetAllWithNoCar()
             .then(users => {
                 setUsers(users)
             })
-            .catch(e => console.log(e));
+            .catch(e => console.log(e))
+            .finally(() => setIsLoading(false));
     }, []);
 
     const handleUserClick = user => {
         agent.Cars.AssignUser({ carId, userId: user.id })
             .then(() => {
                 setUserToCar(user);
+                toast.success(`Car assigned to ${user.firstName} ${user.lastName}`)
                 closeModal();
             })
             .catch(e => console.log(e))
     };
+
+    const handleInputChange = event => setInputValue(event.target.value);
 
     return (
         <div
@@ -130,8 +172,10 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                                     type="text"
                                     className="form-control form-control-lg form-control-solid px-15"
                                     name="search"
-                                    placeholder="Search by username, full name or email..."
+                                    placeholder="Search by name or email..."
                                     data-kt-search-element="input"
+                                    value={inputValue}
+                                    onChange={handleInputChange}
                                 />
                                 <span
                                     className="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5"
@@ -177,7 +221,8 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                             <div className="py-5">
                                 <div data-kt-search-element="suggestions mb-5">
                                     <div className="mh-375px scroll-y me-n7 pe-7">
-                                        {users && users.map(user =>
+                                        {isLoading && <ClipLoaderComponent className="text-center my-20" />}
+                                        {!isLoading && users && users.map(user =>
                                             <ModalUser
                                                 key={user.id}
                                                 user={user}
@@ -186,7 +231,7 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
                                         )}
                                     </div>
                                 </div>
-                                {users && (users.length === 0) &&
+                                {!isLoading && users && (users.length === 0) &&
                                     <div data-kt-search-element="empty" className="text-center d-block">
                                         <div className="fw-bold py-10">
                                             <div className="text-gray-600 fs-3 mb-2">No users found</div>

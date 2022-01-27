@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import utils from "../utils/utils";
 
-const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
+// const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
 
 // axios.defaults.baseURL= "https://localhost:5001/api/";
 axios.defaults.baseURL = "https://localhost:44339/api/";
@@ -29,7 +29,7 @@ axios.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(async response => {
-    await sleep();
+    // await sleep();
     return response;
 }, error => {
     console.log(error);
@@ -76,7 +76,8 @@ const Users = {
     Get: id => requests.get(`users/${id}`),
     Update: payload => requests.put(`users/${payload.id}`, payload.user),
     Delete: id => requests.delete("users", id),
-    Search: str => requests.get(`users/search/${str}`)
+    Search: str => requests.get(`users/search/${str}`),
+    SearchUsersWithNoCar: name => requests.get(`users/search-users-with-no-car/${name}`),
 }
 
 const Cars = {
