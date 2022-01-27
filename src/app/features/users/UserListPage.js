@@ -3,22 +3,24 @@ import agent from "../../api/agent";
 import AddUserModal from "./list/modal/AddUserModal";
 import UserListHeader from "./list/UserListHeader";
 import UserListBody from "./list/UserListBody";
+import UploadFileModal from "../../layout/appComponents/UploadFileModal";
 
 const UserListPage = () => {
     const [users, setUsers] = useState(null);
     const [showAddUserModal, setShowAddUserModal] = useState(false);
+    const [showUploadExcelModal, setShowUploadExcelModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isFetchingData, setIsFetchingData] = useState(false);
 
-    const handleShowAddUserModal = () => setShowAddUserModal(prevState => {
-        return !prevState
-    })
+    const handleShowAddUserModal = () => setShowAddUserModal(prevState => { return !prevState })
+
+    const handleShowUploadExcelModal = () => setShowUploadExcelModal(prevState => setShowUploadExcelModal(!prevState));
 
     useEffect(() => {
-        getAllUsers();
+        getData();
     }, [setUsers])
 
-    async function getAllUsers() {
+    async function getData() {
         setIsFetchingData(true);
         const data = await agent.Users.GetAll();
         setUsers(data);
@@ -29,8 +31,20 @@ const UserListPage = () => {
         setIsSubmitting(true);
         agent.Account.register(formValues)
             .then(() => {
-                getAllUsers();
+                getData();
                 setShowAddUserModal(false);
+            })
+            .catch(e => console.log(e))
+            .finally(() => setIsSubmitting(false));
+    }
+
+    const uploadFile = formData => {
+        setIsSubmitting(true);
+        console.log(formData.get('File'));
+        agent.Files.UploadUserExcel({ file: formData })
+            .then(() => {
+                getData();
+                setShowUploadExcelModal(false);
             })
             .catch(e => console.log(e))
             .finally(() => setIsSubmitting(false));
@@ -39,7 +53,7 @@ const UserListPage = () => {
     const searchUsers = async str => {
         setIsFetchingData(true);
         if (str.trim() === "") {
-            await getAllUsers();
+            await getData();
             setIsFetchingData(false);
         }
         else {
@@ -48,19 +62,23 @@ const UserListPage = () => {
                 .catch(e => console.log(e))
                 .finally(() => setIsFetchingData(false));
         }
-        
     }
 
     return (
         <>
             {showAddUserModal &&
                 <AddUserModal closeModal={handleShowAddUserModal} registerUser={registerUser} isSubmitting={isSubmitting} />}
+            {showUploadExcelModal &&
+                <UploadFileModal closeModal={handleShowUploadExcelModal} uploadFile={uploadFile} isSubmitting={isSubmitting} title={"Upload User List Excel"} />}
 
             <div id="kt_content_container" className="d-flex flex-column-fluid align-items-start container-xxl">
                 <div className="content flex-row-fluid" id="kt_content">
                     <div className="card">
 
-                        <UserListHeader handleShowAddUserModal={handleShowAddUserModal} searchUsers={searchUsers} isFetchingData={isFetchingData} />
+                        <UserListHeader 
+                            handleShowAddUserModal={handleShowAddUserModal} 
+                            handleShowUploadExcelModal={handleShowUploadExcelModal}
+                            searchUsers={searchUsers} isFetchingData={isFetchingData} />
 
                         <UserListBody users={users} isFetchingData={isFetchingData} />
                     </div>

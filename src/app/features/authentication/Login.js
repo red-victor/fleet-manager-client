@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Logo from "../../../assets/media/logos/logo-1.svg";
-import GoogleLogo from "../../../assets/media/svg/brand-logos/google-icon.svg";
+// import Logo from "../../../assets/media/logos/logo-1.svg";
+import Logo from "../../../assets/img/logo.png";
 import agent from "../../api/agent";
 import UserContext from "../../context/user-context";
 import LoadingButton from "../../layout/appComponents/LoadingButton";
@@ -42,7 +42,7 @@ const Login = () => {
 		<div className="d-flex flex-column flex-root mt-20">
 			<div className="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style={{ backgroundImage: "url(assets/media/illustrations/sigma-1/14.png" }}>
 				<div className="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-					<img alt="Logo" src={Logo} className="h-40px mb-20" />
+					<img alt="Logo" src={Logo} className="h-200px" />
 					<div className="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
 						<form className="form w-100" id="kt_sign_in_form" onSubmit={handleSubmit}>
 							<div className="text-center mb-10">
@@ -73,9 +73,6 @@ const Login = () => {
 							</div>
 							<div className="text-center">
 								<LoadingButton classes="btn-lg w-100 mb-5" isSubmitting={isSubmitting}>Continue</LoadingButton>
-								<div className="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
-								<Link to="/" className="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-									<img alt="Logo" src={GoogleLogo} className="h-20px me-3" />Continue with Google</Link>
 							</div>
 						</form>
 					</div>
