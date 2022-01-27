@@ -1,10 +1,11 @@
 import { useEffect, useState, isLoading, useRef } from "react";
 import SearchIcon from "./SearchIcon";
 
-const UserListSearch = ({searchUsers, isLoading}) => {
+const UserListSearch = ({searchUsers, isLoading, setSearchTerm}) => {
     const [searchValue, setSearchValue] = useState("");
 
     const handleInputChange = event => {
+        setSearchTerm(event.target.value);
         setSearchValue(event.target.value);
     }
 
@@ -16,7 +17,7 @@ const UserListSearch = ({searchUsers, isLoading}) => {
             isInitialMount.current = false;
         } else {
             waitBeforeSearch = setTimeout(() => {
-                searchUsers(searchValue)
+                searchUsers()
             }, 1000)
         }
 
@@ -29,7 +30,7 @@ const UserListSearch = ({searchUsers, isLoading}) => {
                 {!isLoading && <SearchIcon />}
                 {isLoading && <span className="spinner-border spinner-border-sm position-absolute ms-6" />}
 
-                <input type="text" data-kt-user-table-filter="search" className="form-control form-control-solid w-250px ps-14" placeholder="Search user" value={searchValue} onChange={handleInputChange} />
+                <input type="text" data-kt-user-table-filter="search" className="form-control form-control-solid w-250px ps-14" placeholder="Search user" onChange={handleInputChange} />
             </div>
         </>
     );

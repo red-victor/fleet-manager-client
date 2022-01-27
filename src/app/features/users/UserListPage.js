@@ -4,26 +4,40 @@ import AddUserModal from "./list/modal/AddUserModal";
 import UserListHeader from "./list/UserListHeader";
 import UserListBody from "./list/UserListBody";
 import UploadFileModal from "../../layout/appComponents/UploadFileModal";
+import PaginationComponent from "../../layout/appComponents/PaginationComponent";
+
 
 const UserListPage = () => {
-    const [users, setUsers] = useState(null);
     const [showAddUserModal, setShowAddUserModal] = useState(false);
     const [showUploadExcelModal, setShowUploadExcelModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isFetchingData, setIsFetchingData] = useState(false);
+    const [tableData, setTableData] = useState({
+        users: null,
+        currentPage: 1,
+        totalPages: 10,
+        searchTerm: "",       
+    });
 
     const handleShowAddUserModal = () => setShowAddUserModal(prevState => { return !prevState })
 
     const handleShowUploadExcelModal = () => setShowUploadExcelModal(prevState => setShowUploadExcelModal(!prevState));
 
     useEffect(() => {
-        getData();
-    }, [setUsers])
+        getAllUsers();
+    }, [])
 
-    async function getData() {
+    async function getAllUsers(page=1) {
         setIsFetchingData(true);
-        const data = await agent.Users.GetAll();
-        setUsers(data);
+        const data = await agent.Users.GetByPage(page);
+        setTableData(prevState => {
+            return {
+                ...prevState,
+                users: data.items,
+                totalPages: data.totalPages,
+                currentPage: data.currentPage
+            }
+        })
         setIsFetchingData(false);
     }
 
@@ -31,7 +45,7 @@ const UserListPage = () => {
         setIsSubmitting(true);
         agent.Account.register(formValues)
             .then(() => {
-                getData();
+                getAllUsers();
                 setShowAddUserModal(false);
             })
             .catch(e => console.log(e))
@@ -40,25 +54,35 @@ const UserListPage = () => {
 
     const uploadFile = formData => {
         setIsSubmitting(true);
-        console.log(formData.get('File'));
         agent.Files.UploadUserExcel({ file: formData })
             .then(() => {
-                getData();
+                getAllUsers();
                 setShowUploadExcelModal(false);
             })
             .catch(e => console.log(e))
             .finally(() => setIsSubmitting(false));
     }
 
-    const searchUsers = async str => {
+    const searchUsers = async (page=1) => {
+        if (tableData.searchTerm === undefined) {
+             console.log(tableData)
+            return;
+        }
         setIsFetchingData(true);
-        if (str.trim() === "") {
-            await getData();
+        if (tableData.searchTerm.trim() === "") {
+            await getAllUsers(page);
             setIsFetchingData(false);
         }
         else {
-            agent.Users.Search(str)
-                .then(users => setUsers(users))
+            agent.Users.Search(tableData.searchTerm, page)
+                .then(data => setTableData(prevState => {
+                    return {
+                        ...prevState,
+                        users: data.items,
+                        totalPages: data.totalPages,
+                        currentPage: data.currentPage
+                    }
+                }))
                 .catch(e => console.log(e))
                 .finally(() => setIsFetchingData(false));
         }
@@ -78,9 +102,20 @@ const UserListPage = () => {
                         <UserListHeader 
                             handleShowAddUserModal={handleShowAddUserModal} 
                             handleShowUploadExcelModal={handleShowUploadExcelModal}
-                            searchUsers={searchUsers} isFetchingData={isFetchingData} />
+                            searchUsers={searchUsers} isFetchingData={isFetchingData} 
+                            setSearchTerm={val=>setTableData(prevData=>{return {...prevData, searchTerm: val}})}
+                        />
 
-                        <UserListBody users={users} isFetchingData={isFetchingData} />
+                        <UserListBody users={tableData.users} isFetchingData={isFetchingData} />
+                        <PaginationComponent 
+                            style={{display: "flex", alignItems:"center", justifyContent:"center", marginBottom: 50}} 
+                            totalPages={tableData.totalPages}
+                            currentPage={tableData.currentPage}
+                            onPageChange={(page) => {
+                                searchUsers(page);
+                                window.scroll(0, 150)
+                            }}
+                        />
                     </div>
                 </div>
             </div>

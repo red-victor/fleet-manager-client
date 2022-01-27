@@ -72,11 +72,12 @@ const Account = {
 
 const Users = {
     GetAll: () => requests.get("users"),
+    GetByPage: (page=1) => requests.get(`users/get-by-page?page=${page}&size=10`),
     GetAllWithNoCar: () => requests.get("users/with-no-car"),
     Get: id => requests.get(`users/${id}`),
     Update: payload => requests.put(`users/${payload.id}`, payload.user),
     Delete: id => requests.delete("users", id),
-    Search: str => requests.get(`users/search/${str}`),
+    Search: (str, page=1) => requests.get(`users/search?name=${str}&page=${page}&pageSize=10`),
     SearchUsersWithNoCar: name => requests.get(`users/search-users-with-no-car/${name}`),
 }
 
