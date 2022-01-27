@@ -1,7 +1,11 @@
+import ClipLoaderComponent from "../../../layout/appComponents/loading/ClipLoaderComponent";
 import CarListItem from "./CarListItem";
 
 const CarList = (props) => {
-    const { cars } = props;
+    const { cars, isLoading } = props;
+    const tableIsEmpty = cars && (cars.length == 0);
+
+    if (isLoading) return <ClipLoaderComponent />
 
     return (
         <>
@@ -22,6 +26,12 @@ const CarList = (props) => {
                         {cars && cars.map((car) =>
                             <CarListItem key={car.id} car={car} />
                         )}
+
+                        {tableIsEmpty && 
+                            <tr className="odd">
+                                <td valign="top" colSpan={7} className="dataTables_empty text-center" style={{paddingTop: 50}}>No matching records found</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
