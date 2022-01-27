@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../../../../context/user-context";
 
 const CarHeader = ({ car }) => {
+    const userCtx = useContext(UserContext);
 
     return (
         <div className="card card-flush pt-3 mb-5 mb-xl-10">
@@ -9,7 +12,9 @@ const CarHeader = ({ car }) => {
                     <h2 className="fw-bolder">{car.brand} {car.model} - {car.licencePlate}</h2>
                 </div>
                 <div className="card-toolbar">
-                    <div className="btn btn-light-primary">Update Car</div>
+                    {userCtx.user.role == "Admin" &&
+                        <div className="btn btn-light-primary">Update Car (Pending...)</div>
+                    }
                 </div>
             </div>
             <div className="card-body pt-3" style={{ paddingBottom: 0, display: "inline-block" }}>

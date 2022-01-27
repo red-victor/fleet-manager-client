@@ -1,9 +1,11 @@
-import { useState } from "react";
-import ProfileImg from "../../../assets/media/avatars/150-25.jpg"
+import { useState, useContext } from "react";
 import RightLinksMenu from "./RightLinksMenu";
+import UserContext from "../../context/user-context";
+import PlaceholderPicture from "../../../assets/img/Profile-Placeholder.png";
 
 const RightLinks = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const userCtx = useContext(UserContext);
 
     return (
         <div className="d-flex align-items-stretch flex-shrink-0">
@@ -27,29 +29,11 @@ const RightLinks = () => {
                     {/* end::Menu wrapper */}
                 </div>
                 {/* end::Notifications */}
-                {/* begin::Chat */}
-                <div className="d-flex align-items-center ms-1 ms-lg-3">
-                    {/* begin::Menu wrapper */}
-                    <div className="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px" id="kt_drawer_chat_toggle">
-                        {/* begin::Svg Icon | path: icons/duotune/communication/com012.svg */}
-                        <span className="svg-icon svg-icon-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path opacity="0.3" d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z" fill="black" />
-                                <rect x="6" y="12" width="7" height="2" rx="1" fill="black" />
-                                <rect x="6" y="7" width="12" height="2" rx="1" fill="black" />
-                            </svg>
-                        </span>
-                        {/* end::Svg Icon */}
-                        <span className="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
-                    </div>
-                    {/* end::Menu wrapper */}
-                </div>
-                {/* end::Chat */}
                 {/* begin::User */}
                 <div className="d-flex align-items-center me-n3 ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     {/* begin::Menu wrapper */}
                     <div className="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" onClick={() => setMenuOpen(prevState => !prevState)}>
-                        <img className="h-30px w-30px rounded" src={ProfileImg} alt="" />
+                        <img className="h-30px w-30px rounded" src={userCtx.user.photoUrl ? userCtx.user.photoUrl : PlaceholderPicture} alt="Pic" style={{ objectFit: "cover" }} />
                     </div>
                     {/* begin::Menu */}
                     {menuOpen && <RightLinksMenu closeMenu={() => setMenuOpen(false)} />}

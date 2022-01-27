@@ -19,7 +19,7 @@ const AddCarModal = ({ closeModal, addCar, isSubmitting }) => {
 
     const [carFormValues, setCarFormValues] = useState(initialCarFormValueState);
 
-    const isValidForm = () => carFormValues.licensePlate !== "" && carFormValues.chassisSeries !== "" && carFormValues.brand !== "" &&
+    const isValidForm = () => carFormValues.licencePlate !== "" && carFormValues.chassisSeries !== "" && carFormValues.brand !== "" &&
         carFormValues.model !== "" && carFormValues.firstRegistrationDate !== "" && carFormValues.color !== "" && carFormValues.mileage !== "";
 
     const handleCarFormValuesChange = (event) => {
