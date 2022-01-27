@@ -8,7 +8,7 @@ const UserHeader = (props) => {
             <div className="d-flex flex-wrap flex-sm-nowrap">
                 <div className="me-7 mb-4">
                     <div className="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                        <img src={user.photoUrl ? user.photoUrl : ProfilePlaceholder} alt="pic" />
+                        <img src={user.photoUrl ? user.photoUrl : ProfilePlaceholder} alt="pic" style={{ objectFit: "cover" }} />
                         <div className="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px" />
                     </div>
                 </div>
