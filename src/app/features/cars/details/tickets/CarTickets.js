@@ -13,7 +13,7 @@ const CarTickets = (props) => {
                     <div className="card-title">
                         <h2>Tickets</h2>
                     </div>
-                    {car.user && userCtx.user.id === car.user.id &&
+                    {(car.user && userCtx.user.id === car.user.id) || userCtx.user.role === "Admin" &&
                         <div className="card-toolbar">
                             <div className="btn btn-light-primary" onClick={() => showTicketModal()}>+ Submit Ticket</div>
                         </div>
