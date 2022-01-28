@@ -64,10 +64,6 @@ const UserListPage = () => {
     }
 
     const searchUsers = async (page=1) => {
-        if (tableData.searchTerm === undefined) {
-             console.log(tableData)
-            return;
-        }
         setIsFetchingData(true);
         if (tableData.searchTerm.trim() === "") {
             await getAllUsers(page);

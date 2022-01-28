@@ -6,6 +6,7 @@ import CarSearchInput from "./list/CarSearchInput";
 import CarFilterButton from "./list/CarFilterButton";
 import AddCarButton from "./list/AddCarButton";
 import UploadFileModal from "../../layout/appComponents/UploadFileModal";
+import PaginationComponent from "../../layout/appComponents/PaginationComponent";
 
 const CarListPage = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +14,12 @@ const CarListPage = () => {
     const [showAddCarModal, setShowAddCarModal] = useState(false);
     const [showUploadExcelModal, setShowUploadExcelModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [tableData, setTableData] = useState({
+        cars: null,
+        currentPage: 1,
+        totalPages: 10,
+        searchTerm: "",       
+    });
 
     const handleShowAddCarModal = () => setShowAddCarModal(prevState => setShowAddCarModal(!prevState));
 
@@ -20,12 +27,19 @@ const CarListPage = () => {
 
     useEffect(() => {
         getData();
-    }, [setCars])
+    }, [])
 
-    async function getData() {
+    async function getData(page=1) {
         setIsLoading(true);
-        const data = await agent.Cars.GetAll();
-        setCars(data);
+        const data = await agent.Cars.GetByPage(page);
+        setTableData(prevState => {
+            return {
+                ...prevState,
+                cars: data.items,
+                totalPages: data.totalPages,
+                currentPage: data.currentPage
+            }
+        })
         setIsLoading(false);
     }
 
@@ -40,17 +54,25 @@ const CarListPage = () => {
             .finally(() => setIsSubmitting(false));
     }
 
-    const searchCar = name => {        
-        if (name.trim() === "") {
-            getData();
-            return;
-        }
-        
+    const searchCar = async (page=1) => {        
         setIsLoading(true);
-        agent.Cars.Search(name)
-            .then(cars => setCars(cars))
-            .catch(e => console.log(e))
-            .finally(() => setIsLoading(false));
+        if (tableData.searchTerm.trim() === "") {
+            await getData(page);
+            setIsLoading(false);
+        }
+        else {
+            agent.Cars.Search(tableData.searchTerm, page)
+                .then(data => setTableData(prevState => {
+                    return {
+                        ...prevState,
+                        cars: data.items,
+                        totalPages: data.totalPages,
+                        currentPage: data.currentPage
+                    }
+                }))
+                .catch(e => console.log(e))
+                .finally(() => setIsLoading(false));
+        }
     }
 
     const uploadFile = formData => {
@@ -71,7 +93,7 @@ const CarListPage = () => {
                 <div className="card">
                     <div className="card-header border-0 pt-6">
                         <div className="card-title">
-                            <CarSearchInput isLoading={isLoading} searchCar={searchCar} />
+                            <CarSearchInput tableData={tableData} isLoading={isLoading} searchCar={searchCar} setSearchTerm={val=>setTableData(prevData=>{return {...prevData, searchTerm: val}})} />
                         </div>
                         <div className="card-toolbar">
                             <div className="d-flex justify-content-end" data-kt-subscription-table-toolbar="base" >
@@ -94,7 +116,16 @@ const CarListPage = () => {
                             </div>
                         </div>
                     </div>
-                    <CarList cars={cars} isLoading={isLoading} />
+                    <CarList cars={tableData.cars} isLoading={isLoading} />
+                    <PaginationComponent
+                            style={{display: "flex", alignItems:"center", justifyContent:"center", marginBottom: 50}} 
+                            totalPages={tableData.totalPages}
+                            currentPage={tableData.currentPage}
+                            onPageChange={(page) => {
+                                searchCar(page);
+                                window.scroll(0, 150)
+                            }}
+                        />
                 </div>
             </div>
 

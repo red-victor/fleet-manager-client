@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import SearchIcon from "../../users/list/toolbar/SearchIcon";
 
-const CarSearchInput = ({isLoading, searchCar}) => {
+const CarSearchInput = ({isLoading, searchCar, setSearchTerm}) => {
     const [inputValue, setInputValue] = useState("");
 
     const isInitialMount = useRef(true);
@@ -14,14 +14,17 @@ const CarSearchInput = ({isLoading, searchCar}) => {
             isInitialMount.current = false;
         } else {
             waitBeforeSearch = setTimeout(() => {
-                searchCar(inputValue)
+                searchCar()
             }, 1000)
         }
 
         return () => clearTimeout(waitBeforeSearch);
     }, [inputValue]);
 
-    const handleInputChange = event => setInputValue(event.target.value);
+    const handleInputChange = event => {
+        setSearchTerm(event.target.value);        
+        setInputValue(event.target.value);
+    };
 
     return (
         <div className="d-flex align-items-center position-relative my-1">

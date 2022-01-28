@@ -83,6 +83,7 @@ const Users = {
 
 const Cars = {
     GetAll: () => requests.get("cars"),
+    GetByPage: (page=1) => requests.get(`cars/get-by-page?page=${page}&size=10`),
     GetAllAssigned: () => requests.get("cars/assigned"),
     GetAllUnasigned: () => requests.get("cars/unassigned"),
     Get: id => requests.get(`cars/${id}`),
@@ -91,7 +92,7 @@ const Cars = {
     Delete: id => requests.delete("cars", id),
     AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser/${payload.userId}`),
     DissociateUser: id => requests.put(`cars/${id}/dissociateUser`),
-    Search: name => requests.get(`cars/search/${name}`),
+    Search: (str, page=1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
 }
 
 const History = {
