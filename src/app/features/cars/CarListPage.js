@@ -32,6 +32,7 @@ const CarListPage = () => {
     async function getData(page=1) {
         setIsLoading(true);
         const data = await agent.Cars.GetByPage(page);
+        console.log(data.items)
         setTableData(prevState => {
             return {
                 ...prevState,

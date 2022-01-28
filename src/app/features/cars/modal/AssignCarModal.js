@@ -32,17 +32,12 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
     }, [inputValue]);
 
     const searchUsers = name => {
-        setIsLoading(true);
         if (name.trim() === "") {
-            agent.Users.GetAllWithNoCar()
-                .then(users => {
-                    setUsers(users)
-                })
-                .catch(e => console.log(e))
-                .finally(() => setIsLoading(false));
+            setUsers(null)
             return;
         }
 
+        setIsLoading(true);
         agent.Users.SearchUsersWithNoCar(name)
             .then(users => setUsers(users))
             .catch(e => console.log(e))
@@ -55,15 +50,6 @@ const AssignCarModal = ({ carId, closeModal, setUserToCar }) => {
         return () => document.removeEventListener("keydown", escFunction, false);
     }, []);
 
-    useEffect(() => {
-        setIsLoading(true);
-        agent.Users.GetAllWithNoCar()
-            .then(users => {
-                setUsers(users)
-            })
-            .catch(e => console.log(e))
-            .finally(() => setIsLoading(false));
-    }, []);
 
     const handleUserClick = user => {
         agent.Cars.AssignUser({ carId, userId: user.id })
