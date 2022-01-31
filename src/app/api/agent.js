@@ -5,7 +5,8 @@ import utils from "../utils/utils";
 // const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
 
 // axios.defaults.baseURL= "https://localhost:5001/api/";
-axios.defaults.baseURL = "https://localhost:44339/api/";
+// axios.defaults.baseURL = "https://localhost:44339/api/";
+axios.defaults.baseURL = "https://backend/api/";
 
 const responseBody = response => response.data;
 
@@ -72,18 +73,18 @@ const Account = {
 
 const Users = {
     GetAll: () => requests.get("users"),
-    GetByPage: (page=1) => requests.get(`users/get-by-page?page=${page}&size=10`),
+    GetByPage: (page = 1) => requests.get(`users/get-by-page?page=${page}&size=10`),
     GetAllWithNoCar: () => requests.get("users/with-no-car"),
     Get: id => requests.get(`users/${id}`),
     Update: payload => requests.put(`users/${payload.id}`, payload.user),
     Delete: id => requests.delete("users", id),
-    Search: (str, page=1) => requests.get(`users/search?name=${str}&page=${page}&pageSize=10`),
+    Search: (str, page = 1) => requests.get(`users/search?name=${str}&page=${page}&pageSize=10`),
     SearchUsersWithNoCar: name => requests.get(`users/search-users-with-no-car/${name}`),
 }
 
 const Cars = {
     GetAll: () => requests.get("cars"),
-    GetByPage: (page=1) => requests.get(`cars/get-by-page?page=${page}&size=10`),
+    GetByPage: (page = 1) => requests.get(`cars/get-by-page?page=${page}&size=10`),
     GetAllAssigned: () => requests.get("cars/assigned"),
     GetAllUnasigned: () => requests.get("cars/unassigned"),
     Get: id => requests.get(`cars/${id}`),
@@ -92,7 +93,7 @@ const Cars = {
     Delete: id => requests.delete("cars", id),
     AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser/${payload.userId}`),
     DissociateUser: id => requests.put(`cars/${id}/dissociateUser`),
-    Search: (str, page=1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
+    Search: (str, page = 1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
 }
 
 const History = {
