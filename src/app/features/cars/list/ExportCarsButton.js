@@ -1,13 +1,13 @@
-import agent from "../../../../api/agent";
+import agent from "../../../api/agent";
 
-const UserListExport = () => {
+const ExportCarsButton = () => {
     const handleClick = () => {
-        agent.Users.Download()
+        agent.Cars.Download()
             .then(res => {
                 const url = window.URL.createObjectURL(new Blob([res]));
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', "AVA-User-List.xlsx");
+                link.setAttribute('download', "AVA-Cars-List.xlsx");
                 document.body.appendChild(link);
                 link.click();
             })
@@ -29,4 +29,4 @@ const UserListExport = () => {
     );
 }
 
-export default UserListExport;
+export default ExportCarsButton;

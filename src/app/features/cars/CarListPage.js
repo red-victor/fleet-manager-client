@@ -7,6 +7,7 @@ import CarFilterButton from "./list/CarFilterButton";
 import AddCarButton from "./list/AddCarButton";
 import UploadFileModal from "../../layout/appComponents/UploadFileModal";
 import PaginationComponent from "../../layout/appComponents/PaginationComponent";
+import ExportCarsButton from "./list/ExportCarsButton";
 
 const CarListPage = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -99,6 +100,7 @@ const CarListPage = () => {
                         <div className="card-toolbar">
                             <div className="d-flex justify-content-end" data-kt-subscription-table-toolbar="base" >
                                 <CarFilterButton />
+                                <ExportCarsButton />
                                 <AddCarButton handleShowAddCarModal={handleShowAddCarModal} />
 
                                 <button type="button"

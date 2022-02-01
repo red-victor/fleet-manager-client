@@ -79,6 +79,7 @@ const Users = {
     Delete: id => requests.delete("users", id),
     Search: (str, page=1) => requests.get(`users/search?name=${str}&page=${page}&pageSize=10`),
     SearchUsersWithNoCar: name => requests.get(`users/search-users-with-no-car/${name}`),
+    Download: () => requests.get("users/download/userList"),
 }
 
 const Cars = {
@@ -93,6 +94,7 @@ const Cars = {
     AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser/${payload.userId}`),
     DissociateUser: id => requests.put(`cars/${id}/dissociateUser`),
     Search: (str, page=1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
+    Download: () => requests.get("cars/download/carList"),
 }
 
 const History = {
