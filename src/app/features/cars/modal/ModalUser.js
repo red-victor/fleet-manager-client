@@ -10,7 +10,7 @@ const ModalUser = (props) => {
             onClick={onUserClick}
         >
             <div className="symbol symbol-35px symbol-circle me-5">
-                <img alt="Pic" src={user.photoUrl ? user.photoUrl : BlankUserImg} />
+                <img alt="Pic" src={user.imgSrc ? user.imgSrc : BlankUserImg} />
             </div>
             <div className="fw-bold">
                 <span className="fs-6 text-gray-800 me-2">{user.firstName + " " + user.lastName} -</span>

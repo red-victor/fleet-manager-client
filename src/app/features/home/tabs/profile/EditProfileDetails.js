@@ -26,26 +26,28 @@ const EditProfileDetails = ({user, closeEditForm, saveUser}) => {
         });
     }
 
-    const formHasNotChanged = () => {
-        return user.firstName.toLowerCase().trim() === formValues.firstName.toLowerCase().trim() &&
-                user.lastName.toLowerCase().trim() === formValues.lastName.toLowerCase().trim() &&
-                user.cnp.trim() === formValues.cnp.trim() &&
-                user.phoneNumber.trim() === formValues.phoneNumber.trim() &&
-                user.adress.trim() === formValues.adress.trim()
-    }
-
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(formValues)
-        if (formHasNotChanged()) {
-            console.log("form has not changed")
-            closeEditForm();
-            return;
-        }
 
         setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append("id", formValues.id);
+        formData.append("firstName", formValues.firstName);
+        formData.append("lastName", formValues.lastName);
+        formData.append("cNP", formValues.cnp);
+        formData.append("adress", formValues.adress);
+        formData.append("carId", formValues.carId);
+        formData.append("car", formValues.car);
+        formData.append("userName", formValues.userName);
+        formData.append("email", formValues.email);
+        formData.append("phoneNumber", formValues.phoneNumber);
+        formData.append("phoneNumberConfirmed", formValues.phoneNumberConfirmed);
+        formData.append("imgName", formValues.imgName);
+        formData.append("imgFile", formValues.imgFile);
+        formData.append("imgSrc", formValues.imgSrc);
+        formData.append("role", formValues.role);
 
-        agent.Users.Update({ id: user.id, user: formValues })
+        agent.Users.Update({ id: user.id, user: formData })
             .then(res => {
                 console.log(res);
                 saveUser({
@@ -72,7 +74,7 @@ const EditProfileDetails = ({user, closeEditForm, saveUser}) => {
             <div id="kt_account_settings_profile_details" className="collapse show">
                 <form id="kt_account_profile_details_form" className="form" onSubmit={handleSubmit}>
                     <div className="card-body border-top p-9">
-                        <AvatarInput className="fv-row mb-6" userAvatar={formValues.photoUrl ? formValues.photoUrl : undefined} />
+                        <AvatarInput className="fv-row mb-6" userAvatar={formValues.imgSrc ?? undefined} setFormValues={setFormValues} />
                         <div className="row mb-6">
                             <AppInput label="First Name" displayOnSameColon={true} labelClasses="col-lg-4 col-form-label fw-bold fs-6" inputClasses="form-control form-control-lg form-control-solid" name="firstName" placeholder={user.firstName} value={formValues.firstName} onChange={handleFromValuesChange} />
                         </div>

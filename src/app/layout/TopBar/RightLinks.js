@@ -33,7 +33,7 @@ const RightLinks = () => {
                 <div className="d-flex align-items-center me-n3 ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     {/* begin::Menu wrapper */}
                     <div className="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" onClick={() => setMenuOpen(prevState => !prevState)}>
-                        <img className="h-30px w-30px rounded" src={userCtx.user.photoUrl ? userCtx.user.photoUrl : PlaceholderPicture} alt="Pic" style={{ objectFit: "cover" }} />
+                        <img className="h-30px w-30px rounded" src={userCtx.user?.imgSrc ? userCtx.user?.imgSrc : PlaceholderPicture} alt="Pic" style={{ objectFit: "cover" }} />
                     </div>
                     {/* begin::Menu */}
                     {menuOpen && <RightLinksMenu closeMenu={() => setMenuOpen(false)} />}

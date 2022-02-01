@@ -13,7 +13,7 @@ const UserContext = React.createContext({
         adress: "",
         phoneNumber: "",
         phoneNumberConfirmed: false,
-        photoUrl: "",
+        imgSrc: "",
         car: "",
         token: "",
         role: ""

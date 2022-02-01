@@ -20,7 +20,7 @@ const RightLinksMenu = ({ closeMenu }) => {
                     <div className="menu-content d-flex flex-column align-items-center px-3">
                         {/* begin::Avatar */}
                         <div className="symbol symbol-50px me-5">
-                            <img alt="Pic" src={userCtx.user.photoUrl ? userCtx.user.photoUrl : PlaceholderPicture} style={{ objectFit: "cover" }} />
+                            <img alt="Pic" src={userCtx.user.imgSrc ? userCtx.user.imgSrc : PlaceholderPicture} style={{ objectFit: "cover" }} />
                         </div>
                         {/* end::Avatar */}
                         {/* begin::Username */}
