@@ -5,8 +5,8 @@ import utils from "../utils/utils";
 // const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
 
 // axios.defaults.baseURL= "https://localhost:5001/api/";
-// axios.defaults.baseURL = "https://localhost:44339/api/";
-axios.defaults.baseURL = "https://apifleetmanager.brolake.ro/api/";
+axios.defaults.baseURL = "https://localhost:44339/api/";
+// axios.defaults.baseURL = "https://apifleetmanager.brolake.ro/api/";
 
 const responseBody = response => response.data;
 
