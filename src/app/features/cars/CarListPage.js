@@ -8,10 +8,13 @@ import AddCarButton from "./list/AddCarButton";
 import UploadFileModal from "../../layout/appComponents/UploadFileModal";
 import PaginationComponent from "../../layout/appComponents/PaginationComponent";
 import ExportCarsButton from "./list/ExportCarsButton";
+import useRoles from "../../hooks/useRoles";
+import { useHistory } from "react-router-dom";
 
 const CarListPage = () => {
+    const role = useRoles();
+    const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
-    const [cars, setCars] = useState(null);
     const [showAddCarModal, setShowAddCarModal] = useState(false);
     const [showUploadExcelModal, setShowUploadExcelModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,6 +24,11 @@ const CarListPage = () => {
         totalPages: 10,
         searchTerm: "",       
     });
+
+    useEffect(() => {
+        if (role !== "Admin") history.push("/");
+    }, [])
+
 
     const handleShowAddCarModal = () => setShowAddCarModal(prevState => setShowAddCarModal(!prevState));
 
