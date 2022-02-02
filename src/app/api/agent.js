@@ -34,23 +34,26 @@ axios.interceptors.response.use(async response => {
     return response;
 }, error => {
     console.log(error);
-    const { data, status } = error.response;
+    const { status } = error.response;
 
-    switch (status) {
-        case 400:
-            toast.error(data.title);
-            break;
-        case 401:
-            toast.error(data.title);
-            break;
-        case 500:
-            toast.error(data.title);
-            break
-        default:
-            break;
-    }
+    if (status >= 400 && status < 500) window.location.href = "http://localhost:3000/not-found"
+    else window.location.href = "http://localhost:3000/error"
 
-    return Promise.reject(error.response);
+    // switch (status) {
+    //     case 400:
+    //         toast.error(data.title);
+    //         break;
+    //     case 401:
+    //         toast.error(data.title);
+    //         break;
+    //     case 500:
+    //         toast.error(data.title);
+    //         break
+    //     default:
+    //         break;
+    // }
+
+    // return Promise.reject(error.response);
 });
 
 const requests = {
