@@ -32,7 +32,8 @@ const AvatarInput = ({userAvatar, className, setFormValues}) => {
                 <div
                     className="image-input-wrapper w-125px h-125px"
                     style={{
-                        backgroundImage: userAvatar ? `url(${userAvatar})` : 'none'
+                        backgroundImage: userAvatar ? `url(${userAvatar})` : 'none',
+                        backgroundPosition: "center"
                     }}
                 />
                 <label
