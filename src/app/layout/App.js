@@ -13,6 +13,7 @@ import ResetPassword from "../features/authentication/ResetPassword";
 import ConfirmPassword from "../features/authentication/ConfirmPassword";
 import ChangeEmail from "../features/authentication/ChangeEmail";
 import NotFound from "../features/errors/NotFound";
+import ServerError from "../features/errors/ServerError";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/change-password" component={ConfirmPassword} />
         <Route exact path="/change-email" component={ChangeEmail} />
         <Route exact path="/not-found" component={NotFound} />
+        <Route exact path="/error" component={ServerError} />
         <Layout>
           <Route exact path="/"> <HomePage /> </Route>
           <Route exact path="/cars"> <CarListPage /> </Route>
