@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Login from "../features/authentication/Login";
 import HomePage from "../features/home/HomePage";
 
@@ -27,11 +27,20 @@ function App() {
         <Route exact path="/not-found" component={NotFound} />
         <Route exact path="/error" component={ServerError} />
         <Layout>
+          <Switch>
           <Route exact path="/"> <HomePage /> </Route>
           <Route exact path="/cars"> <CarListPage /> </Route>
           <Route exact path="/cars/:id"><CarDetailsPage /></Route>
           <Route exact path="/users"> <UserListPage /> </Route>
           <Route exact path="/users/:id"><UserDetailsPage /></Route>
+          <Route path="*">
+            <Redirect
+              to={{
+                pathname: "/not-found",
+              }}
+            />
+          </Route>
+          </Switch>
         </Layout>
       </Switch>
     </>
