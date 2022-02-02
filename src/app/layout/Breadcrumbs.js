@@ -6,7 +6,7 @@ const Breadcrumbs = ({options}) => {
             <div id="kt_toolbar_container" className="container-xxl d-flex flex-stack flex-wrap">
                 <div className="page-title d-flex flex-column me-3">
                     {/* <h1 className="d-flex text-white fw-bolder my-1 fs-3">{options.title}</h1> */}
-                    <h1 className="d-flex text-white fw-bolder my-1 fs-3">Breadcrumbs title</h1>
+                    <h1 className="d-flex text-white fw-bolder my-1 fs-3">Breadcrumbs</h1>
                     <ul className="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                         <li className="breadcrumb-item text-white opacity-75">
                             <Link to="/" className="text-white text-hover-primary">Home</Link>
