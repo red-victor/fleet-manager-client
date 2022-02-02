@@ -12,6 +12,7 @@ import CarListPage from "../features/cars/CarListPage";
 import ResetPassword from "../features/authentication/ResetPassword";
 import ConfirmPassword from "../features/authentication/ConfirmPassword";
 import ChangeEmail from "../features/authentication/ChangeEmail";
+import NotFound from "../features/errors/NotFound";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/reset-password" component={ResetPassword} />
         <Route exact path="/change-password" component={ConfirmPassword} />
         <Route exact path="/change-email" component={ChangeEmail} />
+        <Route exact path="/not-found" component={NotFound} />
         <Layout>
           <Route exact path="/"> <HomePage /> </Route>
           <Route exact path="/cars"> <CarListPage /> </Route>
