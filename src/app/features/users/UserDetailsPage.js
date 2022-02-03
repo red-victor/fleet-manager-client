@@ -44,7 +44,6 @@ const UserDetailsPage = () => {
                                 <ul className="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
                                     <TabNavItem tab={tab} setTab={setTab} tabFor="overview" >Overview</TabNavItem>
                                     <TabNavItem tab={tab} setTab={setTab} tabFor="profile" >Profile</TabNavItem>
-                                    {/* <TabNavItem tab={tab} setTab={setTab} tabFor="logs" >Logs</TabNavItem> */}
                                 </ul>
 
                             </div>
@@ -54,7 +53,6 @@ const UserDetailsPage = () => {
                             <OverviewTab tickets={tickets} histories={histories}
                             />}
                         {(tab === "profile") && <ProfileDetails user={user} />}
-                        {/* {(tab === "logs") && <LogsTab />} */}
 
                         <div className="row g-5 g-xxl-8">
                             <div className="col-xl-6">
