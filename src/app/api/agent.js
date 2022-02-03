@@ -2,8 +2,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import utils from "../utils/utils";
 
-// const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
-
 // axios.defaults.baseURL= "https://localhost:5001/api/";
 axios.defaults.baseURL = "https://localhost:44339/api/";
 // axios.defaults.baseURL = "https://apifleetmanager.brolake.ro/api/";
@@ -30,30 +28,34 @@ axios.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(async response => {
-    // await sleep();
     return response;
 }, error => {
-    console.log(error);
-    const { status } = error.response;
+    const { status, data } = error.response;
 
-    if (status >= 400 && status < 500) window.location.href = "http://localhost:3000/not-found"
-    else window.location.href = "http://localhost:3000/error"
+    switch (status) {
+        case 400:
+        case 401:
+        case 409:
+            toast.warning(data.title);
+            console.log("Details :" + data.details);
+            break;
+        case 403:
+            toast.error(data.title);
+            console.log("Details :" + data.details);
+            break;
+        case 404:
+            window.location.href = "http://localhost:3000/not-found";
+            break;
+        case 500:
+            window.location.href = "http://localhost:3000/error";
+            break;
+        default:
+            window.location.href = "http://localhost:3000/error";
 
-    // switch (status) {
-    //     case 400:
-    //         toast.error(data.title);
-    //         break;
-    //     case 401:
-    //         toast.error(data.title);
-    //         break;
-    //     case 500:
-    //         toast.error(data.title);
-    //         break
-    //     default:
-    //         break;
-    // }
+            break;
+    }
 
-    // return Promise.reject(error.response);
+    return Promise.reject(error.response);
 });
 
 const requests = {
