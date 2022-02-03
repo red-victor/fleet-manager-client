@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import MailTo from "../../../../layout/appComponents/MailTo";
 import { useContext } from "react";
 import UserContext from "../../../../context/user-context";
 
@@ -27,7 +26,7 @@ const ProfileDetails = ({ user, openEditForm }) => {
                         <div className="col-lg-8">
                             {/* <a href="#" className="fw-bold fs-6 text-gray-800 text-hover-primary">{user.email}</a> */}
                             <div className="fw-bold fs-6 text-gray-800 text-hover-primary">
-                                <MailTo mailto={user.email} />
+                                {user.email}
                             </div>
                         </div>
                     </div>
