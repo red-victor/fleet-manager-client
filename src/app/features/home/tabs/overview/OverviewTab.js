@@ -6,12 +6,10 @@ const OverviewTab = (props) => {
 
     return (
         <>
-            {isAdmin &&
                 <div className="row g-5 g-xl-8">
                     <Tickets tickets={tickets} showHistoryModal={showHistoryModal} setTicketFormData={setTicketFormData} />
                     <MySolvedHistories histories={histories} />
                 </div>
-            }
         </>
     );
 }

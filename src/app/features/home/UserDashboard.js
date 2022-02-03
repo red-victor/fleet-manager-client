@@ -28,6 +28,13 @@ const UserDashboard = () => {
             if (userCtx.user.role === "Admin") {
                 const ticketData = await agent.Tickets.GetAll();
                 const historyData = await agent.History.GetAll();
+
+                setTickets(ticketData);
+                setHistories(historyData);
+            } else {
+                const ticketData = await agent.Tickets.GetAllForUser(userCtx.user.id);
+                const historyData = await agent.History.GetAllForUser(userCtx.user.id);
+
                 setTickets(ticketData);
                 setHistories(historyData);
             }
