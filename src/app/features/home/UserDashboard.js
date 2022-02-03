@@ -8,6 +8,7 @@ import SettingsTab from "./tabs/settings/SettingsTab";
 import LogsTab from "./tabs/logsTab/LogsTab";
 import TabNavItem from "../../layout/appComponents/navigation/TabNavItem";
 import HistoryFormModal from "./modal/HistoryFormModal";
+import ClipLoaderComponent from "../../layout/appComponents/loading/ClipLoaderComponent";
 
 const UserDashboard = () => {
     const userCtx = useContext(UserContext);
@@ -49,7 +50,7 @@ const UserDashboard = () => {
             .finally(() => setIsSubmitting(false));
     }
 
-    if (loading) return <>Loading...</>
+    if (loading) return <ClipLoaderComponent />
 
     return (
         <>
