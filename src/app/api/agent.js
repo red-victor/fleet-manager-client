@@ -2,8 +2,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import utils from "../utils/utils";
 
-// const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
-
 // axios.defaults.baseURL= "https://localhost:5001/api/";
 axios.defaults.baseURL = "https://localhost:44339/api/";
 // axios.defaults.baseURL = "https://apifleetmanager.brolake.ro/api/";
@@ -30,30 +28,34 @@ axios.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(async response => {
-    // await sleep();
     return response;
 }, error => {
-    console.log(error);
-    const { status } = error.response;
+    const { status, data } = error.response;
 
-    if (status >= 400 && status < 500) window.location.href = "http://localhost:3000/not-found"
-    else window.location.href = "http://localhost:3000/error"
+    switch (status) {
+        case 400:
+        case 401:
+        case 409:
+            toast.warning(data.title);
+            console.log("Details :" + data.details);
+            break;
+        case 403:
+            toast.error(data.title);
+            console.log("Details :" + data.details);
+            break;
+        case 404:
+            window.location.href = "http://localhost:3000/not-found";
+            break;
+        case 500:
+            window.location.href = "http://localhost:3000/error";
+            break;
+        default:
+            window.location.href = "http://localhost:3000/error";
 
-    // switch (status) {
-    //     case 400:
-    //         toast.error(data.title);
-    //         break;
-    //     case 401:
-    //         toast.error(data.title);
-    //         break;
-    //     case 500:
-    //         toast.error(data.title);
-    //         break
-    //     default:
-    //         break;
-    // }
+            break;
+    }
 
-    // return Promise.reject(error.response);
+    return Promise.reject(error.response);
 });
 
 const requests = {
@@ -83,7 +85,6 @@ const Users = {
     Delete: id => requests.delete("users", id),
     Search: (str, page = 1) => requests.get(`users/search?name=${str}&page=${page}&pageSize=10`),
     SearchUsersWithNoCar: name => requests.get(`users/search-users-with-no-car/${name}`),
-    Download: () => requests.get("users/download/userList"),
 }
 
 const Cars = {
@@ -97,8 +98,7 @@ const Cars = {
     Delete: id => requests.delete("cars", id),
     AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser/${payload.userId}`),
     DissociateUser: id => requests.put(`cars/${id}/dissociateUser`),
-    Search: (str, page=1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
-    Download: () => requests.get("cars/download/carList"),
+    Search: (str, page = 1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
 }
 
 const History = {
@@ -124,8 +124,10 @@ const Tickets = {
 }
 
 const Files = {
-    UploadCarExcel: payload => requests.post("cars/upload/carList", payload.file, FILE_HEADER_CONFIG),
-    UploadUserExcel: payload => requests.post("account/upload/userList", payload.file, FILE_HEADER_CONFIG),
+    DownloadCarExcel: () => requests.get("file/download/car-excel"),
+    UploadCarExcel: payload => requests.post("file/upload/car-excel", payload.file, FILE_HEADER_CONFIG),
+    DownloadUserExcel: () => requests.get("file/download/user-excel"),
+    UploadUserExcel: payload => requests.post("file/upload/user-excel", payload.file, FILE_HEADER_CONFIG),
 }
 
 const agent = {
