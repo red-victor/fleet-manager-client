@@ -5,7 +5,6 @@ import CarUser from "./details/user/CarUser";
 import CarHeader from "./details/header/CarHeader";
 import CarTickets from "./details/tickets/CarTickets";
 import CarHistory from "./details/history/CarHistory";
-import CarTicketHistory from "./details/CarTicketHistory";
 import AssignCarModal from "./modal/AssignCarModal";
 import TicketFormModal from "./modal/TicketFormModal";
 
@@ -91,9 +90,6 @@ const CarDetailsPage = () => {
                         }
                         {ticketList && car &&
                             <CarTickets ticketList={ticketList} car={car} showTicketModal={() => setShowTicketModal(true)} />
-                        }
-                        {ticketList && historyList &&
-                            <CarTicketHistory />
                         }
                         {historyList &&
                             <CarHistory historyList={historyList} />
