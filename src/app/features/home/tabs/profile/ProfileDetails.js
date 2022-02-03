@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import MailTo from "../../../../layout/appComponents/MailTo";
 import { useContext } from "react";
 import UserContext from "../../../../context/user-context";
 
@@ -13,7 +12,7 @@ const ProfileDetails = ({ user, openEditForm }) => {
                     <div className="card-title m-0">
                         <h3 className="fw-bolder m-0">Profile Details</h3>
                     </div>
-                    <button className="btn btn-primary align-self-center" onClick={openEditForm}>Edit Profile</button>
+                    {openEditForm && <button className="btn btn-primary align-self-center" onClick={openEditForm}>Edit Profile</button>}
                 </div>
                 <div className="card-body p-9">
                     <div className="row mb-7">
@@ -27,7 +26,7 @@ const ProfileDetails = ({ user, openEditForm }) => {
                         <div className="col-lg-8">
                             {/* <a href="#" className="fw-bold fs-6 text-gray-800 text-hover-primary">{user.email}</a> */}
                             <div className="fw-bold fs-6 text-gray-800 text-hover-primary">
-                                <MailTo mailto={user.email} />
+                                {user.email}
                             </div>
                         </div>
                     </div>

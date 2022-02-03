@@ -5,7 +5,6 @@ import UserHeader from "./UserHeader";
 import OverviewTab from "./tabs/overview/OverviewTab";
 import MyProfileTab from "./tabs/profile/MyProfileTab";
 import SettingsTab from "./tabs/settings/SettingsTab";
-import LogsTab from "./tabs/logsTab/LogsTab";
 import TabNavItem from "../../layout/appComponents/navigation/TabNavItem";
 import HistoryFormModal from "./modal/HistoryFormModal";
 import ClipLoaderComponent from "../../layout/appComponents/loading/ClipLoaderComponent";
@@ -73,9 +72,6 @@ const UserDashboard = () => {
                                 <TabNavItem tab={tab} setTab={setTab} tabFor="overview" >Overview</TabNavItem>
                                 <TabNavItem tab={tab} setTab={setTab} tabFor="profile" >Profile</TabNavItem>
                                 <TabNavItem tab={tab} setTab={setTab} tabFor="settings" >Settings</TabNavItem>
-                                {userCtx.user && userCtx.user.role === "Admin" &&
-                                    <TabNavItem tab={tab} setTab={setTab} tabFor="logs" >Logs</TabNavItem>
-                                }
                             </ul>
 
                         </div>
@@ -89,8 +85,6 @@ const UserDashboard = () => {
                     />}
                     {(tab === "profile") && <MyProfileTab />}
                     {(tab === "settings") && <SettingsTab />}
-                    {(tab === "logs") && <LogsTab />}
-
                 </div>
             </div>
         </>
