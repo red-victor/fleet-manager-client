@@ -9,11 +9,15 @@ const Breadcrumbs = ({options}) => {
                     <h1 className="d-flex text-white fw-bolder my-1 fs-3">Breadcrumbs</h1>
                     <ul className="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                         <li className="breadcrumb-item text-white opacity-75">
-                            <Link to="/" className="text-white text-hover-primary">Home</Link>
+                            {/* <Link to="/" className="text-white text-hover-primary">Home</Link>
                             &nbsp; &nbsp; - &nbsp; &nbsp;
                             <Link to="/cars" className="text-white text-hover-primary">Cars</Link>
                             &nbsp; &nbsp; - &nbsp; &nbsp;
                             <Link to="/users" className="text-white text-hover-primary">Users</Link>
+                            &nbsp; &nbsp; - &nbsp; &nbsp; */}
+                            <Link to="/not-found" className="text-white text-hover-primary">404</Link>
+                            &nbsp; &nbsp; - &nbsp; &nbsp;
+                            <Link to="/error" className="text-white text-hover-primary">500</Link>
                         </li>
                         {/* {options.links.map((link, index) => (
                             <li key={index} className="breadcrumb-item text-white opacity-75">
