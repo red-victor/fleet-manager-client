@@ -2,7 +2,7 @@ import agent from "../../../api/agent";
 
 const ExportCarsButton = () => {
     const handleClick = () => {
-        agent.Cars.Download()
+        agent.Files.DownloadCarExcel()
             .then(res => {
                 const url = window.URL.createObjectURL(new Blob([res]));
                 const link = document.createElement('a');

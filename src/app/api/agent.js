@@ -83,7 +83,6 @@ const Users = {
     Delete: id => requests.delete("users", id),
     Search: (str, page = 1) => requests.get(`users/search?name=${str}&page=${page}&pageSize=10`),
     SearchUsersWithNoCar: name => requests.get(`users/search-users-with-no-car/${name}`),
-    Download: () => requests.get("users/download/userList"),
 }
 
 const Cars = {
@@ -97,8 +96,7 @@ const Cars = {
     Delete: id => requests.delete("cars", id),
     AssignUser: payload => requests.put(`cars/${payload.carId}/assignUser/${payload.userId}`),
     DissociateUser: id => requests.put(`cars/${id}/dissociateUser`),
-    Search: (str, page=1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
-    Download: () => requests.get("cars/download/carList"),
+    Search: (str, page = 1) => requests.get(`cars/search?name=${str}&page=${page}&pageSize=10`),
 }
 
 const History = {
@@ -124,8 +122,10 @@ const Tickets = {
 }
 
 const Files = {
-    UploadCarExcel: payload => requests.post("cars/upload/carList", payload.file, FILE_HEADER_CONFIG),
-    UploadUserExcel: payload => requests.post("account/upload/userList", payload.file, FILE_HEADER_CONFIG),
+    DownloadCarExcel: () => requests.get("file/download/car-excel"),
+    UploadCarExcel: payload => requests.post("file/upload/car-excel", payload.file, FILE_HEADER_CONFIG),
+    DownloadUserExcel: () => requests.get("file/download/user-excel"),
+    UploadUserExcel: payload => requests.post("file/upload/user-excel", payload.file, FILE_HEADER_CONFIG),
 }
 
 const agent = {

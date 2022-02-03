@@ -2,7 +2,7 @@ import agent from "../../../../api/agent";
 
 const UserListExport = () => {
     const handleClick = () => {
-        agent.Users.Download()
+        agent.Files.DownloadUserExcel()
             .then(res => {
                 const url = window.URL.createObjectURL(new Blob([res]));
                 const link = document.createElement('a');
