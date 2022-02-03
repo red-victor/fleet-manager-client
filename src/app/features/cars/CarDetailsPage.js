@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CarUser from "./details/user/CarUser";
 import CarHeader from "./details/header/CarHeader";
-import CarTickets from "./details/tickets/CarTickets";
 import CarHistory from "./details/history/CarHistory";
 import AssignCarModal from "./modal/AssignCarModal";
 import TicketFormModal from "./modal/TicketFormModal";
+import PendingTickets from "./details/tickets/PendingTickets";
 
 const CarDetailsPage = () => {
     const { id } = useParams();
@@ -89,7 +89,7 @@ const CarDetailsPage = () => {
                             <CarHeader car={car} />
                         }
                         {ticketList && car &&
-                            <CarTickets ticketList={ticketList} car={car} showTicketModal={() => setShowTicketModal(true)} />
+                            <PendingTickets ticketList={ticketList} car={car} showTicketModal={() => setShowTicketModal(true)} />
                         }
                         {historyList &&
                             <CarHistory historyList={historyList} />
