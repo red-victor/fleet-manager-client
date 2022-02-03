@@ -1,3 +1,4 @@
+import BlankProfileImage from "../../../../../assets/media/avatars/blank.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../../../context/user-context";
@@ -17,7 +18,7 @@ const CarUserInfo = ({ user, handleDissociateUser }) => {
                     <div className="mb-7">
                         <div className="d-flex align-items-center">
                             <div className="symbol symbol-60px symbol-circle me-3">
-                                <img alt="Pic" src={user.imgSrc} />
+                                <img alt="Pic" src={user.imgSrc ?? BlankProfileImage} />
                             </div>
                             <div className="d-flex flex-column">
                                 <div className="fs-4 fw-bolder text-gray-900 text-hover-primary me-2">
