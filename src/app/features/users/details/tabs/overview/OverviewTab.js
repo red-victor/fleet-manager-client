@@ -1,4 +1,3 @@
-import MyTicketHistory from "./MyTicketHistory";
 import MyHistories from "./history/SolvedHistories";
 import Tickets from "./tickets/Tickets";
 
@@ -11,7 +10,6 @@ const OverviewTab = (props) => {
                 <Tickets tickets={tickets} />
                 <MyHistories histories={histories} />
             </div>
-            <MyTicketHistory />
 
         </>
     );
