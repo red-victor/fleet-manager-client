@@ -7,7 +7,8 @@ const OverviewTab = (props) => {
     return (
         <>
                 <div className="row g-5 g-xl-8">
-                    <Tickets tickets={tickets} showHistoryModal={showHistoryModal} setTicketFormData={setTicketFormData} />
+                    <Tickets tickets={tickets} showHistoryModal={showHistoryModal} setTicketFormData={setTicketFormData}
+                    title={isAdmin ? "Unresolved Tickets" : "My Tickets"} />
                     <MySolvedHistories histories={histories} />
                 </div>
         </>
