@@ -1,70 +1,185 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div id="top"></div>
 
-## Available Scripts
+# Fleet Manager - Internal WEB Application API
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#developer-features">Developer Features</a></li>
+        <li><a href="#integrated-services">Integrated Services</a></li>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#visuals">Visuals</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#development-team">Development Team</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-### `npm test`
+Fleet Manager is an Internal website built for managing a company's vehicle assets, their usage, maintenance and costs.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="right"><a href="#top">Top ↑</a></p>
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Developer Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Entity CRUD
+- Registration/Login with JWT Token
+- Account Management
+- User Roles
+- File Import/Export (Excel, Images)
+- Search
+- Pagination
+- Email notifications
+- Error logging
+<p align="right"><a href="#top">Top ↑</a></p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Built With
 
-### `npm run eject`
+ Web API design pattern
+React JS
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Back End:  [ASP .NET Core][asp-net-core],  [C#][c#],  [Entity Framework Core][ef-core],   [AutoMapper][auto-mapper],  [Office Open XML][office-open-xml]
+* Security:  [Identity][identity-core]
+* Front End:  [HTML][html],  [CSS][css],   [JavaScript][js],   [React.js][react],   [Bootstrap][bootstrap]
+* Database Management:  [Microsoft SQL Server][msql-server],   [Microsoft SQL Server Management Studio][ssms]
+* Code Editor:  [Microsoft Visual Studio Code][visual-studio-code]
+* Deployment: [Docker][docker]
+<p align="right"><a href="#top">Top ↑</a></p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Integrated Services
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Email:  [MailKit][mail-kit]
+<p align="right"><a href="#top">Top ↑</a></p>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Visuals
 
-## Learn More
+Login Page:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![login-page.png][page-login]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+User Dashboard:
 
-### Code Splitting
+![user-dashboard.png][dashboard]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Car List Page with Search and Pagination:
 
-### Analyzing the Bundle Size
+![car-list.png][car-list]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Car Details:
 
-### Making a Progressive Web App
+![car-details.png][car-details]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+User List Page:
 
-### Advanced Configuration
+![user-list.png][user-list]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Deployment
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**This Project Requires _both_ [API][project-api] and [Client][project-client] app in order to run.**
+_Also requires Node.js and npm_
 
-### `npm run build` fails to minify
+- Clone the Repo on your machine and open it with **Visual Studio Code**.
+- Install packages by running the following command in the terminal:
+```cmd
+	npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Follow the [API][project-api] steps if you haven't already.
+<p align="right"><a href="#top">Top ↑</a></p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+Run by entering the following command in the terminal:
+```cmd
+	npm start
+```
+
+Login by using the following accounts:
+```
+Admin: john.doe@testing.com 
+	Password: Pa$$w0rd
+	
+Employee: jane.smith@testing.com
+	Password: Pa$$w0rd
+```
+
+<p align="right"><a href="#top">Top ↑</a></p>
+
+
+## Development Team
+
+* [Victor Nicolae's GitHub][victor-nicolae]
+* [Adrian Deaconu's GitHub][adrian-deaconu]
+* [Alex Buza's GitHub][alex-buza]
+
+<p align="right"><a href="#top">Top ↑</a></p>
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+Thanks for all the support to the [Codecool][codecool] mentors that have guided us!
+
+
+<p align="right"><a href="#top">Top ↑</a></p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[project-client]: https://github.com/red-victor/fleet-manager-client
+[project-api]: https://github.com/red-victor/fleet-manager-api
+
+[asp-net-core]: https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet-core
+[ef-core]: https://docs.microsoft.com/en-us/ef/core/
+[auto-mapper]: https://automapper.org/
+[c#]: https://docs.microsoft.com/en-us/dotnet/csharp/
+[html]: https://html.com/
+[css]: https://www.w3.org/Style/CSS/Overview.en.html
+[js]: https://www.javascript.com/
+[react]: https://reactjs.org/
+[react-net]: https://reactjs.net/
+[bootstrap]: https://getbootstrap.com
+[jquery]: https://jquery.com
+[msql-server]: https://www.microsoft.com/en-us/sql-server/sql-server-2019
+[ssms]: https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15
+[visual-studio]: https://visualstudio.microsoft.com/
+[visual-studio-code]: https://code.visualstudio.com/
+[identity-core]: https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=visual-studio
+[docker]: https://www.docker.com/
+
+[victor-nicolae]: https://github.com/red-victor
+[adrian-deaconu]: https://github.com/AdiDD
+[alex-buza]: https://github.com/alexmarian99
+
+[codecool]: https://codecool.com/en/
+
+[mail-kit]: https://www.mailkit.com/
+[office-open-xml]: https://epplussoftware.com/docs/5.0/api/OfficeOpenXml.html
+
+[page-login]:https://res.cloudinary.com/dsanrttbt/image/upload/v1644154627/Fleet-Manager/login_nw3atx.png
+[dashboard]: https://res.cloudinary.com/dsanrttbt/image/upload/v1644154628/Fleet-Manager/user-dashboard_l3omwn.png
+[user-list]: https://res.cloudinary.com/dsanrttbt/image/upload/v1644154627/Fleet-Manager/user-list_rgt387.png
+[car-details]: https://res.cloudinary.com/dsanrttbt/image/upload/v1644154627/Fleet-Manager/car-details_sz0olh.png
+[car-list]: https://res.cloudinary.com/dsanrttbt/image/upload/v1644154627/Fleet-Manager/car-list-search-pagination_hd7rsx.png
